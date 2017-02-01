@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Comatose",
+    "duration": "00:03:44",
+    "command": "Comatose\\Comatose.RPP"
+  },
+  {
+    "name": "No Man's Land",
+    "duration": "00:03:33",
+    "command": "No Man's Land\\No Man's Land.RPP"
+  },
+  {
+    "name": "Pretender",
+    "duration": "00:03:55",
+    "command": "Pretender\\Pretender.RPP"
+  },
+  {
+    "name": "Dark Intro",
+    "duration": "00:01:00",
+    "command": "Dark Intro\\Dark Intro.RPP"
+  },
+  {
+    "name": "Fluorescence",
+    "duration": "00:03:16",
+    "command": "Fluorescence\\Fluorescence.RPP"
+  },
+  {
+    "name": "Sound of Mind",
+    "duration": "00:03:19",
+    "command": "Sound of Mind\\Sound of Mind.RPP"
+  },
+  {
+    "name": "Never Let Me Go",
+    "duration": "00:04:27",
+    "command": "Never Let Me Go\\Never Let Me Go.RPP"
+  },
+  {
+    "name": "Talk",
+    "duration": "00:05:08",
+    "command": "Talk\\Talk.RPP"
+  },
+  {
+    "name": "The Fight",
+    "duration": "00:03:50",
+    "command": "The Fight\\The Fight.RPP"
+  },
+  {
+    "name": "The Runaway",
+    "duration": "00:03:57",
+    "command": "The Runaway\\The Runaway.RPP"
+  },
+  {
+    "name": "Coil",
+    "duration": "00:03:07",
+    "command": "Coil\\Coil.RPP"
+  },
+  {
+    "name": "Eastwood Blues",
+    "duration": "00:04:13",
+    "command": "Eastwood Blues\\Eastwood Blues.RPP"
+  },
+  {
+    "name": "Fool's Gold",
+    "duration": "00:03:13",
+    "command": "Fool's Gold\\Fool's Gold.RPP"
+  },
+  {
+    "name": "Petrichor",
+    "duration": "00:04:20",
+    "command": "Petrichor\\Petrichor.RPP"
+  },
+  {
+    "name": "Whispers",
+    "duration": "00:03:15",
+    "command": "Whispers\\Whispers.RPP"
+  },
+  {
+    "name": "Organic Intro",
+    "duration": "00:01:6",
+    "command": "Organic Intro\\Organic Intro.RPP"
+  },
+  {
+    "name": "Silhouettic",
+    "duration": "00:03:50",
+    "command": "Silhouettic\\Silhouettic.RPP"
+  },
+  {
+    "name": "Tremors",
+    "duration": "00:05:41",
+    "command": "Tremors\\Tremors.RPP"
+  },
+  {
+    "name": "All For Love",
+    "duration": "00:03:24",
+    "command": "All For Love\\All For Love.RPP"
+  },
+  {
+    "name": "Fade",
+    "duration": "00:05:05",
+    "command": "Fade\\Fade.RPP"
+  },
+  {
+    "name": "Jewels",
+    "duration": "00:03:06",
+    "command": "Jewels\\Jewels.RPP"
+  },
+  {
+    "name": "Gone",
+    "duration": "00:04:31",
+    "command": "Gone\\Gone.RPP"
+  }
+]

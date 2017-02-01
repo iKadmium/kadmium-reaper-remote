@@ -1,0 +1,7 @@
+{
+    "httpPort" : 80,
+    "reaperAddress" : "bneao05",
+    "pythonOSCPort" : 8009,
+    "reaperWebPort" : 8808,
+    "projectsLocation" : "D:\\User\\Google Drive\\Flynn Effect\\Computer Stuff\\Backing Tracks"
+}

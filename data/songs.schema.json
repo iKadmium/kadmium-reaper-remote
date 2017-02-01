@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Songs schema",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "title": "Song",
+        "description": "Song entry",
+        "properties": {
+            "name": {
+                "type": "string",
+                "title": "Name",
+                "description": "The name of the song"
+            },
+            "duration": {
+                "type": "string",
+                "title": "Date",
+                "description": "The length of the song"
+            },
+            "command": {
+                "type": "string",
+                "title": "Command ID",
+                "description": "The Reaper Command ID to load the song"
+            }
+        },
+        "required": [
+            "name",
+            "duration",
+            "command"
+        ]
+    }
+}

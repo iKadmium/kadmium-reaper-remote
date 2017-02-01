@@ -1,33 +1,38 @@
-<div class='main-nav'>
-    <div class='navbar navbar-inverse'>
-        <div class='navbar-header'>
-            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
-                <span class='sr-only'>Toggle navigation</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            <a class='navbar-brand' [routerLink]="['/home']">kadmium_reaper_remote_dotnet</a>
+            <a class="navbar-brand" href="#">Reaper Remote</a>
         </div>
-        <div class='clearfix'></div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-home'></span> Home
+                    <a [routerLink]="['/sets']">
+                        <span class='glyphicon glyphicon-th-list'></span> Sets
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/counter']">
-                        <span class='glyphicon glyphicon-education'></span> Counter
+                    <a [routerLink]="['/songs']">
+                        <span class='glyphicon glyphicon-th-list'></span> Songs
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/fetch-data']">
-                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
+                    <a [href]="reaperUri">
+                        <span class='glyphicon glyphicon-play'></span> Remote
                     </a>
                 </li>
             </ul>
         </div>
+
     </div>
-</div>
+    <!-- /.container-fluid -->
+</nav>

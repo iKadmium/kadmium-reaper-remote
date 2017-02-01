@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Sets schema",
+    "type": "array",
+    "items":
+    {
+        "type": "object",
+        "title": "Set",
+        "description": "Set entry",
+        "properties": {
+            "venue": {
+                "type": "string",
+                "title": "Venue",
+                "description": "The name of the venue at which the set will be played"
+            },
+            "date": {
+                "type": "string",
+                "title": "Date",
+                "description": "The date of the show, in YYYY-MM-DD format"
+            },
+            "songs" : {
+                "type": "array",
+                "title": "Songs",
+                "description": "A list of song titles that will be played at the set",
+                "items": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "The song title"
+                }
+            }
+        },
+        "required": [
+            "venue",
+            "date",
+            "songs"
+        ]
+    }
+}

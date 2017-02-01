@@ -1,0 +1,100 @@
+<div class="col-lg-10 col-lg-offset-1">
+    <h1>Sets</h1>
+    <p *ngIf="!sets"><em>Loading...</em></p>
+    <table class='table table-striped' *ngIf="sets">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Venue</th>
+                <th>Load</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let set of sets">
+                <td>{{ set.dateFormatted }}</td>
+                <td>{{ set.venue }}</td>
+                <td><button class="btn btn-success" (click)="load(set)"><span class="glyphicon glyphicon-floppy-open"></span></button></td>
+                <td><button class="btn btn-default" (click)="edit(set)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                <td><button class="btn btn-danger" (click)="delete(set)"><span class="glyphicon glyphicon-remove"></span></button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" (click)="add()"><span class="glyphicon glyphicon-plus"></span></button>
+</div>
+<div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="cancel(activeSet)">&times;</button>
+                <h4 class="modal-title">Editing Set</h4>
+            </div>
+            <div class="modal-body">
+                <p *ngIf="!activeSet">Loading...</p>
+                <form class="form-horizontal" *ngIf="activeSet">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="date">Date</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" [(ngModel)]="activeSet.humanDate" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="venue">Venue</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="venue" [(ngModel)]="activeSet.venue" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="duration ">Duration</label>
+                        <div class="col-sm-10">
+                            <span id="duration">{{ activeSet.durationFormatted }} </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="songs ">Songs</label>
+                        <div class="col-sm-10">
+                            <table id="songs" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Position</th>
+                                        <th>Name</th>
+                                        <th>Duration</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let song of activeSet.songs; let i=index">
+                                        <td>
+                                            <button [disabled]="i == 0" (click)="activeSet.moveSong(song, -1)" type="button" class="btn">
+                                                <span class="glyphicon glyphicon-arrow-up"></span>
+                                            </button>
+                                            <button [disabled]="i == (activeSet.songs.length - 1)" (click)="activeSet.moveSong(song, 1)" type="button" class="btn">
+                                                <span class="glyphicon glyphicon-arrow-down"></span>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <select [(ngModel)]="activeSet.songs[i]" class="form-control" [ngModelOptions]="{standalone: true}">
+                                                <option *ngFor="let c of allSongs" [ngValue]="c">{{c.name}}</option>
+                                            </select>
+                                        </td>
+                                        <td>{{ song.durationFormatted }}</td>
+                                        <td><button type="button " class="btn btn-danger " (click)="activeSet.removeSong(song) ">&times;</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-success" (click)="activeSet.addSong(allSongs[0])">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="save(activeSet)">Save</button>
+                <button type="button" class="btn btn-default" (click)="cancel(activeSet)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

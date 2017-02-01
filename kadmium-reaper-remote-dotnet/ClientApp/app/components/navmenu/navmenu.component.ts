@@ -5,5 +5,12 @@ import { Component } from '@angular/core';
     template: require('./navmenu.component.html'),
     styles: [require('./navmenu.component.css')]
 })
-export class NavMenuComponent {
+export class NavMenuComponent
+{
+    private reaperUri: string;
+
+    constructor()
+    {
+        this.reaperUri = "http://" + location.hostname + ":9080/live.html";
+    }
 }

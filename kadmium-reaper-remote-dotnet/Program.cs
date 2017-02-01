@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using kadmium_reaper_remote_dotnet.Util;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
@@ -16,6 +13,8 @@ namespace kadmium_reaper_remote_dotnet
                 .AddCommandLine(args)
                 .AddEnvironmentVariables(prefix: "ASPNETCORE_")
                 .Build();
+
+            Database.Initialize().Wait();
 
             var host = new WebHostBuilder()
                 .UseConfiguration(config)
