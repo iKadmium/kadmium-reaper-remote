@@ -7,13 +7,14 @@ import { Song, SongData } from "../songs/song";
 
 import { SetService } from "./set.service";
 import { SongService } from "../songs/song.service";
+import { ReaperService } from "../reaper/reaper.service";
 
 var $ = require("jquery");
 
 @Component({
     selector: 'sets',
     template: require('./sets.component.html'),
-    providers: [SetService, SongService]
+    providers: [SetService, SongService, ReaperService]
 })
 export class SetsComponent
 {
@@ -21,7 +22,7 @@ export class SetsComponent
     public activeSet: Set;
     public allSongs: Song[];
 
-    constructor(private setService: SetService, private songService: SongService)
+    constructor(private setService: SetService, private songService: SongService, private reaperService: ReaperService)
     {
         songService.getSongs().then(songs =>
         {
@@ -71,7 +72,12 @@ export class SetsComponent
 
     public load(set: Set): void
     {
-
+        this.reaperService.runCommand("40886") //close all tabs
+        for (let song of set.songs)
+        {
+            this.reaperService.runCommand("40859") //open a new tab
+            this.reaperService.runCommand(song.command); //open the song
+        }
     }
 
     public edit(set: Set): void

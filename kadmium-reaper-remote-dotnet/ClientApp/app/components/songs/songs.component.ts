@@ -5,20 +5,21 @@ import { NgModule } from '@angular/core';
 import { Song, SongData } from "../songs/song";
 
 import { SongService } from "../songs/song.service";
+import { ReaperService } from "../reaper/reaper.service";
 
 var $ = require("jquery");
 
 @Component({
     selector: 'songs',
     template: require('./songs.component.html'),
-    providers: [SongService]
+    providers: [SongService, ReaperService]
 })
 export class SongsComponent
 {
     public activeSong: Song;
     private songs: Song[];
 
-    constructor(private songService: SongService)
+    constructor(private songService: SongService, private reaperService: ReaperService)
     {
         this.songService.getSongs().then(songs =>
         {
@@ -66,7 +67,8 @@ export class SongsComponent
 
     public load(song: Song): void
     {
-
+        this.reaperService.runCommand("40859") //open a new tab
+        this.reaperService.runCommand(song.command); //open the song
     }
 
     public edit(song: Song): void

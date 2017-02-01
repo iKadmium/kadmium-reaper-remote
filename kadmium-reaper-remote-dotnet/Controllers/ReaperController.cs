@@ -24,9 +24,9 @@ namespace kadmium_reaper_remote_dotnet.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task Get(string command)
+        public async Task Get(string id)
         {
-            await SendCommands(command);
+            await SendCommands(id);
         }
 
         private async Task SendCommands(params string[] commands)
