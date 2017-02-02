@@ -77,7 +77,12 @@ export class Set
 
     public get isDirty(): boolean
     {
-        return this.serialize() != this.originalData;
+        let serialized = this.serialize();
+        let equal = serialized.date == this.originalData.date
+            && serialized.venue == this.originalData.venue
+            && serialized.songs.length == this.originalData.songs.length
+            && serialized.songs.every((value: string, index: number) => value == this.originalData.songs[index]);
+        return !equal;
     }
 
     public load(allSongs: Song[], data: SetData): Set
@@ -113,9 +118,9 @@ export class Set
     {
         let data: SetData =
             {
-                date: this.date.format("YYYY-MM-DD"),
-                songs: this.songs.map((value: Song) => value.name),
-                venue: this.venue
+                date: this.date.format("YYYY-MM-DD") + "T00:00:00",
+                venue: this.venue,
+                songs: this.songs.map((value: Song) => value.name)
             };
         return data;
     }

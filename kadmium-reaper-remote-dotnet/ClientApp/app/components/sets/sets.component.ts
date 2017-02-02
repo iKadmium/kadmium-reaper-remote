@@ -22,8 +22,11 @@ export class SetsComponent
     public activeSet: Set;
     public allSongs: Song[];
 
+    private errors: string[];
+
     constructor(private setService: SetService, private songService: SongService, private reaperService: ReaperService)
     {
+        this.errors = [];
         songService.getSongs().then(songs =>
         {
             this.allSongs = songs;
@@ -72,11 +75,11 @@ export class SetsComponent
 
     public load(set: Set): void
     {
-        this.reaperService.runCommand("40886") //close all tabs
+        this.reaperService.runCommand("40886").catch(reason => this.errors.push("Error closing tabs for " + set.humanDate + ". " + reason)) //close all tabs
         for (let song of set.songs)
         {
-            this.reaperService.runCommand("40859") //open a new tab
-            this.reaperService.runCommand(song.command); //open the song
+            this.reaperService.runCommand("40859").catch(reason => this.errors.push("Error opening new tab for set " + set.humanDate + ". " + reason)); //open a new tab
+            this.reaperService.runCommand(song.command).catch(reason => this.errors.push("Error opening song " + song.name + ". " + reason)); //open the song
         }
     }
 

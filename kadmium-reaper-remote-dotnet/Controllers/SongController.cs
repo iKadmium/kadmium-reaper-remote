@@ -4,6 +4,7 @@ using kadmium_reaper_remote_dotnet.Models;
 using kadmium_reaper_remote_dotnet.Util;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,25 +31,29 @@ namespace kadmium_reaper_remote_dotnet.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]JObject value)
+        public async Task Post([FromBody]JObject value)
         {
             Database.Instance.Songs.Add(Song.Load(value));
+            await FileAccess.SaveSongs(Database.Instance.SerializeSongs());
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(string id, [FromBody]JObject value)
+        public async Task Put(string id, [FromBody]JObject value)
         {
-            Delete(id);
+            var song = Get(id);
+            Database.Instance.Songs.Remove(song);
             Database.Instance.Songs.Add(Song.Load(value));
+            await FileAccess.SaveSongs(Database.Instance.SerializeSongs());
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(string id)
+        public async Task Delete(string id)
         {
             var song = Get(id);
             Database.Instance.Songs.Remove(song);
+            await FileAccess.SaveSongs(Database.Instance.SerializeSongs());
         }
     }
 }

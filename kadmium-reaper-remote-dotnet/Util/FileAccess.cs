@@ -17,21 +17,27 @@ namespace kadmium_reaper_remote_dotnet.Util
 
         static string SetsSchema = Path.Combine(DataLocation, "sets.schema.json");
         static string SongsSchema = Path.Combine(DataLocation, "songs.schema.json");
+
+        static FileInfo SongsFile = new FileInfo(SongsLocation);
+        static FileInfo SetsFile = new FileInfo(SetsLocation);
         
-        private static Task ValidatedSave(JToken obj, string path, string schemaPath)
+        private static Task ValidatedSave(JToken obj, FileInfo path, string schemaPath)
         {
             Task task = Task.Factory.StartNew(() =>
             {
                 string schemaString = File.ReadAllText(schemaPath);
-                if (Validate(obj, path, schemaPath))
+                if (Validate(obj, path.FullName, schemaPath))
                 {
-                    Directory.CreateDirectory(Path.GetDirectoryName(path));
-                    File.WriteAllText(path, obj.ToString());
+                    Directory.CreateDirectory(Path.GetDirectoryName(path.FullName));
+                    lock (path)
+                    {
+                        File.WriteAllText(path.FullName, obj.ToString());
+                    }
                 }
             });
             return task;
         }
-
+        
         private static Task<JToken> ValidatedLoad(string path, string schemaPath)
         {
             Task<JToken> task = Task.Factory.StartNew(() =>
@@ -111,6 +117,16 @@ namespace kadmium_reaper_remote_dotnet.Util
                 };
             });
             return await task;
+        }
+
+        public static async Task SaveSongs(JArray songs)
+        {
+            await ValidatedSave(songs, SongsFile, SongsSchema);
+        }
+
+        public static async Task SaveSets(JArray sets)
+        {
+            await ValidatedSave(sets, SetsFile, SetsSchema);
         }
     }
 }

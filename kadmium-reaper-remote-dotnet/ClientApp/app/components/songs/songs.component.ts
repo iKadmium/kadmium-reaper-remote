@@ -18,33 +18,44 @@ export class SongsComponent
 {
     public activeSong: Song;
     private songs: Song[];
+    private massImportText: string;
+
+    private errors: string[];
 
     constructor(private songService: SongService, private reaperService: ReaperService)
     {
+        this.errors = [];
         this.songService.getSongs().then(songs =>
         {
             this.songs = songs;
         });
+        this.massImportText = "";
     }
 
     public save(song: Song): void
     {
-        if (song.isNew)
+        try
         {
-            this.songService.postSong(song).then(() => 
+            if (song.isNew)
             {
-                song.save();
-                this.songs.push(song);
-                $("#myModal").modal("hide");
-            });
-        }
-        else
+                this.songService.postSong(song).then(() => 
+                {
+                    song.save();
+                    this.songs.push(song);
+                    $("#songEditor").modal("hide");
+                });
+            }
+            else
+            {
+                this.songService.putSong(song).then(() => 
+                {
+                    song.save();
+                    $("#songEditor").modal("hide");
+                });
+            }
+        } catch (error)
         {
-            this.songService.putSong(song).then(() => 
-            {
-                song.save();
-                $("#myModal").modal("hide");
-            });
+            this.errors.push(error);
         }
     }
 
@@ -56,28 +67,28 @@ export class SongsComponent
             if (window.confirm("Are you sure? Unsaved data will be lost."))
             {
                 song.revert();
-                $("#myModal").modal("hide");
+                $("#songEditor").modal("hide");
             }
         }
         else
         {
-            $("#myModal").modal("hide");
+            $("#songEditor").modal("hide");
         }
     }
 
-    public load(song: Song): void
+    public async load(song: Song): Promise<void>
     {
-        this.reaperService.runCommand("40859") //open a new tab
-        this.reaperService.runCommand(song.command); //open the song
+        await this.reaperService.runCommand("40859").catch(reason => this.errors.push("Error loading " + song.name + ". " + reason)); //open a new tab
+        this.reaperService.runCommand(song.command).catch(reason => this.errors.push("Error loading " + song.name + ". " + reason)); //open the song
     }
 
     public edit(song: Song): void
     {
         this.activeSong = song;
-        $("#myModal").modal("show");
+        $("#songEditor").modal("show");
     }
 
-    public delete(set: Song)
+    public delete(set: Song): void
     {
         if (window.confirm("Are you sure you want to delete this set?"))
         {
@@ -89,9 +100,38 @@ export class SongsComponent
         }
     }
 
-    public add()
+    public add(): void
     {
         this.activeSong = new Song();
-        $("#myModal").modal("show");
+        $("#songEditor").modal("show");
+    }
+
+    public massImportCommands(): void
+    {
+        $("#massImportCommands").modal("show");
+    }
+
+    public async massImport(importText: string): Promise<void>
+    {
+        let regexMatch = /SCR \d \d (\w*) "Custom: Open (.*)\.lua" ".*"/;
+        let lines = importText.split("\n");
+        for (let line of lines)
+        {
+            if (regexMatch.test(line))
+            {
+                let result = regexMatch.exec(line);
+                let command = result[1];
+                let songName = result[2];
+                let matchedSongs = this.songs.filter((value: Song) => value.name == songName);
+                if (matchedSongs.length == 1)
+                {
+                    let song = matchedSongs[0];
+                    song.command = command;
+                    await this.songService.putSong(song);
+                    song.save();
+                }
+            }
+        }
+        $("#massImportCommands").modal("hide");
     }
 }

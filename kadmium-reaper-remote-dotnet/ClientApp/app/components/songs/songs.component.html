@@ -1,6 +1,10 @@
 <div class="col-lg-10 col-lg-offset-1">
     <h1>Songs</h1>
     <p *ngIf="!songs"><em>Loading...</em></p>
+    <div *ngFor="let error of errors; let i = index;" class="alert alert-danger alert-dismissable">
+        <a class="close" (click)="errors.splice(i, 1)" aria-label="close">&times;</a>
+        <strong>{{error}}</strong>
+    </div>
     <table class='table table-striped' *ngIf="songs">
         <thead>
             <tr>
@@ -19,9 +23,10 @@
             </tr>
         </tbody>
     </table>
-    <button class="btn btn-success" (click)="add()"><span class="glyphicon glyphicon-plus"></span></button>
+    <button class="btn btn-success" (click)="add()"><span class="glyphicon glyphicon-plus"></span> Add Song</button>
+    <button class="btn btn-success" (click)="massImportCommands()"><span class="glyphicon glyphicon-plus"></span> Mass Import Commands</button>
 </div>
-<div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+<div id="songEditor" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
@@ -58,6 +63,32 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" (click)="save(activeSong)">Save</button>
                 <button type="button" class="btn btn-default" (click)="cancel(activeSong)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="massImportCommands" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Editing Song</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="commands">Commands</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="20" id="commands" [(ngModel)]="massImportText" [ngModelOptions]="{standalone: true}"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="massImport(massImportText)">Import</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>

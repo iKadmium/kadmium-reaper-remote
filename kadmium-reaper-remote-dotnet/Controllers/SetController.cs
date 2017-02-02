@@ -5,8 +5,7 @@ using kadmium_reaper_remote_dotnet.Util;
 using kadmium_reaper_remote_dotnet.Models;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-
-// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using System.Threading.Tasks;
 
 namespace kadmium_reaper_remote_dotnet.Controllers
 {
@@ -30,25 +29,29 @@ namespace kadmium_reaper_remote_dotnet.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]JObject value)
+        public async Task Post([FromBody]JObject value)
         {
             Database.Instance.Sets.Add(Set.Load(value));
+            await FileAccess.SaveSets(Database.Instance.SerializeSets());
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(DateTime id, [FromBody]JObject value)
+        public async Task Put(DateTime id, [FromBody]JObject value)
         {
-            Delete(id);
+            Set original = Database.Instance.Sets.Single(x => x.Date == id);
+            Database.Instance.Sets.Remove(original);
             Database.Instance.Sets.Add(Set.Load(value));
+            await FileAccess.SaveSets(Database.Instance.SerializeSets());
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(DateTime id)
+        public async Task Delete(DateTime id)
         {
             Set set = Database.Instance.Sets.Single(x => x.Date == id);
             Database.Instance.Sets.Remove(set);
+            await FileAccess.SaveSets(Database.Instance.SerializeSets());
         }
     }
 }
