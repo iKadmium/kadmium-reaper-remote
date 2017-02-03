@@ -1,112 +1,112 @@
 [
   {
-    "name": "Comatose",
-    "duration": "00:03:44",
-    "command": "Comatose\\Comatose.RPP"
-  },
-  {
-    "name": "No Man's Land",
-    "duration": "00:03:33",
-    "command": "No Man's Land\\No Man's Land.RPP"
-  },
-  {
-    "name": "Pretender",
-    "duration": "00:03:55",
-    "command": "_RS16527e47da8109cba723d2b707485dc4cc535e04"
-  },
-  {
-    "name": "Dark Intro",
-    "duration": "00:01:00",
-    "command": "Dark Intro\\Dark Intro.RPP"
-  },
-  {
-    "name": "Fluorescence",
-    "duration": "00:03:16",
-    "command": "Fluorescence\\Fluorescence.RPP"
-  },
-  {
-    "name": "Sound of Mind",
-    "duration": "00:03:19",
-    "command": "Sound of Mind\\Sound of Mind.RPP"
-  },
-  {
-    "name": "Never Let Me Go",
-    "duration": "00:04:27",
-    "command": "Never Let Me Go\\Never Let Me Go.RPP"
-  },
-  {
-    "name": "Talk",
-    "duration": "00:05:08",
-    "command": "Talk\\Talk.RPP"
-  },
-  {
-    "name": "The Fight",
-    "duration": "00:03:50",
-    "command": "The Fight\\The Fight.RPP"
-  },
-  {
-    "name": "The Runaway",
-    "duration": "00:03:57",
-    "command": "The Runaway\\The Runaway.RPP"
-  },
-  {
-    "name": "Coil",
-    "duration": "00:03:07",
-    "command": "Coil\\Coil.RPP"
-  },
-  {
-    "name": "Eastwood Blues",
-    "duration": "00:04:13",
-    "command": "Eastwood Blues\\Eastwood Blues.RPP"
-  },
-  {
-    "name": "Fool's Gold",
-    "duration": "00:03:13",
-    "command": "Fool's Gold\\Fool's Gold.RPP"
-  },
-  {
-    "name": "Petrichor",
-    "duration": "00:04:20",
-    "command": "Petrichor\\Petrichor.RPP"
-  },
-  {
-    "name": "Whispers",
-    "duration": "00:03:15",
-    "command": "Whispers\\Whispers.RPP"
-  },
-  {
-    "name": "Organic Intro",
-    "duration": "00:01:6",
-    "command": "Organic Intro\\Organic Intro.RPP"
-  },
-  {
     "name": "Silhouettic",
     "duration": "00:03:50",
     "command": "Silhouettic\\Silhouettic.RPP"
   },
   {
-    "name": "Tremors",
-    "duration": "00:05:41",
-    "command": "Tremors\\Tremors.RPP"
-  },
-  {
     "name": "All For Love",
     "duration": "00:03:24",
-    "command": "All For Love\\All For Love.RPP"
+    "command": "_RSa6f759aeadb9b61e94ad1120c1dc45a27e66cc36"
+  },
+  {
+    "name": "Coil",
+    "duration": "00:03:07",
+    "command": "_RSf9d41bf34206d44368ecc0cfc85de46bda3e0618"
+  },
+  {
+    "name": "Comatose",
+    "duration": "00:03:44",
+    "command": "_RS89e8ea86818e2e57c58a9e746d0c3aed2275c840"
+  },
+  {
+    "name": "Dark Intro",
+    "duration": "00:01:00",
+    "command": "_RS15b0e43c7e9757b6249d167ff58cd183506920da"
+  },
+  {
+    "name": "Eastwood Blues",
+    "duration": "00:04:13",
+    "command": "_RS7ffb701e30d59a01cb5892d5eee332f19f66a73f"
   },
   {
     "name": "Fade",
     "duration": "00:05:05",
-    "command": "Fade\\Fade.RPP"
+    "command": "_RS3cb78e484a19c6e6f24c2c519f5917668c4a6b66"
   },
   {
-    "name": "Jewels",
-    "duration": "00:03:06",
-    "command": "Jewels\\Jewels.RPP"
+    "name": "Fluorescence",
+    "duration": "00:03:16",
+    "command": "_RSa64072186da21afb20b1c67570cfb5fe06d7f9fc"
+  },
+  {
+    "name": "Fool's Gold",
+    "duration": "00:03:13",
+    "command": "_RSc13e2bb699af2fc4b319d66d11e089b6f7922192"
   },
   {
     "name": "Gone",
     "duration": "00:04:31",
-    "command": "Gone\\Gone.RPP"
+    "command": "_RSe4666abb4531c699aac94bdeb24097631287ca1f"
+  },
+  {
+    "name": "Jewels",
+    "duration": "00:03:06",
+    "command": "_RSfab296e9cf0eec567c50179f00ecc27bf3fff03c"
+  },
+  {
+    "name": "Never Let Me Go",
+    "duration": "00:04:27",
+    "command": "_RSf9df06f62c5072013cdf4dc05024274dbf46c64a"
+  },
+  {
+    "name": "No Man's Land",
+    "duration": "00:03:33",
+    "command": "_RSbb8815c6590f92de9c8b70078f695ea7f64c4b85"
+  },
+  {
+    "name": "Organic Intro",
+    "duration": "00:01:06",
+    "command": "_RS2f0567a74f5236ca953273c7a81aa48bdb3657d3"
+  },
+  {
+    "name": "Petrichor",
+    "duration": "00:04:20",
+    "command": "_RS7b927b74d5528ee8c7f93e7a28d400b2af32bb19"
+  },
+  {
+    "name": "Pretender",
+    "duration": "00:03:55",
+    "command": "_RS4ae20c8d982d338a60cdbb02bb2ab0ce8ca72cdc"
+  },
+  {
+    "name": "Sound of Mind",
+    "duration": "00:03:19",
+    "command": "_RS49ec54ed48250e39552a7fa563bdb8c125023bef"
+  },
+  {
+    "name": "Talk",
+    "duration": "00:05:08",
+    "command": "_RS7fca5a1bea2552b125535b608d0da8caa093ffd2"
+  },
+  {
+    "name": "The Fight",
+    "duration": "00:03:50",
+    "command": "_RS9c4c8dd4663be4f7681280d5f0950932427854dd"
+  },
+  {
+    "name": "The Runaway",
+    "duration": "00:03:57",
+    "command": "_RSa7d60eebd7d43b91f4bfacecebbd1a17b170424e"
+  },
+  {
+    "name": "Tremors",
+    "duration": "00:05:41",
+    "command": "_RSac2c9f555b0c38937bc0a5ae9a37aa2b5933843e"
+  },
+  {
+    "name": "Whispers",
+    "duration": "00:03:15",
+    "command": "_RSeeb2d28e46a5ff148374c8ee4b5fe523bfebdf7c"
   }
 ]

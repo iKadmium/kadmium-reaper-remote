@@ -79,7 +79,7 @@ export class SongsComponent
     public async load(song: Song): Promise<void>
     {
         await this.reaperService.runCommand("40859").catch(reason => this.errors.push("Error loading " + song.name + ". " + reason)); //open a new tab
-        this.reaperService.runCommand(song.command).catch(reason => this.errors.push("Error loading " + song.name + ". " + reason)); //open the song
+        await this.reaperService.runCommand(song.command).catch(reason => this.errors.push("Error loading " + song.name + ". " + reason)); //open the song
     }
 
     public edit(song: Song): void
@@ -111,6 +111,27 @@ export class SongsComponent
         $("#massImportCommands").modal("show");
     }
 
+    public async getFileContents(file: File)
+    {
+        return new Promise<string>((resolve, reject) =>
+        {
+            let reader = new FileReader();
+            reader.onload = (event: any) =>
+            {
+                let data: string = event.target.result;
+                resolve(data);
+            }
+            reader.readAsText(file);
+        });
+    }
+
+    public async loadMassImport(importElementName: string): Promise<void>
+    {
+        let importFileElement = $("#" + importElementName)[0] as HTMLInputElement;
+        let contents = await this.getFileContents(importFileElement.files[0]);
+        await this.massImport(contents);
+    }
+
     public async massImport(importText: string): Promise<void>
     {
         let regexMatch = /SCR \d \d (\w*) "Custom: Open (.*)\.lua" ".*"/;
@@ -120,7 +141,7 @@ export class SongsComponent
             if (regexMatch.test(line))
             {
                 let result = regexMatch.exec(line);
-                let command = result[1];
+                let command = "_" + result[1];
                 let songName = result[2];
                 let matchedSongs = this.songs.filter((value: Song) => value.name == songName);
                 if (matchedSongs.length == 1)

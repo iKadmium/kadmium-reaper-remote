@@ -10,13 +10,12 @@ namespace kadmium_reaper_remote_dotnet.Util
     {
         public List<Song> Songs { get; private set; }
         public List<Set> Sets { get; private set; }
-        public string ReaperURI { get; private set; }
 
         public static Database Instance { get; private set; }
 
         public static async Task Initialize()
         {
-            Instance = Load(await FileAccess.GetSongs(), await FileAccess.GetSets(), await FileAccess.GetSettings());
+            Instance = Load(await FileAccess.GetSongs(), await FileAccess.GetSets());
         }
 
         public Database()
@@ -45,7 +44,7 @@ namespace kadmium_reaper_remote_dotnet.Util
             return arr;
         }
 
-        public static Database Load(JArray songsJson, JArray setsJson, JObject settingsJson)
+        public static Database Load(JArray songsJson, JArray setsJson)
         {
             Database database = new Database();
             var songs = from songData in songsJson.Values<JObject>()
@@ -55,7 +54,6 @@ namespace kadmium_reaper_remote_dotnet.Util
 
             database.Songs.AddRange(songs);
             database.Sets.AddRange(sets);
-            database.ReaperURI = (string)settingsJson["reaperUri"];
 
             return database;
         }

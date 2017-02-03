@@ -26,7 +26,7 @@ namespace kadmium_reaper_remote_dotnet.Controllers
         private async Task SendCommands(params string[] commands)
         {
             string commandString = GetCommandString(commands);
-            var result = await commandClient.GetAsync(Database.Instance.ReaperURI + commandString);
+            var result = await commandClient.GetAsync(Settings.Instance.ReaperURI + "/_/" + commandString);
         }
 
         private string GetCommandString(params string[] commands)

@@ -1,32 +1,20 @@
-<div class="col-lg-10 col-lg-offset-1">
-    <h1>Sets</h1>
-    <p *ngIf="!sets"><em>Loading...</em></p>
-    <div *ngFor="let error of errors; let i = index;" class="alert alert-danger alert-dismissable">
-        <a class="close" (click)="errors.splice(i, 1)" aria-label="close">&times;</a>
-        <strong>{{error}}</strong>
-    </div>
-    <table class='table table-striped' *ngIf="sets">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Venue</th>
-                <th>Load</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let set of sets">
-                <td>{{ set.dateFormatted }}</td>
-                <td>{{ set.venue }}</td>
-                <td><button class="btn btn-success" (click)="load(set)"><span class="glyphicon glyphicon-floppy-open"></span></button></td>
-                <td><button class="btn btn-default" (click)="edit(set)"><span class="glyphicon glyphicon-pencil"></span></button></td>
-                <td><button class="btn btn-danger" (click)="delete(set)"><span class="glyphicon glyphicon-remove"></span></button></td>
-            </tr>
-        </tbody>
-    </table>
-    <button class="btn btn-success" (click)="add()"><span class="glyphicon glyphicon-plus"></span></button>
+<h1>Sets</h1>
+<p *ngIf="!sets"><em>Loading...</em></p>
+<div *ngFor="let error of errors; let i = index;" class="alert alert-danger alert-dismissable">
+    <a class="close" (click)="errors.splice(i, 1)" aria-label="close">&times;</a>
+    <strong>{{error}}</strong>
 </div>
+<ul class='list-group' *ngIf="sets">
+    <li *ngFor="let set of sets" class="list-group-item clearfix">
+        {{ set.dateFormatted }} - {{ set.venue}}
+        <div class="btn-group pull-right">
+            <button class="btn btn-success" (click)="load(set)"><span class="glyphicon glyphicon-floppy-open"></span> Load</button>
+            <button class="btn btn-default" (click)="edit(set)"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+            <button class="btn btn-danger" (click)="delete(set)"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+        </div>
+    </li>
+</ul>
+<button class="btn btn-success" (click)="add()"><span class="glyphicon glyphicon-plus"></span></button>
 <div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->

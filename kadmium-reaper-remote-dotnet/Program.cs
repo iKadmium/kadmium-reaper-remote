@@ -14,6 +14,7 @@ namespace kadmium_reaper_remote_dotnet
                 .AddEnvironmentVariables(prefix: "ASPNETCORE_")
                 .Build();
 
+            Settings.Initialize().Wait();
             Database.Initialize().Wait();
 
             var host = new WebHostBuilder()
@@ -22,6 +23,7 @@ namespace kadmium_reaper_remote_dotnet
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://*:" + Settings.Instance.HttpPort)
                 .Build();
 
             host.Run();

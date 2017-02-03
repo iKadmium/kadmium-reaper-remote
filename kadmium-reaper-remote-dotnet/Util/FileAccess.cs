@@ -14,13 +14,16 @@ namespace kadmium_reaper_remote_dotnet.Util
 
         static string SetsLocation = Path.Combine(DataLocation, "sets.json");
         static string SongsLocation = Path.Combine(DataLocation, "songs.json");
+        static string SettingsLocation = Path.Combine(DataLocation, "settings.json");
 
         static string SetsSchema = Path.Combine(DataLocation, "sets.schema.json");
         static string SongsSchema = Path.Combine(DataLocation, "songs.schema.json");
+        static string SettingsSchema = Path.Combine(DataLocation, "settings.schema.json");
 
         static FileInfo SongsFile = new FileInfo(SongsLocation);
         static FileInfo SetsFile = new FileInfo(SetsLocation);
-        
+        static FileInfo SettingsFile = new FileInfo(SettingsLocation);
+
         private static Task ValidatedSave(JToken obj, FileInfo path, string schemaPath)
         {
             Task task = Task.Factory.StartNew(() =>
@@ -37,7 +40,7 @@ namespace kadmium_reaper_remote_dotnet.Util
             });
             return task;
         }
-        
+
         private static Task<JToken> ValidatedLoad(string path, string schemaPath)
         {
             Task<JToken> task = Task.Factory.StartNew(() =>
@@ -107,16 +110,8 @@ namespace kadmium_reaper_remote_dotnet.Util
 
         public static async Task<JObject> GetSettings()
         {
-            var task = Task.Factory.StartNew(() =>
-            {
-                var address = System.Net.IPAddress.Loopback;
-                var port = 9080;
-                return new JObject
-                {
-                    {"reaperUri", "http://" + address + ":" + port + "/_/" }
-                };
-            });
-            return await task;
+            var settings = await ValidatedLoad(SettingsLocation, SettingsSchema) as JObject;
+            return settings;
         }
 
         public static async Task SaveSongs(JArray songs)

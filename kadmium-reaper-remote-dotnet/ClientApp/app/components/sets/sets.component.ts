@@ -73,13 +73,21 @@ export class SetsComponent
         }
     }
 
-    public load(set: Set): void
+    public async load(set: Set): Promise<void>
     {
-        this.reaperService.runCommand("40886").catch(reason => this.errors.push("Error closing tabs for " + set.humanDate + ". " + reason)) //close all tabs
+        await this.reaperService.runCommand("40886").catch(reason => this.errors.push("Error closing tabs for " + set.humanDate + ". " + reason)) //close all tabs
+        let firstTab = true;
         for (let song of set.songs)
         {
-            this.reaperService.runCommand("40859").catch(reason => this.errors.push("Error opening new tab for set " + set.humanDate + ". " + reason)); //open a new tab
-            this.reaperService.runCommand(song.command).catch(reason => this.errors.push("Error opening song " + song.name + ". " + reason)); //open the song
+            if (!firstTab)
+            {
+                await this.reaperService.runCommand("40859").catch(reason => this.errors.push("Error opening new tab for set " + set.humanDate + ". " + reason)); //open a new tab
+            }
+            else
+            {
+                firstTab = false;
+            }
+            await this.reaperService.runCommand(song.command).catch(reason => this.errors.push("Error opening song " + song.name + ". " + reason)); //open the song
         }
     }
 
