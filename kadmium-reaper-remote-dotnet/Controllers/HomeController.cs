@@ -6,7 +6,7 @@ namespace kadmium_reaper_remote_dotnet.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return File("/index.html", "text/html");
         }
 
         public IActionResult Error()

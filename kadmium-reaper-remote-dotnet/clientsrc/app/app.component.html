@@ -1,0 +1,9 @@
+<app-nav-menu></app-nav-menu>
+<div class="container body-content">
+    <div class="page-header clearfix">
+        <h1>{{titleService.getTitle()}}</h1>
+    </div>
+    <app-message-bar #messageBar></app-message-bar>
+    <simple-notifications [options]="{timeout: 5000}" (onCreate)="console.log($event)"></simple-notifications>
+    <router-outlet></router-outlet>
+</div>

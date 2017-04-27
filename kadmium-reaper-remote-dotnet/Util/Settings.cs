@@ -19,7 +19,7 @@ namespace kadmium_reaper_remote_dotnet.Util
 
         public Settings()
         {
-            ReaperURI = "http://localhost:9080";
+            ReaperURI = "http://localhost:9080/live.html";
             HttpPort = 80;
             LightingVenueURI = "http://localhost:5000/api/Venue/activateByName";
         }

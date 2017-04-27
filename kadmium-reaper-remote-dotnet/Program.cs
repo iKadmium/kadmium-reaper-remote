@@ -15,12 +15,12 @@ namespace kadmium_reaper_remote_dotnet
                 .Build();
 
             Settings.Initialize().Wait();
-            
+
             var host = new WebHostBuilder()
                 .UseConfiguration(config)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                //.UseIISIntegration()
+                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .UseUrls("http://*:" + Settings.Instance.HttpPort)
                 .Build();

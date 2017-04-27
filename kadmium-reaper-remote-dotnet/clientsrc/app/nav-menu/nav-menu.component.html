@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+      <a class="navbar-brand" href="#">Reaper Remote</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class='navbar-collapse collapse' id="navbar">
+      <ul class='nav navbar-nav'>
+        <li [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/sets']">
+            <span class='glyphicon glyphicon-th-list'></span> Sets
+          </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/songs']">
+            <span class='glyphicon glyphicon-headphones'></span> Songs
+          </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+          <a [href]="reaperUri">
+            <span class='glyphicon glyphicon-play'></span> Remote
+          </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/settings']">
+            <span class='glyphicon glyphicon-cog'></span> Settings
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+</nav>
