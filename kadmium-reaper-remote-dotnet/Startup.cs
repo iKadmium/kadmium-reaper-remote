@@ -1,6 +1,8 @@
+using kadmium_reaper_remote_dotnet.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -17,6 +19,12 @@ namespace kadmium_reaper_remote_dotnet
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            DatabaseContext.SetConnectionEnvironment(env.EnvironmentName);
+            using (var context = DatabaseContext.GetContext())
+            {
+                context.Database.Migrate();
+            }
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -26,6 +34,10 @@ namespace kadmium_reaper_remote_dotnet
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddDbContext<DatabaseContext>(builder =>
+                DatabaseContext.SetConnection(builder as DbContextOptionsBuilder<DatabaseContext>)
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

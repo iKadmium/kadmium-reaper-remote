@@ -18,11 +18,10 @@ namespace kadmium_reaper_remote_dotnet.Controllers
 
         // POST api/values
         [HttpPut]
-        public async Task Put([FromBody]JObject value)
+        public async Task Put([FromBody]Settings value)
         {
-            Settings.Initialize(value);
-            Database.Instance.Sets.Add(Set.Load(value));
-            await FileAccess.SaveSets(Database.Instance.SerializeSets());
+            Settings.Instance = value;
+            await FileAccess.SaveSettings(value);
         }
     }
 }

@@ -6,52 +6,133 @@ using kadmium_reaper_remote_dotnet.Models;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace kadmium_reaper_remote_dotnet.Controllers
 {
     [Route("api/[controller]")]
     public class SetController : Controller
     {
+        private DatabaseContext _context;
+
+        public SetController(DatabaseContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Set> Get()
+        public IEnumerable<SetSkeleton> Get()
         {
-            return Database.Instance.Sets.OrderByDescending(x => x.Date);
+            var sets = from set in _context.Sets
+                       select new SetSkeleton
+                       {
+                           Id = set.Id,
+                           Venue = set.Venue,
+                           Date = set.Date
+                       };
+            return sets;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Set Get(DateTime id)
+        public async Task<SetWithSongs> Get(int id)
         {
-            var set = Database.Instance.Sets.Single(x => x.Date == id);
-            return set;
+            var set = await _context.LoadSet(id);
+            var setWithSongs = new SetWithSongs
+            {
+                Id = id,
+                Date = set.Date,
+                Venue = set.Venue,
+                Songs = await _context.LoadSongsForSet(id)
+        };
+            return setWithSongs;
         }
 
         // POST api/values
         [HttpPost]
-        public async Task Post([FromBody]JObject value)
+        public async Task<int> Post([FromBody]SetWithSongs value)
         {
-            Database.Instance.Sets.Add(Set.Load(value));
-            await FileAccess.SaveSets(Database.Instance.SerializeSets());
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                Set set = new Set()
+                {
+                    Venue = value.Venue,
+                    Date = value.Date
+                };
+                await _context.Sets.AddAsync(set);
+                await _context.SaveChangesAsync();
+                var relationships = from song in value.Songs
+                                    select new SetSongRelationship()
+                                    {
+                                        Order = value.Songs.IndexOf(song),
+                                        SetId = set.Id,
+                                        SongId = song.Id
+                                    };
+                await _context.SetSongRelationships.AddRangeAsync(relationships);
+                await _context.SaveChangesAsync();
+                transaction.Commit();
+                return set.Id;
+            }
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task Put(DateTime id, [FromBody]JObject value)
+        public async Task Put(int id, [FromBody]SetWithSongs value)
         {
-            Set original = Database.Instance.Sets.Single(x => x.Date == id);
-            Database.Instance.Sets.Remove(original);
-            Database.Instance.Sets.Add(Set.Load(value));
-            await FileAccess.SaveSets(Database.Instance.SerializeSets());
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                Set set = new Set()
+                {
+                    Id = id,
+                    Venue = value.Venue,
+                    Date = value.Date
+                };
+                var dbSongs = _context.SetSongRelationships.Where(x => x.SetId == id);
+                _context.SetSongRelationships.RemoveRange(dbSongs);
+                var relationships = from song in value.Songs
+                                    select new SetSongRelationship()
+                                    {
+                                        SetId = id,
+                                        SongId = song.Id
+                                    };
+                _context.Sets.Update(set);
+                await _context.SetSongRelationships.AddRangeAsync(relationships);
+                await _context.SaveChangesAsync();
+                transaction.Commit();
+            }
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task Delete(DateTime id)
+        public async Task Delete(int id)
         {
-            Set set = Database.Instance.Sets.Single(x => x.Date == id);
-            Database.Instance.Sets.Remove(set);
-            await FileAccess.SaveSets(Database.Instance.SerializeSets());
+            var set = await _context.LoadSet(id);
+            _context.Sets.Remove(set);
+            var relationships = _context.SetSongRelationships.Where(x => x.SetId == id);
+            _context.SetSongRelationships.RemoveRange(relationships);
+            await _context.SaveChangesAsync();
         }
+
+        [HttpGet("[action]/{name}")]
+        public async Task Activate(string name)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync(Settings.Instance.LightingVenueURI + "/" + name);
+        }
+
     }
+
+    public class SetSkeleton
+    {
+        public int Id { get; set; }
+        public string Venue { get; set; }
+        public DateTime Date { get; set; }
+    };
+
+    public class SetWithSongs : Set
+    {
+        public List<Song> Songs;
+    }
+
 }

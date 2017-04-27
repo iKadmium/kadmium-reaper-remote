@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 
 import { Song, SongData } from "../songs/song";
 
 import { SongService } from "../songs/song.service";
 import { ReaperService } from "../reaper/reaper.service";
+import { MessageBarService } from "../status/message-bar/message-bar.service";
+import { Title } from "@angular/platform-browser";
 
 var $ = require("jquery");
 
@@ -14,17 +16,14 @@ var $ = require("jquery");
     template: require('./songs.component.html'),
     providers: [SongService, ReaperService]
 })
-export class SongsComponent
+export class SongsComponent implements OnInit
 {
     public activeSong: Song;
     private songs: Song[];
     private massImportText: string;
 
-    private errors: string[];
-
-    constructor(private songService: SongService, private reaperService: ReaperService)
+    constructor(private songService: SongService, private reaperService: ReaperService, private title: Title, private messageBarService: MessageBarService)
     {
-        this.errors = [];
         this.songService.getSongs().then(songs =>
         {
             this.songs = songs;
@@ -32,60 +31,23 @@ export class SongsComponent
         this.massImportText = "";
     }
 
-    public save(song: Song): void
+    async ngOnInit(): Promise<void>
+    {
+        this.title.setTitle("Songs");
+        this.songs = await this.songService.getSongs();
+    }
+
+    public async activate(song: Song): Promise<void>
     {
         try
         {
-            if (song.isNew)
-            {
-                this.songService.postSong(song).then(() => 
-                {
-                    song.save();
-                    this.songs.push(song);
-                    $("#songEditor").modal("hide");
-                });
-            }
-            else
-            {
-                this.songService.putSong(song).then(() => 
-                {
-                    song.save();
-                    $("#songEditor").modal("hide");
-                });
-            }
-        } catch (error)
-        {
-            this.errors.push(error);
+            await this.reaperService.runCommand("40859"); //open a new tab
+            await this.reaperService.runCommand(song.command); //open the song
         }
-    }
-
-    public cancel(song: Song): void
-    {
-        let hiding = false;
-        if (song.isNew || song.isDirty)
+        catch (reason)
         {
-            if (window.confirm("Are you sure? Unsaved data will be lost."))
-            {
-                song.revert();
-                $("#songEditor").modal("hide");
-            }
+            this.messageBarService.add("Error", "Error loading " + song.name + " " + reason);
         }
-        else
-        {
-            $("#songEditor").modal("hide");
-        }
-    }
-
-    public async load(song: Song): Promise<void>
-    {
-        await this.reaperService.runCommand("40859").catch(reason => this.errors.push("Error loading " + song.name + ". " + reason)); //open a new tab
-        await this.reaperService.runCommand(song.command).catch(reason => this.errors.push("Error loading " + song.name + ". " + reason)); //open the song
-    }
-
-    public edit(song: Song): void
-    {
-        this.activeSong = song;
-        $("#songEditor").modal("show");
     }
 
     public delete(set: Song): void
@@ -100,15 +62,45 @@ export class SongsComponent
         }
     }
 
-    public add(): void
+    public async importFilesSelected(files: File[]): Promise<void>
     {
-        this.activeSong = new Song();
-        $("#songEditor").modal("show");
+        if (files.length > 0)
+        {
+            let contents = await this.getFileContents(files[0]);
+            let songs = JSON.parse(contents) as SongData[];
+            for (let songData of songs)
+            {
+                try
+                {
+                    let song = new Song();
+                    song.load(songData);
+                    if (this.songs.find(value => value.name == song.name))
+                    {
+                        this.messageBarService.add("Warning", song.name + " already exists; skipping.");
+                    }
+                    else
+                    {
+                        let id = await this.songService.postSong(song);
+                        this.messageBarService.add("Success", "Successfully added " + song.name);
+                        song.id = id;
+                        this.songs.push(song);
+                    }
+                }
+                catch (reason)
+                {
+                    this.messageBarService.add("Error", reason);
+                }
+            }
+        }
     }
 
-    public massImportCommands(): void
+    public async keymapFilesSelected(files: File[]): Promise<void>
     {
-        $("#massImportCommands").modal("show");
+        if (files.length > 0)
+        {
+            let contents = await this.getFileContents(files[0]);
+            await this.massImportCommands(contents);
+        }
     }
 
     public async getFileContents(file: File)
@@ -125,14 +117,7 @@ export class SongsComponent
         });
     }
 
-    public async loadMassImport(importElementName: string): Promise<void>
-    {
-        let importFileElement = $("#" + importElementName)[0] as HTMLInputElement;
-        let contents = await this.getFileContents(importFileElement.files[0]);
-        await this.massImport(contents);
-    }
-
-    public async massImport(importText: string): Promise<void>
+    public async massImportCommands(importText: string): Promise<void>
     {
         let regexMatch = /SCR \d \d (\w*) "Custom: Open (.*)\.lua" ".*"/;
         let lines = importText.split("\n");
@@ -143,16 +128,25 @@ export class SongsComponent
                 let result = regexMatch.exec(line);
                 let command = "_" + result[1];
                 let songName = result[2];
-                let matchedSongs = this.songs.filter((value: Song) => value.name == songName);
-                if (matchedSongs.length == 1)
+                let song = this.songs.find((value: Song) => value.name == songName);
+                if (song != null)
                 {
-                    let song = matchedSongs[0];
-                    song.command = command;
-                    await this.songService.putSong(song);
-                    song.save();
+                    if (song.command != command)
+                    {
+                        song.command = command;
+                        await this.songService.putSong(song);
+                        this.messageBarService.add("Success", "Successfully updated command for " + song.name);
+                    }
+                    else
+                    {
+                        this.messageBarService.add("Warning", song.name + " already has the correct command; skipping.");
+                    }
+                }
+                else
+                {
+                    this.messageBarService.add("Warning", songName + " was not found.");
                 }
             }
         }
-        $("#massImportCommands").modal("hide");
     }
 }

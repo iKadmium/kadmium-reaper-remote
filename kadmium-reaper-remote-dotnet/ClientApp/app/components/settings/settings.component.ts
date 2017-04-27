@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 
 import { SettingsService } from "./settings.service";
 import { Settings } from "./settings";
+import { Title } from "@angular/platform-browser";
+import { MessageBarService } from "../status/message-bar/message-bar.service";
 
 var $ = require("jquery");
 
@@ -12,21 +14,32 @@ var $ = require("jquery");
     template: require('./settings.component.html'),
     providers: [SettingsService]
 })
-export class SettingsComponent
+export class SettingsComponent implements OnInit
 {
     settings: Settings;
 
-    constructor(private settingsService: SettingsService)
+    constructor(private settingsService: SettingsService, private title: Title, private messageBarService: MessageBarService)
     {
-        this.settingsService.get().then(data =>
-        {
-            this.settings = new Settings();
-            this.settings.load(data);
-        });
+        this.settings = new Settings();
+    }
+
+    async ngOnInit(): Promise<void>
+    {
+        this.title.setTitle("Settings");
+        let data = await this.settingsService.get();
+        this.settings.load(data);
     }
 
     public async save(): Promise<void>
     {
-        await this.settingsService.save(this.settings);
+        try
+        {
+            await this.settingsService.save(this.settings);
+            this.messageBarService.add("Success", "Successfully saved settings");
+        }
+        catch (reason)
+        {
+            this.messageBarService.add("Error", reason);
+        }
     }
 }

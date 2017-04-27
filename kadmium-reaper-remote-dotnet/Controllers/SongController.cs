@@ -13,47 +13,55 @@ namespace kadmium_reaper_remote_dotnet.Controllers
     [Route("api/[controller]")]
     public class SongController : Controller
     {
+        private DatabaseContext _context;
+
+        public SongController(DatabaseContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/values
         [HttpGet]
         public IEnumerable<Song> Get()
         {
-            var songs = Database.Instance.Songs.OrderBy(x => x.Name);
+            var songs = _context.Songs.OrderBy(x => x.Name);
             return songs;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Song Get(string id)
+        public async Task<Song> Get(int id)
         {
-            var song = Database.Instance.Songs.Single(x => x.Name == id);
+            var song = await _context.LoadSong(id);
             return song;
         }
 
         // POST api/values
         [HttpPost]
-        public async Task Post([FromBody]JObject value)
+        public async Task<int> Post([FromBody]Song value)
         {
-            Database.Instance.Songs.Add(Song.Load(value));
-            await FileAccess.SaveSongs(Database.Instance.SerializeSongs());
+            await _context.Songs.AddAsync(value);
+            await _context.SaveChangesAsync();
+            return value.Id;
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task Put(string id, [FromBody]JObject value)
+        public async Task Put(int id, [FromBody]Song value)
         {
-            var song = Get(id);
-            Database.Instance.Songs.Remove(song);
-            Database.Instance.Songs.Add(Song.Load(value));
-            await FileAccess.SaveSongs(Database.Instance.SerializeSongs());
+            _context.Songs.Update(value);
+            await _context.SaveChangesAsync();
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task Delete(string id)
+        public async Task Delete(int id)
         {
-            var song = Get(id);
-            Database.Instance.Songs.Remove(song);
-            await FileAccess.SaveSongs(Database.Instance.SerializeSongs());
+            var song = await _context.LoadSong(id);
+            _context.Songs.Remove(song);
+            var relationships = _context.SetSongRelationships.Where(x => x.SongId == id);
+            _context.SetSongRelationships.RemoveRange(relationships);
+            await _context.SaveChangesAsync();
         }
     }
 }

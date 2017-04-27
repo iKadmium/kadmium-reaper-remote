@@ -6,16 +6,17 @@ var extractCSS = new ExtractTextPlugin('vendor.css');
 
 module.exports = {
     resolve: {
-        extensions: [ '', '.js' ]
+        extensions: ['.js']
     },
     module: {
-        loaders: [
-            { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, loader: 'url-loader?limit=100000' },
-            { test: /\.css(\?|$)/, loader: extractCSS.extract(['css']) }
+        rules: [
+            { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: [{ loader: 'url-loader', options: { limit: 100000 } }] },
+            { test: /\.css(\?|$)/, use: [{ loader: "css-loader" }] }
         ]
     },
     entry: {
         vendor: [
+            "@angular/animations",
             '@angular/common',
             '@angular/compiler',
             '@angular/core',
@@ -23,15 +24,12 @@ module.exports = {
             '@angular/platform-browser',
             '@angular/platform-browser-dynamic',
             '@angular/router',
-            '@angular/platform-server',
-            'angular2-universal',
-            'angular2-universal-polyfills',
+            "core-js",
             'bootstrap',
             'bootstrap/dist/css/bootstrap.css',
-            'es6-shim',
-            'es6-promise',
+            'bootstrap/dist/css/bootstrap-theme.css',
             'jquery',
-            'zone.js',
+            'zone.js/dist/zone-node',
         ]
     },
     output: {
@@ -39,10 +37,17 @@ module.exports = {
         filename: '[name].js',
         library: '[name]_[hash]',
     },
+    node: {
+        fs: 'empty'
+    },
     plugins: [
+        new webpack.ContextReplacementPlugin(
+            // The (\\|\/) piece accounts for path separators in *nix and Windows
+            /angular(\\|\/)core(\\|\/)@angular/,
+            path.resolve(__dirname, "./src")
+        ),
         extractCSS,
         new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
-        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DllPlugin({
             path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),
             name: '[name]_[hash]'

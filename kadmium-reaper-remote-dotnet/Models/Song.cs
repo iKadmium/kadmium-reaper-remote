@@ -1,34 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using kadmium_reaper_remote_dotnet.Util;
 using Newtonsoft.Json.Linq;
 
 namespace kadmium_reaper_remote_dotnet.Models
 {
     public class Song
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
         public TimeSpan Duration { get; set; }
         public string Command { get; set; }
 
-        public static Song Load(JObject jObject)
+        public Song()
         {
-            Song song = new Song()
-            {
-                Name = (string)jObject["name"],
-                Duration = TimeSpan.Parse((string)jObject["duration"]),
-                Command = (string)jObject["command"]
-            };
-            return song;
-        }
-
-        public JObject Serialize()
-        {
-            JObject obj = new JObject
-            {
-                { "name", Name },
-                { "duration", Duration},
-                { "command", Command}
-            };
-            return obj;
+            Name = "";
+            Duration = TimeSpan.FromMilliseconds(0);
+            Command = "";
         }
     }
 }

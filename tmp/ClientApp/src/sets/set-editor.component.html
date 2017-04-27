@@ -1,0 +1,62 @@
+<h2 *ngIf="!set">Loading...</h2>
+<form class="form-horizontal" role="form" *ngIf="set">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="date">Date</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="date" [(ngModel)]="set.humanDate" [ngModelOptions]="{standalone: true}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="venue">Venue</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="venue" [(ngModel)]="set.venue" [ngModelOptions]="{standalone: true}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="duration ">Duration</label>
+        <div class="col-sm-10">
+            <span id="duration">{{ set.durationFormatted }} </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="songs ">Songs</label>
+        <div class="col-sm-10">
+            <table id="songs" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Duration</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let song of set.songs; let i=index">
+                        <td>
+                            <button [disabled]="i == 0" (click)="set.moveSong(song, -1)" type="button" class="btn">
+                                                <span class="glyphicon glyphicon-arrow-up"></span>
+                                            </button>
+                            <button [disabled]="i == (set.songs.length - 1)" (click)="set.moveSong(song, 1)" type="button" class="btn">
+                                                <span class="glyphicon glyphicon-arrow-down"></span>
+                                            </button>
+                        </td>
+                        <td>
+                            <select [(ngModel)]="set.songs[i]" class="form-control" [ngModelOptions]="{standalone: true}">
+                                                <option *ngFor="let c of allSongs" [ngValue]="c">{{c.name}}</option>
+                                            </select>
+                        </td>
+                        <td>{{ song.durationFormatted }}</td>
+                        <td><button type="button " class="btn btn-danger " (click)="set.removeSong(song) ">&times;</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-success" (click)="set.addSong(allSongs[0])"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+        </div>
+    </div>
+</form>
