@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using kadmium_reaper_remote_dotnet.Util;
+using System;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,7 +27,9 @@ namespace kadmium_reaper_remote_dotnet.Controllers
         private async Task SendCommands(params string[] commands)
         {
             string commandString = GetCommandString(commands);
-            var result = await commandClient.GetAsync(Settings.Instance.ReaperURI + "/_/" + commandString);
+            Uri uri = new Uri(Settings.Instance.ReaperURI);
+            string path = uri.Scheme + "://" + uri.Host + ":" + uri.Port + "/_/" + commandString;
+            var result = await commandClient.GetAsync(path);
         }
 
         private string GetCommandString(params string[] commands)

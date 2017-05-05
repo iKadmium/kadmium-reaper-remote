@@ -1,110 +1,91 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 
 import { Response } from "@angular/http";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { Status, StatusCode } from "../status";
-import { NotificationsService } from "angular2-notifications";
+import { NotificationsService } from "../notifications.service";
+import { StatusCode } from "../status-code.enum";
+import { Status } from "../status";
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
 @Component({
-  selector: 'app-message-bar',
-  templateUrl: './message-bar.component.html',
-  styleUrls: ['./message-bar.component.css'],
-  providers: [NotificationsService]
+    selector: 'app-message-bar',
+    templateUrl: './message-bar.component.html',
+    styleUrls: ['./message-bar.component.css']
 })
 export class MessageBarComponent implements OnInit
 {
+    private activeMessage: Status;
+    public messagesCollapsed: boolean;
 
-  private messages: Status[];
-  private activeMessage: Status;
-  private messagesCollapsed: boolean;
-
-  constructor(private sanitizer: DomSanitizer, private notificationsService: NotificationsService)
-  {
-    this.messages = [];
-    this.messagesCollapsed = true;
-  }
-
-  ngOnInit(): void
-  {
-
-  }
-
-  private remove(status: Status)
-  {
-    let index = this.messages.indexOf(status);
-    this.messages.splice(index, 1);
-  }
-
-  private removeAll()
-  {
-    this.messages = [];
-  }
-
-  public add(statusCode: StatusCode, message: string): void
-  {
-    this.toast(statusCode, message);
-    this.messages.push(new Status(statusCode, message));
-  }
-
-  public addError(reason: Response): void
-  {
-    let error = new Status("Error", reason.statusText);
-    error.body = reason.text();
-    this.toast("Error", reason.text());
-    this.messages.push(error);
-  }
-
-  public toast(statusCode: StatusCode, message: string): void
-  {
-    switch (statusCode)
+    constructor(private sanitizer: DomSanitizer, private notificationsService: NotificationsService, public toastr: ToastsManager, vcr: ViewContainerRef)
     {
-      case "Success":
-        this.notificationsService.success("Success", message);
-        break;
-      case "Error":
-        this.notificationsService.error("Error", message);
-        break;
-      case "Unknown":
-        this.notificationsService.info("Unknown", message);
-        break;
-      case "Warning":
-        this.notificationsService.alert("Warning", message);
-        break;
+        this.messagesCollapsed = true;
+        this.toastr.setRootViewContainerRef(vcr);
     }
-  }
 
-  private getBody(message: Status): SafeHtml
-  {
-    let body = message.body;
-    let safeHTML = this.sanitizer.bypassSecurityTrustHtml(body);
-    return safeHTML;
-  }
-
-  private getActiveMessageBody(): SafeHtml
-  {
-    if (this.activeMessage != null)
+    ngOnInit(): void
     {
-      return this.getBody(this.activeMessage);
-    }
-    else
-    {
-      return this.sanitizer.bypassSecurityTrustHtml("No message");
-    }
-  }
 
-  private iframeLoad(message: Status, index: number): void
-  {
-    this.activeMessage = message;
-    let headerHeight = document.getElementById("modal-header").offsetHeight;
-    headerHeight = headerHeight > 0 ? headerHeight : 64;
-    let footerHeight = document.getElementById("modal-footer").offsetHeight;
-    footerHeight = footerHeight > 0 ? footerHeight : 64;
-    let paddingHeight = 110;
-    let calculatedHeight = headerHeight + footerHeight + paddingHeight;
-    let remainingHeight = window.innerHeight - calculatedHeight;
-    let iframeRef = document.getElementById('error-details-iframe') as HTMLIFrameElement;
-    iframeRef.style.height = remainingHeight + "px";
-    iframeRef.contentWindow.document.write(this.getBody(message) as string);
-  }
+    }
+
+    public toggleCollapse(): void
+    {
+        this.messagesCollapsed = !this.messagesCollapsed;
+    }
+
+    private remove(status: Status)
+    {
+        let index = this.notificationsService.messages.indexOf(status);
+        this.notificationsService.messages.splice(index, 1);
+    }
+
+    public removeAll()
+    {
+        this.notificationsService.messages = [];
+    }
+
+    private getBody(message: Status): SafeHtml
+    {
+        let body = message.details;
+        let safeHTML = this.sanitizer.bypassSecurityTrustHtml(body);
+        return safeHTML;
+    }
+
+    public getActiveMessageBody(): SafeHtml
+    {
+        if (this.activeMessage != null)
+        {
+            return this.getBody(this.activeMessage);
+        }
+        else
+        {
+            return this.sanitizer.bypassSecurityTrustHtml("No message");
+        }
+    }
+
+    public getMessages(): Status[]
+    {
+        return this.notificationsService.messages;
+    }
+
+    private isResponse(message: Status): boolean
+    {
+        return (message.details != null && message.details instanceof Response);
+    }
+
+    private iframeLoad(message: Status, index: number): void
+    {
+        this.activeMessage = message;
+        let headerHeight = document.getElementById("modal-header").offsetHeight;
+        headerHeight = headerHeight > 0 ? headerHeight : 64;
+        let footerHeight = document.getElementById("modal-footer").offsetHeight;
+        footerHeight = footerHeight > 0 ? footerHeight : 64;
+        let paddingHeight = 110;
+        let calculatedHeight = headerHeight + footerHeight + paddingHeight;
+        let remainingHeight = window.innerHeight - calculatedHeight;
+        let iframeRef = document.getElementById('error-details-iframe') as HTMLIFrameElement;
+        iframeRef.style.height = remainingHeight + "px";
+        iframeRef.contentWindow.document.write(this.getBody(message) as string);
+    }
 
 }

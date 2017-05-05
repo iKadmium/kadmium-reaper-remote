@@ -4,8 +4,9 @@ import { Title } from "@angular/platform-browser";
 
 import { Song } from "../song";
 
-import { MessageBarService } from "../message-bar.service";
 import { SongService } from "../song.service";
+import { NotificationsService } from "../notifications.service";
+import { StatusCode } from "../status-code.enum";
 
 @Component({
   selector: 'app-song-editor',
@@ -18,7 +19,7 @@ export class SongEditorComponent implements OnInit
   song: Song;
 
   constructor(private route: ActivatedRoute, private title: Title,
-    private messageBarService: MessageBarService, private songService: SongService)
+    private notificationsService: NotificationsService, private songService: SongService)
   {
 
   }
@@ -41,7 +42,7 @@ export class SongEditorComponent implements OnInit
     }
     catch (reason)
     {
-      this.messageBarService.add("Error", reason);
+      this.notificationsService.add(StatusCode.Error, reason);
     }
   }
 
@@ -57,12 +58,12 @@ export class SongEditorComponent implements OnInit
       {
         await this.songService.putSong(this.song);
       }
-      this.messageBarService.add("Success", "Successfully added " + this.song.name);
+      this.notificationsService.add(StatusCode.Success, "Successfully added " + this.song.name);
       window.location.href = "/songs";
     }
     catch (reason)
     {
-      this.messageBarService.add("Error", reason);
+      this.notificationsService.add(StatusCode.Error, reason);
     }
   }
 }

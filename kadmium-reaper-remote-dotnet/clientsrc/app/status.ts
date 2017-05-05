@@ -1,47 +1,59 @@
-export class Status
+import { StatusCode } from "./status-code.enum";
+
+export class Status 
 {
-    static StatusTable: StatusTable = {
-        Success: { alertStyle: "alert-success", glyphIcon: "glyphicon-ok-sign" },
-        Error: { alertStyle: "alert-danger", glyphIcon: "glyphicon-remove-sign" },
-        Warning: { alertStyle: "alert-warning", glyphIcon: "glyphicon-info-sign" },
-        Unknown: { alertStyle: "alert-info", glyphIcon: "glyphicon-question-sign" }
-    };
-
-    public code: StatusCode;
-    public message: string;
-    public body: string;
-
-    constructor(code: StatusCode, message: string)
+    constructor(public statusCode?: StatusCode, public body?: string, public details?: any)
     {
-        this.code = code;
-        this.message = message;
-    }
-
-    public update(code: StatusCode, message: string)
-    {
-        this.code = code;
-        this.message = message;
+        if (statusCode == null)
+        {
+            this.statusCode = StatusCode.Unknown;
+            this.body = "Unknown";
+        }
     }
 
     public get alertStyle(): string
     {
-        return Status.StatusTable[this.code].alertStyle;
+        return Status.getAlertStyle(this.statusCode);
     }
 
     public get glyphIcon(): string
     {
-        return Status.StatusTable[this.code].glyphIcon;
+        return Status.getGlyphIcon(this.statusCode);
     }
-}
 
-export type StatusCode = "Unknown" | "Error" | "Success" | "Warning";
+    public static getAlertStyle(code: StatusCode): string
+    {
+        switch (code)
+        {
+            case StatusCode.Error:
+                return "alert-danger";
+            case StatusCode.Info:
+                return "alert-info";
+            case StatusCode.Success:
+                return "alert-success";
+            default:
+            case StatusCode.Unknown:
+                return "alert-info";
+            case StatusCode.Warning:
+                return "alert-warning";
+        }
+    }
 
-export interface StatusTable
-{
-    [key: string]: StatusInfo;
-}
-export interface StatusInfo
-{
-    alertStyle: string;
-    glyphIcon: string;
+    public static getGlyphIcon(code: StatusCode): string
+    {
+        switch (code)
+        {
+            case StatusCode.Error:
+                return "glyphicon glyphicon-remove-sign";
+            case StatusCode.Info:
+                return "glyphicon glyphicon-info-sign";
+            case StatusCode.Success:
+                return "glyphicon glyphicon-ok-sign";
+            default:
+            case StatusCode.Unknown:
+                return "glyphicon glyphicon-question-sign";
+            case StatusCode.Warning:
+                return "glyphicon glyphicon-info-sign";
+        }
+    }
 }

@@ -10,14 +10,14 @@ import { DomSanitizer, SafeUrl, Title } from "@angular/platform-browser";
 })
 export class ReaperComponent implements OnInit
 {
-  private reaperUri: string;
+  public reaperUri: string;
 
   constructor(private reaperService: ReaperService, private sanitizer: DomSanitizer, private title: Title)
   {
 
   }
 
-  private getUri(): SafeUrl
+  public getUri(): SafeUrl
   {
     let safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.reaperUri);
     return safeUrl;

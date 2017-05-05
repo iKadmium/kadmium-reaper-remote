@@ -4,7 +4,8 @@ import { Title } from "@angular/platform-browser";
 import { SettingsService } from "../settings.service";
 import { Settings } from "../settings";
 
-import { MessageBarService } from "../message-bar.service";
+import { NotificationsService } from "../notifications.service";
+import { StatusCode } from "../status-code.enum";
 
 @Component({
   selector: 'app-settings',
@@ -17,7 +18,7 @@ export class SettingsComponent implements OnInit
 
   settings: Settings;
 
-  constructor(private settingsService: SettingsService, private title: Title, private messageBarService: MessageBarService)
+  constructor(private settingsService: SettingsService, private title: Title, private notificationsService: NotificationsService)
   {
     this.settings = new Settings();
   }
@@ -32,7 +33,7 @@ export class SettingsComponent implements OnInit
     }
     catch (reason)
     {
-      this.messageBarService.add("Error", reason);
+      this.notificationsService.add(StatusCode.Error, reason);
     }
   }
 
@@ -41,11 +42,11 @@ export class SettingsComponent implements OnInit
     try
     {
       await this.settingsService.save(this.settings);
-      this.messageBarService.add("Success", "Successfully saved settings");
+      this.notificationsService.add(StatusCode.Success, "Successfully saved settings");
     }
     catch (reason)
     {
-      this.messageBarService.add("Error", reason);
+      this.notificationsService.add(StatusCode.Error, reason);
     }
   }
 

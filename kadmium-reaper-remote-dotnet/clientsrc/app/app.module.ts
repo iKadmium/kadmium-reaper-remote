@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AlertModule, CollapseModule, ModalModule } from "ngx-bootstrap";
-
-import { SimpleNotificationsModule } from "angular2-notifications";
+import { AlertModule, CollapseModule, ModalModule, BsDropdownModule } from "ngx-bootstrap";
 
 import { ReaperComponent } from './reaper/reaper.component';
 import { NavMenuComponent } from "./nav-menu/nav-menu.component";
@@ -18,8 +17,9 @@ import { SongEditorComponent } from "./song-editor/song-editor.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { MessageBarComponent } from "./message-bar/message-bar.component";
 
-import { MessageBarService } from "./message-bar.service";
 import { UrlService } from "./url.service";
+import { ToastModule } from "ng2-toastr/ng2-toastr";
+import { NotificationsService } from "./notifications.service";
 
 declare var jQuery: any;
 
@@ -55,9 +55,11 @@ declare var jQuery: any;
         CollapseModule.forRoot(),
         AlertModule.forRoot(),
         ModalModule.forRoot(),
-        SimpleNotificationsModule.forRoot()
+        ToastModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        BrowserAnimationsModule
     ],
-    providers: [MessageBarService, UrlService]
+    providers: [NotificationsService, UrlService]
 })
 export class AppModule
 {

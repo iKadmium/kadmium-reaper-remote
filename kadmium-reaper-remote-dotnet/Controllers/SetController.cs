@@ -45,7 +45,7 @@ namespace kadmium_reaper_remote_dotnet.Controllers
                 Date = set.Date,
                 Venue = set.Venue,
                 Songs = await _context.LoadSongsForSet(id)
-        };
+            };
             return setWithSongs;
         }
 
@@ -96,6 +96,7 @@ namespace kadmium_reaper_remote_dotnet.Controllers
                                         SetId = id,
                                         SongId = song.Id
                                     };
+                await _context.SaveChangesAsync();
                 _context.Sets.Update(set);
                 await _context.SetSongRelationships.AddRangeAsync(relationships);
                 await _context.SaveChangesAsync();

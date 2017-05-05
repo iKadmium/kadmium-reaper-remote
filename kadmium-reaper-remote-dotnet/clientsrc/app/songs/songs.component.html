@@ -1,8 +1,4 @@
 <h2 *ngIf="!songs"><em>Loading...</em></h2>
-<div *ngFor="let error of errors; let i = index;" class="alert alert-danger alert-dismissable">
-  <a class="close" (click)="errors.splice(i, 1)" aria-label="close">&times;</a>
-  <strong>{{error}}</strong>
-</div>
 <ul class="list-group">
   <li *ngFor="let song of songs" class="list-group-item clearfix">
     {{song.name}}

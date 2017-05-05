@@ -5,9 +5,10 @@ import { Song } from "../song";
 
 import { SetService } from "../set.service";
 import { SongService } from "../song.service";
-import { MessageBarService } from "../message-bar.service";
 import { ActivatedRoute } from "@angular/router";
 import { Title } from "@angular/platform-browser";
+import { NotificationsService } from "../notifications.service";
+import { StatusCode } from "../status-code.enum";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class SetEditorComponent implements OnInit
   allSongs: Song[]
 
   constructor(private route: ActivatedRoute, private title: Title,
-    private messageBarService: MessageBarService, private setService: SetService, private songService: SongService)
+    private notificationsService: NotificationsService, private setService: SetService, private songService: SongService)
   {
     this.allSongs = [];
   }
@@ -48,7 +49,7 @@ export class SetEditorComponent implements OnInit
     }
     catch (reason)
     {
-      this.messageBarService.add("Error", reason);
+      this.notificationsService.add(StatusCode.Error, reason);
     }
   }
 
@@ -64,12 +65,12 @@ export class SetEditorComponent implements OnInit
       {
         await this.setService.putSet(this.set);
       }
-      this.messageBarService.add("Success", "Successfully added set at " + this.set.venue);
+      this.notificationsService.add(StatusCode.Success, "Successfully added set at " + this.set.venue);
       window.location.href = "/sets";
     }
     catch (reason)
     {
-      this.messageBarService.add("Error", reason);
+      this.notificationsService.add(StatusCode.Error, reason);
     }
   }
 
