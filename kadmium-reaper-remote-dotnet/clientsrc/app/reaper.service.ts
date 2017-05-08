@@ -6,15 +6,35 @@ import { UrlService } from "./url.service";
 @Injectable()
 export class ReaperService
 {
-  constructor(private http: Http, private urlService: UrlService) { }
+    constructor(private http: Http, private urlService: UrlService) { }
 
-  public runCommand(command: string): Promise<void>
-  {
-    return this.http.get(this.urlService.getUrl("Reaper", command, null))
-      .toPromise()
-      .then(response =>
-      {
+    public runCommand(command: string): Promise<void>
+    {
+        return this.http.get(this.urlService.getUrl("Reaper", command, null))
+            .toPromise()
+            .then(response =>
+            {
 
-      });
-  }
+            });
+    }
+}
+
+@Injectable()
+export class MockReaperService extends ReaperService
+{
+    constructor()
+    {
+        super(null, null
+        );
+    }
+
+    public runCommand(command: string): Promise<void>
+    {
+        return new Promise<void>(
+            (resolve, reject) =>
+            {
+                resolve();
+            }
+        );
+    }
 }
