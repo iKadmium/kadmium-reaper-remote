@@ -65,6 +65,7 @@ namespace kadmium_reaper_remote_dotnet
                 builder
                     .AllowAnyHeader()
                     .AllowAnyOrigin()
+                    .AllowAnyMethod()
             );
 
             app.UseMvc(routes =>

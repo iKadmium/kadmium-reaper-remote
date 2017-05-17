@@ -1,0 +1,38 @@
+<div class="btn-group" dropdown placement="bottom right">
+    <button dropdownToggle class="btn navbar-btn notification-button" [ngClass]="{'btn-default': notificationsService.messages.length == 0, 'btn-danger': notificationsService.messages.length > 0 }">
+                            <span class="glyphicon glyphicon-bell"></span>
+                        </button>
+    <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+        <li *ngFor="let message of notificationsService.messages; let i = index">
+            <div *ngIf="i < 10" class="alert notification-menu-entry" [ngClass]="message.alertStyle">
+                <div class="media-left">
+                    <span class="glyphicon" [ngClass]="message.glyphIcon"></span>
+                </div>
+                <div class="media-body">
+                    {{message.body}}
+                    <br>
+                    <button class="btn btn-default" *ngIf="message.details" (click)="iframeLoad(message, i); modalDiv.show()" [attr.data-target]="'#error-details-' + i"
+                        data-toggle="modal">Details</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div bsModal #modalDiv="bs-modal" class="modal fade" role="dialog" tabindex="-1" [config]="{backdrop: false}">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" id="modal-header">
+                <button type="button" class="close" (click)="modalDiv.hide()">&times;</button>
+                <h4 class="modal-title">Error Details</h4>
+            </div>
+            <div class="modal-body">
+                <iframe [srcdoc]="getActiveMessageBody()" id="error-details-iframe" class="error-frame"></iframe>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <button type="button" class="btn btn-default" (click)="modalDiv.hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

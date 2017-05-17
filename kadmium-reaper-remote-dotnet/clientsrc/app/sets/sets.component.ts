@@ -45,6 +45,7 @@ export class SetsComponent implements OnInit
         await this.reaperService.runCommand("40886").catch(reason => this.notificationsService.add(StatusCode.Error, "Error closing tabs for " + skeleton.venue + ". " + reason)); //close all tabs
         let firstTab = true;
         let set = await this.setService.getSet(skeleton.id, this.allSongs);
+        this.setService.activateVenue(skeleton.venue);
         for (let song of set.songs)
         {
             if (!firstTab)

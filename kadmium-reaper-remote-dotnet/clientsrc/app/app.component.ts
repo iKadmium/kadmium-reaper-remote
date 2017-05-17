@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { Title } from "@angular/platform-browser";
-import { MessageBarComponent } from "./message-bar/message-bar.component";
 import { NotificationsService } from "./notifications.service";
 
 @Component({
@@ -10,16 +9,12 @@ import { NotificationsService } from "./notifications.service";
 })
 export class AppComponent implements OnInit, OnDestroy
 {
-    @ViewChild("messageBar") messageBar: MessageBarComponent;
-
-    constructor(public titleService: Title, private notificationService: NotificationsService)
+    constructor(public titleService: Title)
     {
-
     }
 
     ngOnInit(): void
     {
-        this.notificationService.component = this.messageBar;
     }
 
     ngOnDestroy(): void

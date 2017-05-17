@@ -15,13 +15,11 @@ import { SetEditorComponent } from "./set-editor/set-editor.component";
 import { SongsComponent } from "./songs/songs.component";
 import { SongEditorComponent } from "./song-editor/song-editor.component";
 import { SettingsComponent } from "./settings/settings.component";
-import { MessageBarComponent } from "./message-bar/message-bar.component";
 
 import { UrlService } from "./url.service";
 import { ToastModule } from "ng2-toastr/ng2-toastr";
 import { NotificationsService } from "./notifications.service";
-
-declare var jQuery: any;
+import { NotificationMenuComponent } from "./notification-menu/notification-menu.component";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -33,8 +31,8 @@ declare var jQuery: any;
         SongsComponent,
         SongEditorComponent,
         SettingsComponent,
-        MessageBarComponent,
-        ReaperComponent
+        ReaperComponent,
+        NotificationMenuComponent
     ],
     imports: [
         BrowserModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.

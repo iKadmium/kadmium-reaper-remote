@@ -60,9 +60,9 @@ export class SetService
             });
     }
 
-    public activateSet(id: number): Promise<void>
+    public activateVenue(venue: string): Promise<void>
     {
-        return this.http.get(this.urlService.getUrl("Set", "activate", id))
+        return this.http.get(this.urlService.getUrl("Set", "activate", venue))
             .toPromise()
             .then(response => { });
     }

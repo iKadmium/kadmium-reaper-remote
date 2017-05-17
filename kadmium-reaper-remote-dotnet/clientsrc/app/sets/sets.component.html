@@ -4,9 +4,9 @@
     {{ set.dateFormatted }} - {{ set.venue}}
     <div class="btn-group pull-right">
       <button class="btn btn-success" (click)="activate(set)"><span class="glyphicon glyphicon-floppy-open"></span> Load</button>
-      <a href="sets/{{set.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+      <a [routerLink]="set.id" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
       <button class="btn btn-danger" (click)="delete(set)"><span class="glyphicon glyphicon-remove"></span> Delete</button>
     </div>
   </li>
 </ul>
-<a href="sets/new" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add</a>
+<a [routerLink]="'new'" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add</a>

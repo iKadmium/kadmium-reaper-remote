@@ -31,7 +31,7 @@ namespace kadmium_reaper_remote_dotnet.Util
             var context = new DatabaseContext(builder.Options);
             return context;
         }
-        
+
         public static void SetConnectionEnvironment(string environmentName)
         {
             switch (environmentName)
@@ -49,7 +49,7 @@ namespace kadmium_reaper_remote_dotnet.Util
         {
             SetConnection = (builder) => builder.UseInMemoryDatabase(testName);
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Song>()
@@ -84,7 +84,7 @@ namespace kadmium_reaper_remote_dotnet.Util
         public async Task<List<Song>> LoadSongsForSet(int setId)
         {
             List<Song> songs = new List<Song>();
-            foreach(var relationship in SetSongRelationships.Where(x => x.SetId == setId))
+            foreach (var relationship in SetSongRelationships.Where(x => x.SetId == setId).OrderBy(x => x.Order))
             {
                 songs.Add(await LoadSong(relationship.SongId));
             }

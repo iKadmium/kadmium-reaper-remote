@@ -10,7 +10,7 @@ export class UrlService
     this.ngServed = parseInt(window.location.port) == 4200;
   }
 
-  getUrl(controller: string, action: string | null, id: number | null): string
+  getUrl(controller: string, action: string | null, id: number | null | string): string
   {
     let protocol = window.location.protocol;
     let hostname = window.location.hostname;

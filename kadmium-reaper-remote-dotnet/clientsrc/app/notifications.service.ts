@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
-import { MessageBarComponent } from "./message-bar/message-bar.component";
 import { StatusCode } from "./status-code.enum";
 import { Response } from '@angular/http';
 import { Status } from "./status";
+import { NotificationMenuComponent } from "./notification-menu/notification-menu.component";
 
 @Injectable()
 export class NotificationsService
 {
-    public component: MessageBarComponent;
+    public component: NotificationMenuComponent;
     public messages: Status[];
 
     constructor()
     {
         this.component = null;
         this.messages = [];
-    }
-
-    public toggleNotificationBarVisibility(): void
-    {
-        this.component.toggleCollapse();
     }
 
     public add(statusCode: StatusCode, message: any): void

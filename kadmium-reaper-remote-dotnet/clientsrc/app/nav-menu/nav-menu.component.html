@@ -34,10 +34,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <button class="btn navbar-btn" [ngClass]="{'btn-default': notificationsService.messages.length == 0, 'btn-danger': notificationsService.messages.length > 0 }"
-                        (click)="notificationsService.toggleNotificationBarVisibility()">
-                        <span class="glyphicon glyphicon-bell"></span><span class="badge">{{notificationsService.messages.length}}</span>
-                    </button>
+                    <app-notification-menu></app-notification-menu>
                 </li>
             </ul>
         </div>

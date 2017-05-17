@@ -1,47 +1,26 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-
-import { Response } from "@angular/http";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { NotificationsService } from "../notifications.service";
-import { StatusCode } from "../status-code.enum";
-import { Status } from "../status";
+import { SafeHtml, DomSanitizer } from "@angular/platform-browser";
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
+import { NotificationsService } from "../notifications.service";
+import { Status } from "../status";
 
 @Component({
-    selector: 'app-message-bar',
-    templateUrl: './message-bar.component.html',
-    styleUrls: ['./message-bar.component.css']
+    selector: 'app-notification-menu',
+    templateUrl: './notification-menu.component.html',
+    styleUrls: ['./notification-menu.component.css']
 })
-export class MessageBarComponent implements OnInit
+export class NotificationMenuComponent implements OnInit
 {
     private activeMessage: Status;
-    public messagesCollapsed: boolean;
 
-    constructor(private sanitizer: DomSanitizer, private notificationsService: NotificationsService, public toastr: ToastsManager, vcr: ViewContainerRef)
+    constructor(public notificationsService: NotificationsService, private sanitizer: DomSanitizer, public toastr: ToastsManager, vcr: ViewContainerRef)
     {
-        this.messagesCollapsed = true;
         this.toastr.setRootViewContainerRef(vcr);
     }
 
     ngOnInit(): void
     {
-
-    }
-
-    public toggleCollapse(): void
-    {
-        this.messagesCollapsed = !this.messagesCollapsed;
-    }
-
-    private remove(status: Status)
-    {
-        let index = this.notificationsService.messages.indexOf(status);
-        this.notificationsService.messages.splice(index, 1);
-    }
-
-    public removeAll()
-    {
-        this.notificationsService.messages = [];
+        this.notificationsService.component = this;
     }
 
     private getBody(message: Status): SafeHtml
@@ -61,11 +40,6 @@ export class MessageBarComponent implements OnInit
         {
             return this.sanitizer.bypassSecurityTrustHtml("No message");
         }
-    }
-
-    public getMessages(): Status[]
-    {
-        return this.notificationsService.messages;
     }
 
     private isResponse(message: Status): boolean

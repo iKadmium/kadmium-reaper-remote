@@ -94,7 +94,8 @@ namespace kadmium_reaper_remote_dotnet.Controllers
                                     select new SetSongRelationship()
                                     {
                                         SetId = id,
-                                        SongId = song.Id
+                                        SongId = song.Id,
+                                        Order = value.Songs.IndexOf(song)
                                     };
                 await _context.SaveChangesAsync();
                 _context.Sets.Update(set);
