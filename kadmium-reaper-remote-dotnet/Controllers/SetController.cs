@@ -25,6 +25,7 @@ namespace kadmium_reaper_remote_dotnet.Controllers
         public IEnumerable<SetSkeleton> Get()
         {
             var sets = from set in _context.Sets
+                       orderby set.Date descending
                        select new SetSkeleton
                        {
                            Id = set.Id,

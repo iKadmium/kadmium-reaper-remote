@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 
-import { Set, SetData, SetSkeleton } from "../set";
+import { Set, SetData, SetSkeletonData, SetSkeleton } from "../set";
 import { Song, SongData } from "../song";
 
 import { SetService } from "../set.service";
@@ -32,7 +32,8 @@ export class SetsComponent implements OnInit
         {
             this.title.setTitle("Sets");
             this.allSongs = await this.songService.getSongs();
-            this.sets = await this.setService.getSets();
+            let skeletons = await this.setService.getSets();
+            this.sets = skeletons.map(x => new SetSkeleton().loadSkeleton(x));
         }
         catch (reason)
         {

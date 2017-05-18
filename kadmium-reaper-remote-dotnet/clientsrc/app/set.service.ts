@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { Set, SetData, SetSkeleton } from "./set";
+import { Set, SetData, SetSkeletonData, SetSkeleton } from "./set";
 import { Song, SongData } from "./song";
 import { UrlService } from "./url.service";
 
@@ -36,13 +36,13 @@ export class SetService
             .then(response => { return; });
     }
 
-    public getSets(): Promise<SetSkeleton[]>
+    public getSets(): Promise<SetSkeletonData[]>
     {
         return this.http.get(this.urlService.getUrl("Set", null, null))
             .toPromise()
             .then(response =>
             {
-                let data = (response.json() as SetSkeleton[]);
+                let data = (response.json() as SetSkeletonData[]);
                 return data;
             });
     }
@@ -96,15 +96,15 @@ export class MockSetService extends SetService
         ];
     }
 
-    public getSets(): Promise<SetSkeleton[]>
+    public getSets(): Promise<SetSkeletonData[]>
     {
-        return new Promise<SetSkeleton[]>(
+        return new Promise<SetSkeletonData[]>(
             (resolve, reject) =>
             {
                 resolve(
                     this.sets.map(x =>
                     {
-                        let skeleton: SetSkeleton = {
+                        let skeleton: SetSkeletonData = {
                             date: x.date,
                             id: x.id,
                             venue: x.venue

@@ -2,18 +2,53 @@ import { NgModule } from '@angular/core';
 import * as moment from "moment";
 import { Song, SongData } from "./song";
 
-export class Set
+export class SetSkeleton
 {
     public id: number;
     public date: moment.Moment;
     public venue: string;
-    public songs: Song[];
 
     constructor()
     {
         this.id = 0;
         this.date = moment();
         this.venue = "";
+    }
+
+    public get dateFormatted(): string
+    {
+        return moment(this.date).format("L");
+    }
+
+    public set humanDate(originalDate: string)
+    {
+        this.date.set(originalDate);
+    }
+
+    public get humanDate(): string
+    {
+        return this.date.format("YYYY-MM-DD");
+    }
+
+    public loadSkeleton(data: SetSkeletonData): SetSkeleton
+    {
+        this.id = data.id;
+        this.date = moment(data.date);
+        this.venue = data.venue;
+
+        return this;
+    }
+}
+
+export class Set extends SetSkeleton
+{
+
+    public songs: Song[];
+
+    constructor()
+    {
+        super();
+
         this.songs = [];
     }
 
@@ -49,21 +84,6 @@ export class Set
         return moment.utc(this.duration.asMilliseconds()).format("HH:mm:ss");
     }
 
-    public get dateFormatted(): string
-    {
-        return moment(this.date).format("L");
-    }
-
-    public set humanDate(originalDate: string)
-    {
-        this.date.set(originalDate);
-    }
-
-    public get humanDate(): string
-    {
-        return this.date.format("YYYY-MM-DD");
-    }
-
     public load(allSongs: Song[], data: SetData): Set
     {
         this.id = data.id;
@@ -92,6 +112,8 @@ export class Set
     }
 }
 
+
+
 export interface SetData
 {
     id: number;
@@ -100,7 +122,7 @@ export interface SetData
     songs: SongData[];
 }
 
-export interface SetSkeleton
+export interface SetSkeletonData
 {
     id: number;
     date: string;
