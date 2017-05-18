@@ -6,9 +6,9 @@ namespace kadmium_reaper_remote_dotnet.Util
 {
     public class Settings
     {
-        public string ReaperURI { get; private set; }
-        public int HttpPort { get; private set; }
-        public string LightingVenueURI { get; private set; }
+        public string ReaperURI { get; set; }
+        public int HttpPort { get; set; }
+        public string LightingVenueURI { get; set; }
         [JsonIgnore]
         public static Settings Instance { get; set; }
 

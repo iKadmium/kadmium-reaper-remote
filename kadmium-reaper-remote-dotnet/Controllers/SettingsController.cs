@@ -23,5 +23,15 @@ namespace kadmium_reaper_remote_dotnet.Controllers
             Settings.Instance = value;
             await FileAccess.SaveSettings(value);
         }
+        // [HttpPut]
+        // public async Task Put([FromBody]JObject valueObj)
+        // {
+        //     Settings value = valueObj.ToObject<Settings>();
+        //     value.HttpPort = valueObj["httpPort"].Value<int>();
+        //     value.LightingVenueURI = valueObj["lightingVenueURI"].Value<string>();
+        //     value.ReaperURI = valueObj["reaperURI"].Value<string>();
+        //     Settings.Instance = value;
+        //     await FileAccess.SaveSettings(value);
+        // }
     }
 }
