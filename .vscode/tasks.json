@@ -11,6 +11,16 @@
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
+        },
+        {
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "taskName": "serve",
+            "command": "ng",
+            "args": [
+                "serve"
+            ]
         }
     ]
 }

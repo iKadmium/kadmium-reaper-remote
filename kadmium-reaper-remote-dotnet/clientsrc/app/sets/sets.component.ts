@@ -47,18 +47,20 @@ export class SetsComponent implements OnInit
         let firstTab = true;
         let set = await this.setService.getSet(skeleton.id, this.allSongs);
         this.setService.activateVenue(skeleton.venue);
+        let commands: string[] = [];
         for (let song of set.songs)
         {
             if (!firstTab)
             {
-                await this.reaperService.runCommand("40859").catch(reason => this.notificationsService.add(StatusCode.Error, "Error opening new tab for set " + skeleton.venue + ". " + reason)); //open a new tab
+                commands.push('40859');
             }
             else
             {
                 firstTab = false;
             }
-            await this.reaperService.runCommand(song.command).catch(reason => this.notificationsService.add(StatusCode.Error, "Error opening song " + song.name + ". " + reason)); //open the song
+            commands.push(song.command);
         }
+        await this.reaperService.runCommands(commands).catch(reason => this.notificationsService.add(StatusCode.Error, reason));
     }
 
     public delete(set: SetSkeleton)

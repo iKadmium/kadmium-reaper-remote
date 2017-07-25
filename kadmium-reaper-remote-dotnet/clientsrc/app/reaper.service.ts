@@ -17,6 +17,16 @@ export class ReaperService
 
             });
     }
+
+    public runCommands(commands: string[]): Promise<void>
+    {
+        return this.http.get(this.urlService.getUrl("Reaper", commands.join(";"), null))
+            .toPromise()
+            .then(response =>
+            {
+
+            });
+    }
 }
 
 @Injectable()
