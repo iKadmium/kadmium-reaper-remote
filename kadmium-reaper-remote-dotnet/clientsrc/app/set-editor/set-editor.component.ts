@@ -60,12 +60,13 @@ export class SetEditorComponent implements OnInit
             if (this.set.id == 0)
             {
                 await this.setService.postSet(this.set);
+                this.notificationsService.add(StatusCode.Success, "Successfully added set at " + this.set.venue);
             }
             else
             {
                 await this.setService.putSet(this.set);
+                this.notificationsService.add(StatusCode.Success, "Successfully edited set at " + this.set.venue);
             }
-            this.notificationsService.add(StatusCode.Success, "Successfully added set at " + this.set.venue);
             this.router.navigate(["../", { relativeTo: this.route }]);
         }
         catch (reason)

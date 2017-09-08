@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import * as moment from "moment";
+import 'moment/locale/en-au';
 import { Song, SongData } from "./song";
 
 export class SetSkeleton
@@ -17,12 +18,12 @@ export class SetSkeleton
 
     public get dateFormatted(): string
     {
-        return moment(this.date).format("L");
+        return this.date.format("L");
     }
 
     public set humanDate(originalDate: string)
     {
-        this.date.set(originalDate);
+        this.date = moment(originalDate);
     }
 
     public get humanDate(): string

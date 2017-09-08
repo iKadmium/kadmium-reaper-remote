@@ -53,12 +53,13 @@ export class SongEditorComponent implements OnInit
             if (this.song.id == 0)
             {
                 await this.songService.postSong(this.song);
+                this.notificationsService.add(StatusCode.Success, "Successfully added " + this.song.name);
             }
             else
             {
                 await this.songService.putSong(this.song);
+                this.notificationsService.add(StatusCode.Success, "Successfully edited " + this.song.name);
             }
-            this.notificationsService.add(StatusCode.Success, "Successfully added " + this.song.name);
             this.router.navigate(["../", { relativeTo: this.route }]);
         }
         catch (reason)
