@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+.card-link {
+    cursor: pointer;
+    color: #007bff !important;
+}
+
+.card-margin {
+    margin-bottom: 1rem;
+}
+
+.body-content {
+    margin-top: 56px;
+}

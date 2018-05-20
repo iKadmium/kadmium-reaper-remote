@@ -22,17 +22,26 @@ namespace kadmium_reaper_remote_dotnet.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<SetSkeleton> Get()
+        public async Task<IEnumerable<SetWithSongs>> Get()
         {
+            var returnVal = new List<SetWithSongs>();
+
             var sets = from set in _context.Sets
                        orderby set.Date descending
-                       select new SetSkeleton
-                       {
-                           Id = set.Id,
-                           Venue = set.Venue,
-                           Date = set.Date
-                       };
-            return sets;
+                       select set;
+
+            foreach (var set in sets)
+            {
+                var songs = await _context.LoadSongsForSet(set.Id);
+                returnVal.Add(new SetWithSongs()
+                {
+                    Date = set.Date,
+                    Id = set.Id,
+                    Songs = songs,
+                    Venue = set.Venue
+                });
+            }
+            return returnVal;
         }
 
         // GET api/values/5

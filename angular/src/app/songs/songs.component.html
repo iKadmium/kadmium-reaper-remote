@@ -1,0 +1,47 @@
+<h2 *ngIf="!songs">Loading...</h2>
+<div class="row">
+	<div class="col-md-4" *ngFor="let song of songs">
+		<div class="card card-margin">
+			<div class="card-body">
+				<h5 class="card-title">{{song.name}}</h5>
+				<p class="card-text">{{song.durationFormatted}}</p>
+				<div class="btn-group d-flex">
+					<button class="btn flex-fill btn-outline-primary" (click)="activate(song)" ngbTooltip="Activate">
+						<fa-icon icon="external-link-alt"></fa-icon>
+					</button>
+					<button [routerLink]="song.id" type="button" class="btn flex-fill btn-outline-secondary" ngbTooltip="Edit">
+						<fa-icon icon="edit"></fa-icon>
+					</button>
+					<button type="button" class="btn flex-fill btn-danger" (click)="delete(song)" ngbTooltip="Delete">
+						<fa-icon icon="trash"></fa-icon>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+	<div class="col-md-3">
+		<div class="btn-group btn-group-lg d-flex">
+			<a [routerLink]="'new'" class="btn btn-outline-success" ngbTooltip="Add">
+				<fa-icon icon="plus-circle"></fa-icon>
+			</a>
+
+			<button class="btn btn-outline-primary" (click)="songsInput.click()" ngbTooltip="Import">
+				<fa-icon icon="cloud-upload-alt"></fa-icon>
+			</button>
+
+			<a href="/api/Song" download="songs.json" class="btn btn-outline-primary" ngbTooltip="Export">
+				<fa-icon icon="cloud-download-alt"></fa-icon>
+			</a>
+
+			<button class="btn btn-outline-primary" (click)="keymapFile.click()" ngbTooltip="Mass Edit Commands">
+				<fa-icon icon="clipboard-list"></fa-icon>
+			</button>
+		</div>
+	</div>
+</nav>
+
+<input type="file" style="display: none;" (change)="importFilesSelected($event.target.files)" accept=".json" #songsInput>
+<input type="file" style="display: none;" (change)="keymapFilesSelected($event.target.files)" accept=".ReaperKeyMap" #keymapFile>

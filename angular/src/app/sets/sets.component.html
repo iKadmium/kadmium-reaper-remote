@@ -1,0 +1,32 @@
+<h2 *ngIf="!sets">Loading...</h2>
+<div class="row">
+	<div class="col-md-4" *ngFor="let set of sets">
+		<div class="card card-margin">
+			<div class="card-body">
+				<h5 class="card-title">{{set.venue}}</h5>
+				<p class="card-text">{{set.dateFormatted}} - {{set.durationFormatted}}</p>
+				<div class="btn-group d-flex">
+					<button routerLink="activate/{{set.id}}" type="button" class="btn flex-fill btn-outline-primary" ngbTooltip="Activate">
+						<fa-icon icon="external-link-alt"></fa-icon>
+					</button>
+					<button [routerLink]="set.id" type="button" class="btn flex-fill btn-outline-secondary" ngbTooltip="Edit">
+						<fa-icon icon="edit"></fa-icon>
+					</button>
+					<button type="button" class="btn flex-fill btn-danger" (click)="delete(set)" ngbTooltip="Delete">
+						<fa-icon icon="trash"></fa-icon>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+	<div class="col-md-3">
+		<div class="btn-group btn-group-lg d-flex justify-content-between">
+			<a [routerLink]="'new'" class="btn btn-outline-success btn-lg" ngbTooltip="Add">
+				<fa-icon icon="plus-circle"></fa-icon>
+			</a>
+		</div>
+	</div>
+</nav>

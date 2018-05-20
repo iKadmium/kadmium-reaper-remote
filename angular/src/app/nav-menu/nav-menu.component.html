@@ -1,0 +1,37 @@
+<header class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
+    <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true"> Reaper Remote</a>
+
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed" [attr.aria-expanded]="!navbarCollapsed"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/sets']" (click)="navbarCollapsed = true">
+                    <fa-icon icon="list-ol"></fa-icon> Sets
+                </a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/songs']" (click)="navbarCollapsed = true">
+                    <fa-icon icon="file-audio"></fa-icon> Songs
+                </a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [href]="reaperUri" (click)="navbarCollapsed = true">
+                    <fa-icon icon="play"></fa-icon> Remote
+                </a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/settings']" (click)="navbarCollapsed = true">
+                    <fa-icon icon="cog"></fa-icon> Settings
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <app-notification-menu class="navbar-toggler-right d-none d-md-block"></app-notification-menu>
+
+</header>

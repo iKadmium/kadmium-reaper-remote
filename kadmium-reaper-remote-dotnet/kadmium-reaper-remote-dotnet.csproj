@@ -1,51 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-  <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <DebugType>portable</DebugType>
-    <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>kadmium-reaper-remote-dotnet</AssemblyName>
-    <OutputType>Exe</OutputType>
-    <PackageId>kadmium-reaper-remote-dotnet</PackageId>
-    <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
-    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Update="settings.schema.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.AngularServices" Version="1.1.0-beta-000002" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.1" />
-    <PackageReference Include="Newtonsoft.Json.Schema" Version="2.0.11" />
-  </ItemGroup>
-  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
-    <Exec Command="npm install" />
-    <Exec Command="ng build --prod" />
-    <ItemGroup>
-      <DistFiles Include="wwwroot\**\*" />
-      <Content Include="@(DistFiles)" CopytoPublishDirectory="Always" />
-      <ContentWithTargetPath Include="@(DistFiles)" TargetPath="%(Identity)" CopyToPublishDirectory="Always" />
-    </ItemGroup>
-  </Target>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.0</TargetFramework>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<DebugType>portable</DebugType>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+		<AssemblyName>kadmium-reaper-remote-dotnet</AssemblyName>
+		<OutputType>Exe</OutputType>
+		<PackageId>kadmium-reaper-remote-dotnet</PackageId>
+		<RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Update="settings.schema.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.AngularServices" Version="1.1.0-beta-000002" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.2" />
+		<PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.10" />
+	</ItemGroup>
+	<ItemGroup>
+		<DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
+	</ItemGroup>
 </Project>

@@ -1,0 +1,49 @@
+<!-- <div class="btn-group" dropdown placement="bottom right">
+    <button ngbDropdown class="btn navbar-btn notification-button" [ngClass]="{'btn-default': notificationsService.messages.length == 0, 'btn-danger': notificationsService.messages.length > 0 }">
+        <span class="glyphicon glyphicon-bell"></span>
+    </button>
+    <ul ngbDropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+        <li *ngFor="let message of notificationsService.messages; let i = index">
+            <div *ngIf="i < 10" class="alert notification-menu-entry" [ngClass]="message.alertStyle">
+                <div class="media-left">
+                    <span class="glyphicon" [ngClass]="message.glyphIcon"></span>
+                </div>
+                <div class="media-body">
+                    {{message.body}}
+                    <br>
+                    <button class="btn btn-default" *ngIf="message.details" (click)="iframeLoad(message, i); showModal(modalContent);" [attr.data-target]="'#error-details-' + i"
+                        data-toggle="modal">Details</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div> -->
+
+<div class="row">
+    <div class="col">
+        <div ngbDropdown class="d-inline-block">
+            <button class="btn" id="dropdownBasic1" ngbDropdownToggle [ngClass]="{'btn-outline-primary': notificationsService.messages.length == 0, 'btn-primary': notificationsService.messages.length > 0 }">
+                <fa-icon icon="bell"></fa-icon>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button *ngFor="let message of notificationsService.messages; let i = index" class="dropdown-item">
+                    {{message.body}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #modalContent let-c="close" let-d="dismiss">
+    <div class="modal-header" id="modal-header">
+        <button type="button" class="close" (click)="modalDiv.hide()">&times;</button>
+        <h4 class="modal-title">Error Details</h4>
+    </div>
+    <div class="modal-body">
+        <iframe [srcdoc]="getActiveMessageBody()" id="error-details-iframe" class="error-frame"></iframe>
+    </div>
+    <div class="modal-footer" id="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modalDiv.hide()">Close</button>
+    </div>
+</ng-template>
