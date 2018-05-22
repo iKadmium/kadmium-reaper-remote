@@ -70,7 +70,7 @@ export class SetEditorComponent implements OnInit
                 await this.setService.putSet(this.set);
                 this.notificationsService.add(StatusCode.Success, "Successfully edited set at " + this.set.venue);
             }
-            this.router.navigate(["../", { relativeTo: this.route }]);
+            this.router.navigate(["../"]);
         }
         catch (reason)
         {

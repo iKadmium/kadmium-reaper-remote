@@ -22,11 +22,11 @@
 <div class="row">
     <div class="col">
         <div ngbDropdown class="d-inline-block">
-            <button class="btn" id="dropdownBasic1" ngbDropdownToggle [ngClass]="{'btn-outline-primary': notificationsService.messages.length == 0, 'btn-primary': notificationsService.messages.length > 0 }">
+            <button class="btn" id="dropdownBasic1" ngbDropdownToggle [disabled]="notificationsService.messages.length == 0" [ngClass]="{'btn-outline-primary': notificationsService.messages.length == 0, 'btn-primary': notificationsService.messages.length > 0 }">
                 <fa-icon icon="bell"></fa-icon>
             </button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button *ngFor="let message of notificationsService.messages; let i = index" class="dropdown-item">
+                <button *ngFor="let message of notificationsService.messages; let i = index" class="dropdown-item {{message.alertStyle}}">
                     {{message.body}}
                 </button>
             </div>

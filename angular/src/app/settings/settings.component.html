@@ -1,5 +1,6 @@
-<h2 *ngIf="!settings">
-    Loading...</h2>
+<p *ngIf="!settings">
+    <ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true">Loading</ngb-progressbar>
+</p>
 <div class="row" *ngIf="settings">
     <div class="col">
         <form *ngIf="settings" class="form">

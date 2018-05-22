@@ -12,18 +12,19 @@ namespace kadmium_reaper_remote_dotnet.Util
 {
     public static class FileAccess
     {
-        static string HomeFolder = Environment.GetEnvironmentVariable(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "LocalAppData" : "Home");
-        private static string DataLocation => Path.Combine(HomeFolder, "kadmium-reaper-remote");
-        
+        static string HomeFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        private static string DataLocation => Path.Combine(HomeFolder, "kadmium-reaper-remote/data");
+
         private static string DatabaseFilename => "ReaperRemote.db";
         public static string ProductionDatabasePath => Path.Combine(DataLocation, DatabaseFilename);
         public static string DebugDatabasePath => Path.Combine(AppContext.BaseDirectory, DatabaseFilename);
         public static string TestingDatabasePath => Path.Combine(AppContext.BaseDirectory, "test-" + DatabaseFilename);
-        
+
         static string SettingsLocation = Path.Combine(DataLocation, "settings.json");
-        
+
         public static async Task<Settings> LoadSettings()
         {
+            Console.WriteLine("Searching for settings file in " + SettingsLocation);
             if (!File.Exists(SettingsLocation))
             {
                 var settings = new Settings();

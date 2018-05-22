@@ -33,7 +33,6 @@ export class SetsComponent implements OnInit
             this.title.setTitle("Sets");
             this.allSongs = await this.songService.getSongs();
             this.sets = await this.setService.getSets(this.allSongs);
-            console.log(this.sets);
         }
         catch (reason)
         {

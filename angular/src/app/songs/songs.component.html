@@ -1,4 +1,6 @@
-<h2 *ngIf="!songs">Loading...</h2>
+<p *ngIf="!songs">
+	<ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true">Loading</ngb-progressbar>
+</p>
 <div class="row">
 	<div class="col-md-4" *ngFor="let song of songs">
 		<div class="card card-margin">

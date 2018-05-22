@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/toPromise';
+
 
 import { Set, SetData, SetSkeletonData, SetSkeleton } from "./set";
 import { Song, SongData } from "./song";

@@ -23,6 +23,7 @@ bld/
 [Oo]bj/
 
 **/dist
+kadmium-reaper-remote-dotnet/out
 
 # Visual Studio 2015 cache/options directory
 .vs/

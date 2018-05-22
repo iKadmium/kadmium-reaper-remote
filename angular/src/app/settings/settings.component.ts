@@ -16,11 +16,11 @@ import { StatusCode } from "../status-code.enum";
 export class SettingsComponent implements OnInit
 {
     public busy: boolean = false;
-    settings: Settings;
+    public settings: Settings;
 
     constructor(private settingsService: SettingsService, private title: Title, private notificationsService: NotificationsService)
     {
-        this.settings = new Settings();
+
     }
 
     async ngOnInit(): Promise<void>
@@ -30,6 +30,7 @@ export class SettingsComponent implements OnInit
         try
         {
             let data = await this.settingsService.get();
+            this.settings = new Settings();
             this.settings.load(data);
         }
         catch (reason)

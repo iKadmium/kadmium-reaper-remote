@@ -63,7 +63,7 @@ export class SongEditorComponent implements OnInit
                 await this.songService.putSong(this.song);
                 this.notificationsService.add(StatusCode.Success, "Successfully edited " + this.song.name);
             }
-            this.router.navigate(["../", { relativeTo: this.route }]);
+            this.router.navigate(["../"]);
         }
         catch (reason)
         {

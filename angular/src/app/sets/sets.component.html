@@ -1,4 +1,6 @@
-<h2 *ngIf="!sets">Loading...</h2>
+<p *ngIf="!sets">
+	<ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true">Loading</ngb-progressbar>
+</p>
 <div class="row">
 	<div class="col-md-4" *ngFor="let set of sets">
 		<div class="card card-margin">
