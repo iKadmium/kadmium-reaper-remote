@@ -1,0 +1,29 @@
+<p *ngIf="!settings">
+    <ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true">Loading</ngb-progressbar>
+</p>
+<div class="row" *ngIf="settings">
+    <div class="col">
+        <form *ngIf="settings" (submit)="save()" class="form">
+            <fieldset [disabled]="busy">
+                <div class="form-group">
+                    <label class="control-label" for="httpPort">HTTP Port:</label>
+                    <input type="number" class="form-control" id="httpPort" min="0" max="65535" [(ngModel)]="settings.httpPort"
+                        name="httpPort">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="reaperWebUri">Reaper Web URI:</label>
+                    <input type="text" class="form-control" id="reaperWebUri" [(ngModel)]="settings.reaperURI" name="reaperWebUri">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="lightingVenueUri">Lighting Venue URI:</label>
+                    <input type="text" class="form-control" id="lightingVenueUri" [(ngModel)]="settings.lightingVenueURI"
+                        name="lightingVenueURI">
+                </div>
+
+                <button class="btn btn-outline-success btn-lg" type="submit" [disabled]="busy">
+                    <fa-icon icon="save"></fa-icon> Save
+                </button>
+            </fieldset>
+        </form>
+    </div>
+</div>

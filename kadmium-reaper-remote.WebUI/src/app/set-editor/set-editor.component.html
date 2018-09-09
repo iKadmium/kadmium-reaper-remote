@@ -1,0 +1,61 @@
+<h2 *ngIf="!set">Loading...</h2>
+<div class="row">
+	<div class="col">
+		<form *ngIf="set" (submit)="save()">
+			<fieldset [disabled]="busy">
+				<div class="form-group">
+					<label class="control-label" for="date">Date</label>
+					<input class="form-control" type="date" name="date" [(ngModel)]="set.humanDate">
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="venue">Venue</label>
+					<input type="text" class="form-control" name="venue" [(ngModel)]="set.venue">
+				</div>
+				<div>
+					<h1 class="d-none d-sm-block">Length: {{set.durationFormatted}}</h1>
+					<h1 class="d-sm-none text-center">{{set.durationFormatted}}</h1>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4" *ngFor="let song of set.songs; let i=index" @slideInOut>
+						<div class="card card-margin">
+							<div class="card-body">
+								<h5 class="card-title">{{i + 1}} - {{song.name}}</h5>
+								<div class="form-group">
+									<select [(ngModel)]="set.songs[i]" [compareWith]="getComparer" class="form-control" [name]="'song[' + i + ']'">
+										<option *ngFor="let c of allSongs" [ngValue]="c">{{c.name}} ({{c.durationFormatted}})</option>
+									</select>
+								</div>
+
+								<div class="btn-group d-flex">
+									<button [disabled]="i == 0" (click)="set.moveSong(song, -1)" type="button" class="btn flex-fill btn-outline-secondary">
+										<fa-icon icon="arrow-up"></fa-icon>
+									</button>
+									<button [disabled]="i == (set.songs.length - 1)" (click)="set.moveSong(song, 1)" type="button" class="btn flex-fill btn-outline-secondary">
+										<fa-icon icon="arrow-down"></fa-icon>
+									</button>
+									<button type="button" class="btn flex-fill btn-danger " (click)="set.removeSong(song) ">
+										<fa-icon icon="trash"></fa-icon>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<div class="btn-group">
+							<button type="button" class="btn btn-lg btn-outline-success" (click)="set.addSong(allSongs[0])">
+								<fa-icon icon="plus-circle"></fa-icon> Add
+							</button>
+							<button type="submit" class="btn btn-lg btn-outline-primary" [disabled]="busy">
+								<fa-icon icon="save"></fa-icon> Save
+							</button>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>

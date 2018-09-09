@@ -1,5 +1,5 @@
-kadmium-reaper-remote-dotnet\bin\
-kadmium-reaper-remote-dotnet\obj\
-kadmium-reaper-remote-dotnet\out\
-angular\node_modules\
-angular\dist
+kadmium-reaper-remote.WebAPI\bin\
+kadmium-reaper-remote.WebAPI\obj\
+kadmium-reaper-remote.WebAPI\out\
+kadmium-reaper-remote.WebUI\node_modules\
+kadmium-reaper-remote.WebUI\angular\dist

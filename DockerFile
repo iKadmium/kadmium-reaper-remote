@@ -1,29 +1,30 @@
 FROM node:8.10 as node
-WORKDIR app
+WORKDIR /app
 
-COPY angular/package.json /app/
+COPY kadmium-reaper-remote.WebUI/package.json /app/
 RUN npm install
 
-COPY angular/ /app/
+COPY kadmium-reaper-remote.WebUI/ /app/
 ARG env=production
 
 RUN npm run build -- --prod --configuration=$env
 
-FROM microsoft/aspnetcore-build:2.0 AS build-env
+FROM microsoft/dotnet:2.1-sdk AS aspnetcore-build-env
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
-COPY kadmium-reaper-remote-dotnet/*.csproj ./kadmium-reaper-remote-dotnet/
-COPY kadmium-reaper-remote-dotnet.sln .
+COPY kadmium-reaper-remote.WebAPI/*.csproj ./kadmium-reaper-remote.WebAPI/
+COPY kadmium-reaper-remote.sln .
 RUN dotnet restore
 
 # Copy everything else and build
-COPY kadmium-reaper-remote-dotnet/ ./kadmium-reaper-remote-dotnet/
+COPY kadmium-reaper-remote.WebAPI/ ./kadmium-reaper-remote.WebAPI/
 RUN dotnet publish -c Release -o out
-COPY --from=node /app/dist kadmium-reaper-remote-dotnet/out/wwwroot
+COPY --from=node /app/dist kadmium-reaper-remote.WebAPI/out/wwwroot
 
 # Build runtime image
-FROM microsoft/aspnetcore:2.0
+FROM microsoft/dotnet:2.1-aspnetcore-runtime
+EXPOSE 80
 WORKDIR /app
-COPY --from=build-env /app/kadmium-reaper-remote-dotnet/out .
+COPY --from=aspnetcore-build-env /app/kadmium-reaper-remote.WebAPI/out .
 ENTRYPOINT ["dotnet", "kadmium-reaper-remote-dotnet.dll"]
