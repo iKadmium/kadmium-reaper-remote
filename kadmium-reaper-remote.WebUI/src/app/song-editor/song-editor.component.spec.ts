@@ -1,10 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SongEditorComponent } from './song-editor.component';
 import { FormsModule } from "@angular/forms";
-import { MockSongService, SongService } from "../song.service";
 import { RouterTestingModule } from "@angular/router/testing";
 import { NotificationsService } from "../notifications.service";
+import { SongService } from "../song.service";
+import { SongEditorComponent } from './song-editor.component';
+import { MockComponent } from 'ng-mocks';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+
 
 describe('SongEditorComponent', () =>
 {
@@ -14,7 +16,10 @@ describe('SongEditorComponent', () =>
     beforeEach(async(() =>
     {
         TestBed.configureTestingModule({
-            declarations: [SongEditorComponent],
+            declarations: [
+                SongEditorComponent,
+                MockComponent(FaIconComponent)
+            ],
             imports: [
                 FormsModule,
                 RouterTestingModule
@@ -22,8 +27,8 @@ describe('SongEditorComponent', () =>
         }).overrideComponent(SongEditorComponent, {
             set: {
                 providers: [
-                    { provide: SongService, useClass: MockSongService },
-                    NotificationsService
+                    { provide: SongService, useValue: jasmine.createSpyObj<SongService>({ getSong: Promise.resolve(null) }) },
+                    { provide: NotificationsService, useValue: jasmine.createSpyObj<NotificationsService>({ add: null }) }
                 ]
             }
         }).compileComponents();

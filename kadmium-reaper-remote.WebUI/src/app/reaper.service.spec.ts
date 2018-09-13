@@ -1,9 +1,8 @@
-import { TestBed, inject, fakeAsync } from '@angular/core/testing';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { fakeAsync, inject, TestBed } from '@angular/core/testing';
 import { ReaperService } from './reaper.service';
-import { XHRBackend, HttpModule } from "@angular/http";
-import { MockBackend } from "@angular/http/testing";
 import { UrlService } from "./url.service";
+
 
 describe('ReaperService', () =>
 {
@@ -12,16 +11,16 @@ describe('ReaperService', () =>
         TestBed.configureTestingModule({
             providers: [
                 ReaperService,
-                { provide: XHRBackend, useClass: MockBackend },
+                { provide: HttpClient, useValue: jasmine.createSpyObj<HttpClient>({ post: Promise.resolve(null) }) },
                 UrlService
             ],
             imports: [
-                HttpModule
+                HttpClientModule
             ]
         });
     });
 
-    it('should ...', inject([ReaperService, XHRBackend], fakeAsync((service: ReaperService, backend: XHRBackend) =>
+    it('should ...', inject([ReaperService], fakeAsync((service: ReaperService) =>
     {
         expect(service).toBeTruthy();
     })));

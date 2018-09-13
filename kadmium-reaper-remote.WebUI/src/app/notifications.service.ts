@@ -5,7 +5,9 @@ import { Status } from "./status";
 import { NotificationMenuComponent } from "./notification-menu/notification-menu.component";
 import { ToastsComponent } from './toasts/toasts.component';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class NotificationsService
 {
     public component: NotificationMenuComponent;

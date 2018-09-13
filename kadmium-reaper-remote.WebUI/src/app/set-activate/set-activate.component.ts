@@ -1,36 +1,39 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { NotificationsService } from 'app/notifications.service';
+import { ReaperService } from 'app/reaper.service';
+import { Set } from 'app/set';
 import { SetService } from 'app/set.service';
 import { SongService } from 'app/song.service';
-import { ReaperService } from 'app/reaper.service';
-import { SetSkeleton, Set } from 'app/set';
-import { Title } from '@angular/platform-browser';
-import { NotificationsService } from 'app/notifications.service';
 import { StatusCode } from 'app/status-code.enum';
 import { Song } from '../song';
-import { ActivatedRoute } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
 	selector: 'app-set-activate',
 	templateUrl: './set-activate.component.html',
-	styleUrls: ['./set-activate.component.css'],
-	providers: [SetService, SongService, ReaperService]
+	styleUrls: ['./set-activate.component.css']
 })
 export class SetActivateComponent implements OnInit
 {
-	private set: Set;
 	private allSongs: Song[];
 	public StatusCode = StatusCode;
 	public tasks: Task[] = [];
 
-	constructor(private title: Title, private route: ActivatedRoute, private notificationsService: NotificationsService, private setService: SetService, private songService: SongService, private reaperService: ReaperService) { }
+	constructor(private title: Title,
+		private route: ActivatedRoute,
+		private notificationsService: NotificationsService,
+		private setService: SetService,
+		private songService: SongService,
+		private reaperService: ReaperService) { }
 
 	ngOnInit()
 	{
-		this.title.setTitle("Sets");
+		this.title.setTitle("Set Activate");
 		let id = this.route.snapshot.params['id'];
 
-		let loadSongsTask: Task = { name: "Loading Songs", status: StatusCode.Unknown };
+		let loadSongsTask: Task = new Task("Loading Songs");
 		this.tasks.push(loadSongsTask);
 
 		try
@@ -40,13 +43,21 @@ export class SetActivateComponent implements OnInit
 				loadSongsTask.status = StatusCode.Success;
 				this.allSongs = songs;
 
-				let loadSetTask: Task = { name: "Loading Set", status: StatusCode.Unknown };
+				let loadSetTask = new Task("Loading Set");
 				this.tasks.push(loadSetTask);
-				this.setService.getSet(id, this.allSongs).then(set =>
+				try
 				{
-					loadSetTask.status = StatusCode.Success;
-					this.activate(set);
-				});
+					this.setService.getSet(id, this.allSongs).then(set =>
+					{
+						loadSetTask.status = StatusCode.Success;
+						this.activate(set);
+					});
+				}
+				catch (error)
+				{
+					this.notificationsService.add(StatusCode.Error, error);
+					loadSetTask.status = StatusCode.Error;
+				}
 			});
 		}
 		catch (error)
@@ -58,7 +69,7 @@ export class SetActivateComponent implements OnInit
 
 	private async runCommand(command: () => Promise<void>, name: string): Promise<void>
 	{
-		let task: Task = { name: name, status: StatusCode.Unknown };
+		let task = new Task(name);
 		try
 		{
 			this.tasks.push(task);
@@ -69,15 +80,7 @@ export class SetActivateComponent implements OnInit
 		{
 			this.notificationsService.add(StatusCode.Error, reason);
 			task.status = StatusCode.Error;
-			if (reason instanceof HttpErrorResponse)
-			{
-				const errorResponse = reason as HttpErrorResponse;
-				task.name += " - " + errorResponse.statusText;
-			}
-			else
-			{
-				task.name += " - " + reason;
-			}
+			task.name += " - " + reason;
 		}
 	}
 
@@ -102,8 +105,9 @@ export class SetActivateComponent implements OnInit
 	}
 }
 
-interface Task
+class Task
 {
-	name: string,
-	status: StatusCode
+	constructor(public name: string, public status: StatusCode = StatusCode.Unknown)
+	{
+	}
 }

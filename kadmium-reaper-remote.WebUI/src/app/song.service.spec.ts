@@ -4,6 +4,7 @@ import { SongService } from './song.service';
 import { UrlService } from "./url.service";
 import { HttpModule, XHRBackend } from "@angular/http";
 import { MockBackend } from "@angular/http/testing";
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 describe('SongService', () =>
 {
@@ -12,16 +13,23 @@ describe('SongService', () =>
         TestBed.configureTestingModule({
             providers: [
                 SongService,
-                { provide: XHRBackend, useClass: MockBackend },
+                {
+                    provide: HttpClient, useValue: jasmine.createSpyObj<HttpClient>({
+                        get: Promise.resolve(),
+                        post: Promise.resolve(),
+                        put: Promise.resolve(),
+                        delete: Promise.resolve()
+                    })
+                },
                 UrlService
             ],
             imports: [
-                HttpModule
+                HttpClientModule
             ]
         });
     });
 
-    it('should ...', inject([SongService, XHRBackend], fakeAsync((service: SongService, backend: XHRBackend) =>
+    it('should ...', inject([SongService], fakeAsync((service: SongService) =>
     {
         expect(service).toBeTruthy();
     })));

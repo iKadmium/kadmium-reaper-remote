@@ -16,7 +16,6 @@ import { SlideInOut } from 'app/animation-library';
     selector: 'app-set-editor',
     templateUrl: './set-editor.component.html',
     styleUrls: ['./set-editor.component.css'],
-    providers: [SetService, SongService],
     animations: [SlideInOut]
 })
 export class SetEditorComponent implements OnInit
@@ -26,33 +25,50 @@ export class SetEditorComponent implements OnInit
 
     public busy: boolean = true;
 
-    constructor(private route: ActivatedRoute, private title: Title,
-        private notificationsService: NotificationsService, private setService: SetService, private songService: SongService,
+    constructor(
+        private route: ActivatedRoute,
+        private title: Title,
+        private notificationsService: NotificationsService,
+        private setService: SetService,
+        private songService: SongService,
         private router: Router)
     {
         this.allSongs = [];
     }
 
-    async ngOnInit(): Promise<void>
+    ngOnInit(): void
     {
         this.busy = true;
         try
         {
-            this.allSongs = await this.songService.getSongs();
             this.title.setTitle("Set Editor");
             let id = this.route.snapshot.params['id'];
-            if (id == null)
+            this.songService.getSongs().then(songs =>
             {
-                this.set = new Set();
-            }
-            else
-            {
-                this.set = await this.setService.getSet(id, this.allSongs);
-            }
+                this.allSongs = songs;
+                if (id == null)
+                {
+                    this.set = new Set();
+                }
+                else
+                {
+                    try
+                    {
+                        this.setService.getSet(id, this.allSongs).then(set =>
+                        {
+                            this.set = set;
+                        });
+                    } catch (error)
+                    {
+                        this.notificationsService.add(StatusCode.Error, error);
+                    }
+                }
+            });
+
         }
-        catch (reason)
+        catch (error)
         {
-            this.notificationsService.add(StatusCode.Error, reason);
+            this.notificationsService.add(StatusCode.Error, error);
         }
         this.busy = false;
     }

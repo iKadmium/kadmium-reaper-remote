@@ -10,8 +10,7 @@ import { StatusCode } from "../status-code.enum";
 @Component({
     selector: 'app-settings',
     templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.css'],
-    providers: [SettingsService]
+    styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit
 {

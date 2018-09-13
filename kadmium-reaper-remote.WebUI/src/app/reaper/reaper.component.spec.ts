@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReaperComponent } from './reaper.component';
-import { MockReaperService, ReaperService } from "../reaper.service";
+import { ReaperService } from "../reaper.service";
 
 describe('ReaperComponent', () =>
 {
@@ -15,7 +15,7 @@ describe('ReaperComponent', () =>
         }).overrideComponent(ReaperComponent, {
             set: {
                 providers: [
-                    { provide: ReaperService, useClass: MockReaperService }
+                    { provide: ReaperService, useValue: jasmine.createSpyObj<ReaperService>({ runCommand: Promise.resolve(null) }) }
                 ]
             }
         }).compileComponents();

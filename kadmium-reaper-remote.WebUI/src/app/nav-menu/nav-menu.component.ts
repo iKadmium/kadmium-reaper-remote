@@ -6,8 +6,7 @@ import { StatusCode } from "../status-code.enum";
 @Component({
     selector: 'app-nav-menu',
     templateUrl: './nav-menu.component.html',
-    styleUrls: ['./nav-menu.component.css'],
-    providers: [SettingsService]
+    styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit
 {
@@ -15,12 +14,14 @@ export class NavMenuComponent implements OnInit
     public reaperUri: string;
     constructor(private settingsService: SettingsService, public notificationsService: NotificationsService) { }
 
-    async ngOnInit(): Promise<void>
+    ngOnInit(): void
     {
         try
         {
-            let settings = await this.settingsService.get();
-            this.reaperUri = settings.reaperURI;
+            this.settingsService.get().then(settings =>
+            {
+                this.reaperUri = settings.reaperURI;
+            })
         }
         catch (reason)
         {

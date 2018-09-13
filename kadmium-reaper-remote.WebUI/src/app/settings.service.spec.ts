@@ -1,9 +1,9 @@
-import { TestBed, inject, fakeAsync } from '@angular/core/testing';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { fakeAsync, inject, TestBed } from '@angular/core/testing';
+import { from } from 'rxjs';
 import { SettingsService } from './settings.service';
 import { UrlService } from "./url.service";
-import { XHRBackend, HttpModule } from "@angular/http";
-import { MockBackend } from "@angular/http/testing";
+
 
 describe('SettingsService', () =>
 {
@@ -12,16 +12,16 @@ describe('SettingsService', () =>
         TestBed.configureTestingModule({
             providers: [
                 SettingsService,
-                { provide: XHRBackend, useClass: MockBackend },
+                { provide: HttpClient, useValue: jasmine.createSpyObj<HttpClient>({ get: from([]), put: from([]) }) },
                 UrlService
             ],
             imports: [
-                HttpModule
+                HttpClientModule
             ]
         });
     });
 
-    it('should ...', inject([SettingsService, XHRBackend], fakeAsync((service: SettingsService) =>
+    it('should ...', inject([SettingsService], fakeAsync((service: SettingsService) =>
     {
         expect(service).toBeTruthy();
     })));

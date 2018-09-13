@@ -30,23 +30,3 @@ export class ReaperService
             });
     }
 }
-
-@Injectable()
-export class MockReaperService extends ReaperService
-{
-    constructor()
-    {
-        super(null, null
-        );
-    }
-
-    public runCommand(command: string): Promise<void>
-    {
-        return new Promise<void>(
-            (resolve, reject) =>
-            {
-                resolve();
-            }
-        );
-    }
-}

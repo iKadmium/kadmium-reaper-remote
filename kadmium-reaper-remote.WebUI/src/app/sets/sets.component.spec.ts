@@ -1,10 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SetsComponent } from './sets.component';
-import { MockReaperService, ReaperService } from "../reaper.service";
-import { MockSongService, SongService } from "../song.service";
-import { MockSetService, SetService } from "../set.service";
 import { NotificationsService } from "../notifications.service";
+import { SetService } from "../set.service";
+import { SongService } from "../song.service";
+import { SetsComponent } from './sets.component';
+import { MockComponent } from 'ng-mocks';
+import { NgbProgressbar } from '@ng-bootstrap/ng-bootstrap';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+
 
 describe('SetsComponent', () =>
 {
@@ -15,15 +18,19 @@ describe('SetsComponent', () =>
     {
         TestBed.configureTestingModule({
             declarations: [
-                SetsComponent
+                SetsComponent,
+                MockComponent(NgbProgressbar),
+                MockComponent(FaIconComponent)
+            ],
+            imports: [
+                RouterTestingModule
             ]
         }).overrideComponent(SetsComponent, {
             set: {
                 providers: [
-                    { provide: SetService, useClass: MockSetService },
-                    { provide: SongService, useClass: MockSongService },
-                    { provide: ReaperService, useClass: MockReaperService },
-                    NotificationsService
+                    { provide: SetService, useValue: jasmine.createSpyObj<SetService>({ getSets: Promise.resolve([]) }) },
+                    { provide: SongService, useValue: jasmine.createSpyObj<SongService>({ getSongs: Promise.resolve([]) }) },
+                    { provide: NotificationsService, useValue: jasmine.createSpyObj<NotificationsService>({ add: null }) }
                 ]
             }
         }).compileComponents();
