@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from "../settings.service";
-import { NotificationsService } from "../notifications.service";
+import { SettingsService } from "../services/settings.service";
+import { NotificationsService } from "../services/notifications.service";
 import { StatusCode } from "../status-code.enum";
 
 @Component({

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
-
-import { SettingsService } from "../settings.service";
+import { NotificationsService } from "../services/notifications.service";
+import { SettingsService } from "../services/settings.service";
 import { Settings } from "../settings";
-
-import { NotificationsService } from "../notifications.service";
 import { StatusCode } from "../status-code.enum";
 
 @Component({

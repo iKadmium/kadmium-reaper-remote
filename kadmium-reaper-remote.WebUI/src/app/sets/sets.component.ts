@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
-import { NotificationsService } from "../notifications.service";
+import { NotificationsService } from "../services/notifications.service";
 import { Set } from "../set";
-import { SetService } from "../set.service";
+import { SetService } from "../services/set.service";
 import { Song } from "../song";
-import { SongService } from "../song.service";
+import { SongService } from "../services/song.service";
 import { StatusCode } from "../status-code.enum";
 
 
@@ -12,8 +12,7 @@ import { StatusCode } from "../status-code.enum";
 @Component({
     selector: 'app-sets',
     templateUrl: './sets.component.html',
-    styleUrls: ['./sets.component.css'],
-    providers: [SetService, SongService]
+    styleUrls: ['./sets.component.css']
 })
 export class SetsComponent implements OnInit
 {
@@ -27,22 +26,29 @@ export class SetsComponent implements OnInit
 
     ngOnInit(): void
     {
+        this.title.setTitle("Sets");
         try
         {
-            this.title.setTitle("Sets");
             this.songService.getSongs().then(songs =>
             {
                 this.allSongs = songs;
-                this.setService.getSets(this.allSongs).then(sets => 
+                try
                 {
-                    this.sets = sets;
-                })
+                    this.setService.getSets(this.allSongs).then(sets => 
+                    {
+                        this.sets = sets;
+                    });
+                }
+                catch (error)
+                {
+                    this.notificationsService.add(StatusCode.Error, error);
+                }
             });
 
         }
-        catch (reason)
+        catch (error)
         {
-            this.notificationsService.add(StatusCode.Error, reason);
+            this.notificationsService.add(StatusCode.Error, error);
         }
     }
 
@@ -51,7 +57,7 @@ export class SetsComponent implements OnInit
         let set = this.sets[index];
         if (window.confirm("Are you sure you want to delete this set?"))
         {
-            this.setService.removeSet(set).then(response =>
+            this.setService.removeSet(set.id).then(response =>
             {
                 this.sets.splice(index, 1);
             })

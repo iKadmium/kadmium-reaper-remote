@@ -17,24 +17,24 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-4" *ngFor="let song of set.songs; let i=index" @slideInOut>
+					<div class="col-md-4" *ngFor="let entry of set.entries; let i=index" @slideInOut>
 						<div class="card card-margin">
 							<div class="card-body">
-								<h5 class="card-title">{{i + 1}} - {{song.name}}</h5>
+								<h5 class="card-title">{{i + 1}} - {{entry.song.name}}</h5>
 								<div class="form-group">
-									<select [(ngModel)]="set.songs[i]" [compareWith]="getComparer" class="form-control" [name]="'song[' + i + ']'">
+									<select [(ngModel)]="set.entries[i].song" [compareWith]="getComparer" class="form-control" [name]="'song[' + i + ']'">
 										<option *ngFor="let c of allSongs" [ngValue]="c">{{c.name}} ({{c.durationFormatted}})</option>
 									</select>
 								</div>
 
 								<div class="btn-group d-flex">
-									<button [disabled]="i == 0" (click)="set.moveSong(song, -1)" type="button" class="btn flex-fill btn-outline-secondary">
+									<button [disabled]="i == 0" (click)="set.moveSong(i, -1)" type="button" class="btn flex-fill btn-outline-secondary">
 										<fa-icon icon="arrow-up"></fa-icon>
 									</button>
-									<button [disabled]="i == (set.songs.length - 1)" (click)="set.moveSong(song, 1)" type="button" class="btn flex-fill btn-outline-secondary">
+									<button [disabled]="i == (set.entries.length - 1)" (click)="set.moveSong(i, 1)" type="button" class="btn flex-fill btn-outline-secondary">
 										<fa-icon icon="arrow-down"></fa-icon>
 									</button>
-									<button type="button" class="btn flex-fill btn-danger " (click)="set.removeSong(song) ">
+									<button type="button" class="btn flex-fill btn-danger " (click)="set.removeSong(i) ">
 										<fa-icon icon="trash"></fa-icon>
 									</button>
 								</div>

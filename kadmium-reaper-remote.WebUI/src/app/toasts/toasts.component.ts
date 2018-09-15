@@ -1,8 +1,7 @@
+import { animateChild, query, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { StatusCode } from 'app/status-code.enum';
+import { NotificationsService } from '../services/notifications.service';
 import { Status } from '../status';
-import { NotificationsService } from 'app/notifications.service';
-import { trigger, transition, query, animateChild } from '@angular/animations';
 
 @Component({
 	selector: 'app-toasts',

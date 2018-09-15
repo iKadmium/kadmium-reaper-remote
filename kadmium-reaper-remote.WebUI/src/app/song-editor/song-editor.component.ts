@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
 import { Title } from "@angular/platform-browser";
-
+import { ActivatedRoute, Router } from "@angular/router";
+import { NotificationsService } from "../services/notifications.service";
+import { SongService } from "../services/song.service";
 import { Song } from "../song";
-
-import { SongService } from "../song.service";
-import { NotificationsService } from "../notifications.service";
 import { StatusCode } from "../status-code.enum";
 
 @Component({
     selector: 'app-song-editor',
     templateUrl: './song-editor.component.html',
-    styleUrls: ['./song-editor.component.css'],
-    providers: [SongService]
+    styleUrls: ['./song-editor.component.css']
 })
 export class SongEditorComponent implements OnInit
 {
@@ -25,7 +22,7 @@ export class SongEditorComponent implements OnInit
 
     }
 
-    async ngOnInit(): Promise<void>
+    ngOnInit()
     {
         this.busy = true;
         let id = this.route.snapshot.params['id'];
@@ -38,7 +35,10 @@ export class SongEditorComponent implements OnInit
             }
             else
             {
-                this.song = await this.songService.getSong(id);
+                this.songService.getSong(id).then(song =>
+                {
+                    this.song = song;
+                });
             }
         }
         catch (reason)

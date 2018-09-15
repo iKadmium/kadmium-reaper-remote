@@ -125,7 +125,7 @@ namespace kadmium_reaper_remote_dotnet.Controllers
             await _context.SaveChangesAsync();
         }
 
-        [HttpGet("[action]/{name}")]
+        [HttpPost("[action]/{name}")]
         public async Task Activate(string name)
         {
             var client = new HttpClient();

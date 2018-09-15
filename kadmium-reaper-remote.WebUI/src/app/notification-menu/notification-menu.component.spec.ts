@@ -1,12 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { NotificationMenuComponent } from './notification-menu.component';
-import { MockComponent } from 'ng-mocks';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationsService } from '../notifications.service';
-import { Status } from '../status';
-import { StatusCode } from '../status-code.enum';
+import { MockComponent } from 'ng-mocks';
+import { NotificationsService } from '../services/notifications.service';
+import { NotificationMenuComponent } from './notification-menu.component';
 
 describe('NotificationMenuComponent', () =>
 {

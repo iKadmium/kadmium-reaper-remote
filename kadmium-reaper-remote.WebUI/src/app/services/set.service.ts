@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 
-import { Set, SetData, SetSkeletonData, SetSkeleton } from "./set";
-import { Song, SongData } from "./song";
+import { Set, SetData, SetSkeletonData, SetSkeleton } from "../set";
+import { Song, SongData } from "../song";
 import { UrlService } from "./url.service";
 import { HttpClient } from '@angular/common/http';
 
@@ -27,10 +27,10 @@ export class SetService
             .toPromise();
     }
 
-    public removeSet(set: SetSkeleton): Promise<void>
+    public removeSet(id: number): Promise<void>
     {
         return this.http
-            .delete<void>(this.urlService.getUrl("Set", null, set.id))
+            .delete<void>(this.urlService.getUrl("Set", null, id))
             .toPromise();
     }
 
@@ -41,11 +41,11 @@ export class SetService
             .toPromise()
             .then(response =>
             {
-                return response.map(x => new Set().load(allSongs, x));
+                return response.map(set => new Set().load(set));
             });
     }
 
-    public getSet(id: number, allSongs: Song[]): Promise<Set>
+    public getSet(id: number): Promise<Set>
     {
         return this.http
             .get<SetData>(this.urlService.getUrl("Set", null, id))
@@ -53,7 +53,7 @@ export class SetService
             .then(response =>
             {
                 let set = new Set();
-                set.load(allSongs, response);
+                set.load(response);
                 return set;
             });
     }
@@ -61,7 +61,7 @@ export class SetService
     public activateVenue(venue: string): Promise<void>
     {
         return this.http
-            .get<void>(this.urlService.getUrl("Set", "activate", venue))
+            .post<void>(this.urlService.getUrl("Set", "activate", venue), null)
             .toPromise();
     }
 

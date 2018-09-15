@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { SongData, Song } from "./song";
+import { SongData, Song } from "../song";
 import { UrlService } from "./url.service";
 import { HttpClient } from '@angular/common/http';
 
@@ -47,9 +47,9 @@ export class SongService
             .toPromise();
     }
 
-    public removeSong(song: Song): Promise<void>
+    public removeSong(id: number): Promise<void>
     {
-        return this.http.delete<void>(this.urlService.getUrl("Song", null, song.id))
+        return this.http.delete<void>(this.urlService.getUrl("Song", null, id))
             .toPromise();
     }
 }

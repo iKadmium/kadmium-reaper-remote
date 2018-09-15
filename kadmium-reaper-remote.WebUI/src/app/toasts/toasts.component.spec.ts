@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToastsComponent } from './toasts.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NotificationsService } from '../notifications.service';
+import { NotificationsService } from '../services/notifications.service';
 import { MockComponent } from 'ng-mocks';
 import { ToastComponent } from '../toast/toast.component';
 

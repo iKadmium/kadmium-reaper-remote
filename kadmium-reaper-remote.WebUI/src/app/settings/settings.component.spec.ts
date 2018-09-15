@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from "@angular/forms";
-import { NotificationsService } from "../notifications.service";
-import { SettingsService } from "../settings.service";
-import { SettingsComponent } from './settings.component';
-import { MockComponent } from 'ng-mocks';
-import { NgbProgressbar } from '@ng-bootstrap/ng-bootstrap';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-
+import { NgbProgressbar } from '@ng-bootstrap/ng-bootstrap';
+import { MockComponent } from 'ng-mocks';
+import { NotificationsService } from "../services/notifications.service";
+import { SettingsService } from "../services/settings.service";
+import { SettingsComponent } from './settings.component';
+import { StatusCode } from '../status-code.enum';
 
 describe('SettingsComponent', () =>
 {
@@ -23,7 +23,12 @@ describe('SettingsComponent', () =>
             ],
             imports: [FormsModule],
             providers: [
-                { provide: SettingsService, useValue: jasmine.createSpyObj<SettingsService>({ get: Promise.resolve(null) }) },
+                {
+                    provide: SettingsService, useValue: jasmine.createSpyObj<SettingsService>({
+                        get: Promise.resolve(null),
+                        save: Promise.resolve()
+                    })
+                },
                 { provide: NotificationsService, useValue: jasmine.createSpyObj<NotificationsService>({ add: null }) }
             ]
         });
@@ -35,11 +40,55 @@ describe('SettingsComponent', () =>
     {
         fixture = TestBed.createComponent(SettingsComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
-    it('should create', () =>
+    describe('component', () =>
     {
-        expect(component).toBeTruthy();
+        it('should create', () =>
+        {
+            fixture.detectChanges();
+            expect(component).toBeTruthy();
+        });
     });
+
+    describe('init', () =>
+    {
+        it('should request the settings', () =>
+        {
+            let settingsServiceMock = TestBed.get(SettingsService) as jasmine.SpyObj<SettingsService>;
+            fixture.detectChanges();
+            expect(settingsServiceMock.get).toHaveBeenCalled();
+        });
+
+        it('should report an error if it cannot get the settings', () =>
+        {
+            let error = new Error("Error");
+            let settingsServiceMock = TestBed.get(SettingsService) as jasmine.SpyObj<SettingsService>;
+            settingsServiceMock.get.and.throwError(error.message);
+            let notificationsServiceMock = TestBed.get(NotificationsService) as jasmine.SpyObj<NotificationsService>;
+            fixture.detectChanges();
+            expect(notificationsServiceMock.add).toHaveBeenCalledWith(StatusCode.Error, error);
+        });
+    });
+
+    describe('save', () =>
+    {
+        it('should call the API save', () =>
+        {
+            let settingsServiceMock = TestBed.get(SettingsService) as jasmine.SpyObj<SettingsService>;
+            component.save();
+            expect(settingsServiceMock.save).toHaveBeenCalled();
+        });
+
+        it('should report an error if saving fails', () =>
+        {
+            let error = new Error("Error");
+            let settingsServiceMock = TestBed.get(SettingsService) as jasmine.SpyObj<SettingsService>;
+            settingsServiceMock.save.and.throwError(error.message);
+            let notificationsServiceMock = TestBed.get(NotificationsService) as jasmine.SpyObj<NotificationsService>;
+            component.save();
+            expect(notificationsServiceMock.add).toHaveBeenCalledWith(StatusCode.Error, error);
+        });
+    });
+
 });

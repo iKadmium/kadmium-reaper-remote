@@ -1,17 +1,16 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
-import { SetActivateComponent } from './set-activate.component';
-import { ReaperService } from 'app/reaper.service';
-import { SongService } from 'app/song.service';
-import { SetService } from 'app/set.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { NotificationsService } from 'app/notifications.service';
-import { Title } from '../../../node_modules/@angular/platform-browser';
-import { StatusCode } from '../status-code.enum';
+import { NotificationsService } from '../services/notifications.service';
+import { ReaperService, ReaperCommands } from '../services/reaper.service';
+import { SetService } from '../services/set.service';
+import { SongService } from '../services/song.service';
 import { Set } from '../set';
 import { Song } from '../song';
+import { StatusCode } from '../status-code.enum';
 import { SongTestHelper } from '../test/song-test-helper';
-import { HttpErrorResponse } from '../../../node_modules/@angular/common/http';
+import { SetActivateComponent } from './set-activate.component';
 
 describe('SetActivateComponent', () =>
 {
@@ -81,43 +80,23 @@ describe('SetActivateComponent', () =>
 				expect(TitleMock.setTitle).toHaveBeenCalledWith("Set Activate");
 			});
 
-			it('should try to load the songs', () =>
-			{
-				let songServiceMock = TestBed.get(SongService) as jasmine.SpyObj<SongService>;
-				fixture.detectChanges();
-				expect(songServiceMock.getSongs).toHaveBeenCalled();
-			});
-
-			it("should report an error if it can't load the songs", () =>
-			{
-				let error = new Error("Error");
-				let songServiceMock = TestBed.get(SongService) as jasmine.SpyObj<SongService>;
-				let notificationsServiceMock = TestBed.get(NotificationsService) as jasmine.SpyObj<NotificationsService>;
-				songServiceMock.getSongs.and.throwError(error.message);
-				fixture.detectChanges();
-				expect(notificationsServiceMock.add).toHaveBeenCalledWith(StatusCode.Error, error);
-				expect(component.tasks.find(x => x.name == "Loading Songs").status).toBe(StatusCode.Error);
-			});
-
-			it('should try to load the set', fakeAsync(() =>
+			it('should try to load the set', () =>
 			{
 				let songServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
 				fixture.detectChanges();
-				tick();
-				expect(songServiceMock.getSet).toHaveBeenCalledWith(route.snapshot.params.id, songs);
-			}));
+				expect(songServiceMock.getSet).toHaveBeenCalledWith(route.snapshot.params.id);
+			});
 
-			it("should report an error if it can't load the set", fakeAsync(() =>
+			it("should report an error if it can't load the set", () =>
 			{
 				let error = new Error("Error");
 				let setServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
 				let notificationsServiceMock = TestBed.get(NotificationsService) as jasmine.SpyObj<NotificationsService>;
 				setServiceMock.getSet.and.throwError(error.message);
 				fixture.detectChanges();
-				tick();
 				expect(notificationsServiceMock.add).toHaveBeenCalledWith(StatusCode.Error, error);
 				expect(component.tasks.find(x => x.name == "Loading Set").status).toBe(StatusCode.Error);
-			}));
+			});
 
 			it("should activate the set", fakeAsync(() =>
 			{
@@ -140,7 +119,7 @@ describe('SetActivateComponent', () =>
 				component.activate(set).then(() =>
 				{
 					let reaperServiceMock = TestBed.get(ReaperService) as jasmine.SpyObj<ReaperService>;
-					expect(reaperServiceMock.runCommand).toHaveBeenCalledWith("40886");
+					expect(reaperServiceMock.runCommand).toHaveBeenCalledWith(ReaperCommands.CloseAllTabs);
 					expect(component.tasks.find(x => x.name == "Closing Tabs")).toBeTruthy();
 					done();
 				});
@@ -153,7 +132,7 @@ describe('SetActivateComponent', () =>
 				reaperServiceMock.runCommand.and.throwError(error.message);
 				component.activate(set).then(() =>
 				{
-					expect(reaperServiceMock.runCommand).toHaveBeenCalledWith("40886");
+					expect(reaperServiceMock.runCommand).toHaveBeenCalledWith(ReaperCommands.CloseAllTabs);
 					expect(component.tasks.find(x => x.name.startsWith("Closing Tabs")).status).toBe(StatusCode.Error);
 					done();
 				});
@@ -188,10 +167,10 @@ describe('SetActivateComponent', () =>
 				let reaperService = TestBed.get(ReaperService) as jasmine.SpyObj<ReaperService>;
 				component.activate(set).then(() =>
 				{
-					for (let song of set.songs)
+					for (let entry of set.entries)
 					{
-						expect(reaperService.runCommand).toHaveBeenCalledWith(song.command);
-						expect(component.tasks.find(x => x.name == `Opening ${song.name}`)).toBeTruthy();
+						expect(reaperService.runCommand).toHaveBeenCalledWith(entry.song.command);
+						expect(component.tasks.find(x => x.name == `Opening ${entry.song.name}`)).toBeTruthy();
 					}
 					done();
 				});
@@ -204,10 +183,10 @@ describe('SetActivateComponent', () =>
 				reaperService.runCommand.and.throwError(error.message);
 				component.activate(set).then(() =>
 				{
-					for (let song of set.songs)
+					for (let entry of set.entries)
 					{
-						expect(reaperService.runCommand).toHaveBeenCalledWith(song.command);
-						expect(component.tasks.find(x => x.name.startsWith(`Opening ${song.name}`)).status).toBe(StatusCode.Error);
+						expect(reaperService.runCommand).toHaveBeenCalledWith(entry.song.command);
+						expect(component.tasks.find(x => x.name.startsWith(`Opening ${entry.song.name}`)).status).toBe(StatusCode.Error);
 					}
 					done();
 				});

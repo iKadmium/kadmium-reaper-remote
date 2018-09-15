@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from "@angular/router/testing";
-import { NotificationsService } from "../notifications.service";
-import { SettingsService } from "../settings.service";
-import { UrlService } from "../url.service";
-import { NavMenuComponent } from './nav-menu.component';
-import { MockComponent } from 'ng-mocks';
-import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
+import { MockComponent } from 'ng-mocks';
 import { NotificationMenuComponent } from '../notification-menu/notification-menu.component';
+import { NotificationsService } from "../services/notifications.service";
+import { SettingsService } from "../services/settings.service";
+import { UrlService } from "../services/url.service";
 import { StatusCode } from '../status-code.enum';
+import { NavMenuComponent } from './nav-menu.component';
 
 describe('NavMenuComponent', () =>
 {

@@ -12,21 +12,17 @@ export class ReaperService
 
     public runCommand(command: string): Promise<void>
     {
-        return this.http.post(this.urlService.getUrl("Reaper", command, null), null)
+        return this.http
+            .post(this.urlService.getUrl("Reaper", command, null), null)
             .toPromise()
             .then(response =>
             {
 
             });
     }
+}
 
-    public runCommands(commands: string[]): Promise<void>
-    {
-        return this.http.post(this.urlService.getUrl("Reaper", commands.join(";"), null), null)
-            .toPromise()
-            .then(response =>
-            {
-
-            });
-    }
+export const ReaperCommands = {
+    OpenNewTab: '40859',
+    CloseAllTabs: '40886'
 }

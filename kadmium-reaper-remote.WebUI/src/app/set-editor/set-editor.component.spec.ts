@@ -1,22 +1,23 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
-import { SetEditorComponent } from './set-editor.component';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from "@angular/forms";
-import { RouterTestingModule } from "@angular/router/testing"
-import { SetService } from "../set.service";
-import { SongService } from "../song.service";
-import { NotificationsService } from "../notifications.service";
-import { MockComponent } from 'ng-mocks';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from "@angular/router/testing";
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { StatusCode } from '../status-code.enum';
-import { ActivatedRoute } from '../../../node_modules/@angular/router';
+import { ActivatedRouteMock } from '../test/route';
+import { MockComponent } from 'ng-mocks';
+import { NotificationsService } from "../services/notifications.service";
+import { SetService } from "../services/set.service";
+import { SongService } from "../services/song.service";
 import { Set } from '../set';
+import { Song } from '../song';
+import { StatusCode } from '../status-code.enum';
+import { SetEditorComponent } from './set-editor.component';
 
 describe('SetEditorComponent', () =>
 {
     let component: SetEditorComponent;
     let fixture: ComponentFixture<SetEditorComponent>;
-    let route;
+    let route: ActivatedRouteMock;
     let sets: Set[];
 
     beforeEach(async(() =>
@@ -42,7 +43,13 @@ describe('SetEditorComponent', () =>
             ],
             providers: [
                 { provide: SongService, useValue: jasmine.createSpyObj<SongService>({ getSongs: Promise.resolve(sets) }) },
-                { provide: SetService, useValue: jasmine.createSpyObj<SetService>({ getSet: Promise.resolve(null) }) },
+                {
+                    provide: SetService, useValue: jasmine.createSpyObj<SetService>({
+                        getSet: Promise.resolve(null),
+                        putSet: Promise.resolve(),
+                        postSet: Promise.resolve()
+                    })
+                },
                 { provide: NotificationsService, useValue: jasmine.createSpyObj<NotificationsService>({ add: null }) },
                 { provide: ActivatedRoute, useValue: route }
             ]
@@ -87,12 +94,13 @@ describe('SetEditorComponent', () =>
 
         it('should request the set if given one', fakeAsync(() =>
         {
-            let id = 5;
-            route.snapshot.params.id = id;
+            let id = 3;
+            let activatedRouteMock = TestBed.get(ActivatedRoute) as ActivatedRouteMock;
+            activatedRouteMock.snapshot.params.id = id;
             let setServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
             fixture.detectChanges();
             tick();
-            expect(setServiceMock.getSet).toHaveBeenCalledWith(id, sets);
+            expect(setServiceMock.getSet).toHaveBeenCalledWith(id);
         }));
 
         it('should report an error if requesting the songs fails', fakeAsync(() =>
@@ -105,7 +113,103 @@ describe('SetEditorComponent', () =>
             tick();
             expect(notificationsServiceMock.add).toHaveBeenCalledWith(StatusCode.Error, error);
         }));
-    })
 
+        it('should not request the set if not given one', fakeAsync(() =>
+        {
+            let id = null;
+            let activatedRouteMock = TestBed.get(ActivatedRoute) as ActivatedRouteMock;
+            activatedRouteMock.snapshot.params.id = id;
+            let setServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
+            fixture.detectChanges();
+            tick();
+            expect(setServiceMock.getSet).not.toHaveBeenCalled();
+        }));
+    });
 
+    describe('save', () =>
+    {
+        it('should attempt to post the set if it is a new set', () =>
+        {
+            let setServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
+            component.set = new Set();
+            component.set.id = 0;
+            component.save();
+            expect(setServiceMock.postSet).toHaveBeenCalledWith(component.set);
+            expect(setServiceMock.putSet).not.toHaveBeenCalled();
+        });
+
+        it('should report an error if posting fails', () =>
+        {
+            let error = new Error("Message");
+            let setServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
+            let notificationsServiceMock = TestBed.get(NotificationsService) as jasmine.SpyObj<NotificationsService>;
+            setServiceMock.postSet.and.throwError(error.message);
+            component.set = new Set();
+            component.set.id = 0;
+            component.save();
+            expect(notificationsServiceMock.add).toHaveBeenCalledWith(StatusCode.Error, error);
+        });
+
+        it('should attempt to put the set if it is not a new set', () =>
+        {
+            let setServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
+            component.set = new Set();
+            component.set.id = 5;
+            component.save();
+            expect(setServiceMock.putSet).toHaveBeenCalledWith(component.set);
+            expect(setServiceMock.postSet).not.toHaveBeenCalled();
+        });
+
+        it('should report an error if putting fails', () =>
+        {
+            let error = new Error("Message");
+            let setServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
+            let notificationsServiceMock = TestBed.get(NotificationsService) as jasmine.SpyObj<NotificationsService>;
+            setServiceMock.putSet.and.throwError(error.message);
+            component.set = new Set();
+            component.set.id = 5;
+            component.save();
+            expect(notificationsServiceMock.add).toHaveBeenCalledWith(StatusCode.Error, error);
+        });
+    });
+
+    describe('getComparer', () =>
+    {
+        it('should return true if two songs have the same id', () =>
+        {
+            let first = new Song();
+            first.id = 4;
+            let second = new Song();
+            second.id = 4;
+            const result = component.getComparer(first, second);
+            expect(result).toBeTruthy();
+        });
+
+        it('should return false if two songs have different ids', () =>
+        {
+            let first = new Song();
+            first.id = 4;
+            let second = new Song();
+            second.id = 5;
+            const result = component.getComparer(first, second);
+            expect(result).toBeFalsy();
+        });
+
+        it('should return true if two songs are both null', () =>
+        {
+            let first = null;
+            let second = null;
+            const result = component.getComparer(first, second);
+            expect(result).toBeTruthy();
+        });
+
+        it('should return false if one song is null but the other is not', () =>
+        {
+            let first = null;
+            let second = new Song();
+            const result = component.getComparer(first, second);
+            expect(result).toBeFalsy();
+        });
+    });
 });
+

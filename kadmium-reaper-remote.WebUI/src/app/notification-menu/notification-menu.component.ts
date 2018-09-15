@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SafeHtml, DomSanitizer } from "@angular/platform-browser";
-import { NotificationsService } from "../notifications.service";
-import { Status } from "../status";
-import { NgbModal, NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationsService } from "../services/notifications.service";
 
 @Component({
     selector: 'app-notification-menu',
@@ -19,7 +17,6 @@ export class NotificationMenuComponent implements OnInit
 
     ngOnInit(): void
     {
-        this.notificationsService.component = this;
     }
 
 }

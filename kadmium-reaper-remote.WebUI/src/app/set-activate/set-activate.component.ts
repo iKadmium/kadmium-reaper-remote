@@ -1,14 +1,13 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { NotificationsService } from 'app/notifications.service';
-import { ReaperService } from 'app/reaper.service';
-import { Set } from 'app/set';
-import { SetService } from 'app/set.service';
-import { SongService } from 'app/song.service';
-import { StatusCode } from 'app/status-code.enum';
+import { NotificationsService } from '../services/notifications.service';
+import { ReaperService, ReaperCommands } from '../services/reaper.service';
+import { SetService } from '../services/set.service';
+import { SongService } from '../services/song.service';
+import { Set } from '../set';
 import { Song } from '../song';
+import { StatusCode } from '../status-code.enum';
 
 @Component({
 	selector: 'app-set-activate',
@@ -17,7 +16,6 @@ import { Song } from '../song';
 })
 export class SetActivateComponent implements OnInit
 {
-	private allSongs: Song[];
 	public StatusCode = StatusCode;
 	public tasks: Task[] = [];
 
@@ -33,37 +31,20 @@ export class SetActivateComponent implements OnInit
 		this.title.setTitle("Set Activate");
 		let id = this.route.snapshot.params['id'];
 
-		let loadSongsTask: Task = new Task("Loading Songs");
-		this.tasks.push(loadSongsTask);
-
+		let loadSetTask = new Task("Loading Set");
+		this.tasks.push(loadSetTask);
 		try
 		{
-			this.songService.getSongs().then(songs =>
+			this.setService.getSet(id).then(set =>
 			{
-				loadSongsTask.status = StatusCode.Success;
-				this.allSongs = songs;
-
-				let loadSetTask = new Task("Loading Set");
-				this.tasks.push(loadSetTask);
-				try
-				{
-					this.setService.getSet(id, this.allSongs).then(set =>
-					{
-						loadSetTask.status = StatusCode.Success;
-						this.activate(set);
-					});
-				}
-				catch (error)
-				{
-					this.notificationsService.add(StatusCode.Error, error);
-					loadSetTask.status = StatusCode.Error;
-				}
+				loadSetTask.status = StatusCode.Success;
+				this.activate(set);
 			});
 		}
 		catch (error)
 		{
 			this.notificationsService.add(StatusCode.Error, error);
-			loadSongsTask.status = StatusCode.Error;
+			loadSetTask.status = StatusCode.Error;
 		}
 	}
 
@@ -86,28 +67,29 @@ export class SetActivateComponent implements OnInit
 
 	public async activate(set: Set): Promise<void>
 	{
-		await this.runCommand(() => this.reaperService.runCommand("40886"), "Closing Tabs");
+		await this.runCommand(() => this.reaperService.runCommand(ReaperCommands.CloseAllTabs), "Closing Tabs");
 		let firstTab = true;
 		await this.runCommand(() => this.setService.activateVenue(set.venue), "Activating Lighting for Venue");
 
-		for (let song of set.songs)
+		for (let entry of set.entries)
 		{
 			if (!firstTab)
 			{
-				await this.runCommand(() => this.reaperService.runCommand("40859"), "Opening New Tab");
+				await this.runCommand(() => this.reaperService.runCommand(ReaperCommands.OpenNewTab), "Opening New Tab");
 			}
 			else
 			{
 				firstTab = false;
 			}
-			await this.runCommand(() => this.reaperService.runCommand(song.command), `Opening ${song.name}`);
+			await this.runCommand(() => this.reaperService.runCommand(entry.song.command), `Opening ${entry.song.name}`);
 		}
 	}
 }
 
 class Task
 {
-	constructor(public name: string, public status: StatusCode = StatusCode.Unknown)
+	public status: StatusCode = StatusCode.Unknown;
+	constructor(public name: string)
 	{
 	}
 }

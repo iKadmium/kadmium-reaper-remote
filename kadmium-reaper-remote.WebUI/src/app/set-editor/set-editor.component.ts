@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Set } from "../set";
 import { Song } from "../song";
 
-import { SetService } from "../set.service";
-import { SongService } from "../song.service";
+import { SetService } from "../services/set.service";
+import { SongService } from "../services/song.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Title } from "@angular/platform-browser";
-import { NotificationsService } from "../notifications.service";
+import { NotificationsService } from "../services/notifications.service";
 import { StatusCode } from "../status-code.enum";
-import { SlideInOut } from 'app/animation-library';
+import { SlideInOut } from '../animation-library';
 
 
 @Component({
@@ -21,7 +21,7 @@ import { SlideInOut } from 'app/animation-library';
 export class SetEditorComponent implements OnInit
 {
     public set: Set;
-    public allSongs: Song[]
+    public allSongs: Song[] = [];
 
     public busy: boolean = true;
 
@@ -33,7 +33,7 @@ export class SetEditorComponent implements OnInit
         private songService: SongService,
         private router: Router)
     {
-        this.allSongs = [];
+
     }
 
     ngOnInit(): void
@@ -54,7 +54,7 @@ export class SetEditorComponent implements OnInit
                 {
                     try
                     {
-                        this.setService.getSet(id, this.allSongs).then(set =>
+                        this.setService.getSet(id).then(set =>
                         {
                             this.set = set;
                         });

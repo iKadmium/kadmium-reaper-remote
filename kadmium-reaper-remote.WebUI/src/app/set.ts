@@ -40,41 +40,45 @@ export class SetSkeleton
     }
 }
 
+export class SetEntry
+{
+    constructor(public song: Song) { }
+}
+
 export class Set extends SetSkeleton
 {
-    public songs: Song[];
+    public entries: SetEntry[];
 
     constructor()
     {
         super();
 
-        this.songs = [];
+        this.entries = [];
     }
 
     public addSong(song: Song): void
     {
-        this.songs.push(song);
+        this.entries.push(new SetEntry(song));
     }
 
-    public removeSong(song: Song): void
+    public removeSong(index: number): void
     {
-        let position = this.songs.findIndex((value: Song) => value == song);
-        this.songs.splice(position, 1);
+        this.entries.splice(index, 1);
     }
 
-    public moveSong(song: Song, positionChange: number): void
+    public moveSong(index: number, positionChange: number): void
     {
-        let position = this.songs.findIndex((value: Song) => value == song);
-        this.songs.splice(position + positionChange, 0, this.songs.splice(position, 1)[0]);
+        this.entries.splice(index + positionChange, 0, this.entries.splice(index, 1)[0]);
     }
 
     public get duration(): moment.Duration
     {
         let duration = moment.duration();
-        for (let song of this.songs)
+        for (let entry of this.entries)
         {
-            duration.add(song.duration);
+            duration.add(entry.song.duration);
         }
+
         return duration;
     }
 
@@ -83,16 +87,16 @@ export class Set extends SetSkeleton
         return moment.utc(this.duration.asMilliseconds()).format("HH:mm:ss");
     }
 
-    public load(allSongs: Song[], data: SetData): Set
+    public load(data: SetData): Set
     {
         this.id = data.id;
         this.date = moment(data.date);
         this.venue = data.venue;
-        this.songs = data.songs.map((value: SongData) =>
+        this.entries = data.songs.map((value: SongData) =>
         {
             let song = new Song();
             song.load(value);
-            return song;
+            return new SetEntry(song);
         });
 
         return this;
@@ -105,7 +109,7 @@ export class Set extends SetSkeleton
             id: this.id,
             date: this.date.format("YYYY-MM-DD") + "T00:00:00",
             venue: this.venue,
-            songs: this.songs.map((value: Song) => value.serialize())
+            songs: this.entries.map((value) => value.song.serialize())
         };
         return data;
     }
