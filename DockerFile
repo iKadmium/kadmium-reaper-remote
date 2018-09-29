@@ -1,4 +1,4 @@
-FROM node:8.10 as node
+FROM trion/ng-cli-karma as node
 WORKDIR /app
 
 COPY kadmium-reaper-remote.WebUI/package.json /app/
@@ -7,6 +7,7 @@ RUN npm install
 COPY kadmium-reaper-remote.WebUI/ /app/
 ARG env=production
 
+RUN ng test --watch false
 RUN npm run build -- --prod --configuration=$env
 
 FROM microsoft/dotnet:2.1-sdk AS aspnetcore-build-env
