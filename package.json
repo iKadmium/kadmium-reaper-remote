@@ -1,0 +1,25 @@
+{
+  "name": "kadmium-reaper-remote",
+  "version": "1.0.0",
+  "description": "This is a tool for managing setlists and loading them automatically via Reaper.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iKadmium/kadmium-reaper-remote-dotnet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iKadmium/kadmium-reaper-remote-dotnet/issues"
+  },
+  "homepage": "https://github.com/iKadmium/kadmium-reaper-remote-dotnet#readme",
+  "devDependencies": {
+    "gulp-clean": "^0.4.0"
+  },
+  "dependencies": {
+    "gulp": "^4.0.0"
+  }
+}
