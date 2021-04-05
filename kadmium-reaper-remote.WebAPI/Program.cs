@@ -1,3 +1,4 @@
+using kadmium_reaper_remote.WebAPI.Services;
 using kadmium_reaper_remote_dotnet.Util;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +15,7 @@ namespace kadmium_reaper_remote_dotnet
                 .AddEnvironmentVariables(prefix: "ASPNETCORE_")
                 .Build();
 
-            Settings.Initialize().Wait();
+            var settings = new SettingsService(new FileService()).GetSettings().GetAwaiter().GetResult();
 
             var host = new WebHostBuilder()
                 .UseConfiguration(config)
@@ -22,7 +23,7 @@ namespace kadmium_reaper_remote_dotnet
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls("http://*:" + Settings.Instance.HttpPort)
+                .UseUrls("http://*:" + settings.HttpPort)
                 .Build();
 
             host.Run();

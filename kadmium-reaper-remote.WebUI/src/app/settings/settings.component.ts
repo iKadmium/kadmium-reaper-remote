@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 import { NotificationsService } from "../services/notifications.service";
 import { SettingsService } from "../services/settings.service";
-import { Settings } from "../settings";
+import { Settings, TestingFileFrequency } from "../settings";
 import { StatusCode } from "../status-code.enum";
 
 @Component({
@@ -14,6 +14,7 @@ export class SettingsComponent implements OnInit
 {
     public busy: boolean = false;
     public settings: Settings;
+    public TestingFileFrequency = TestingFileFrequency;
 
     constructor(private settingsService: SettingsService, private title: Title, private notificationsService: NotificationsService)
     {

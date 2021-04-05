@@ -72,7 +72,6 @@
             "scripts": [],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
               "src/styles.css"
             ],
             "assets": [

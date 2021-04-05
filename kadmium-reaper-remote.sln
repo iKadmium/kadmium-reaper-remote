@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kadmium-reaper-remote.WebAPI", "kadmium-reaper-remote.WebAPI\kadmium-reaper-remote.WebAPI.csproj", "{FAC7543E-E546-4198-8183-979DFF4CD4DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kadmium-reaper-remote.WebAPI.Test", "kadmium-reaper-remote.WebAPI.Test\kadmium-reaper-remote.WebAPI.Test.csproj", "{6622B5A9-B800-4F8D-A4F2-7A70888CA0C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FAC7543E-E546-4198-8183-979DFF4CD4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAC7543E-E546-4198-8183-979DFF4CD4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAC7543E-E546-4198-8183-979DFF4CD4DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6622B5A9-B800-4F8D-A4F2-7A70888CA0C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6622B5A9-B800-4F8D-A4F2-7A70888CA0C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6622B5A9-B800-4F8D-A4F2-7A70888CA0C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6622B5A9-B800-4F8D-A4F2-7A70888CA0C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

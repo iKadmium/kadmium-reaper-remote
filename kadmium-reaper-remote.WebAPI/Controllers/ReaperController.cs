@@ -1,4 +1,5 @@
-﻿using kadmium_reaper_remote_dotnet.Util;
+﻿using kadmium_reaper_remote.WebAPI.Services;
+using kadmium_reaper_remote_dotnet.Util;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net.Http;
@@ -11,30 +12,17 @@ namespace kadmium_reaper_remote_dotnet.Controllers
     [Route("api/[controller]")]
     public class ReaperController : Controller
     {
-        private HttpClient commandClient;
+        private IReaperService ReaperService { get; }
 
-        public ReaperController()
+        public ReaperController(IReaperService reaperService)
         {
-            commandClient = new HttpClient();
+            ReaperService = reaperService;
         }
 
         [HttpPost("{id}")]
         public async Task Post(string id)
         {
-            await SendCommands(id);
-        }
-
-        private async Task SendCommands(params string[] commands)
-        {
-            string commandString = GetCommandString(commands);
-            Uri uri = new Uri(Settings.Instance.ReaperURI);
-            string path = uri.Scheme + "://" + uri.Host + ":" + uri.Port + "/_/" + commandString;
-            var result = await commandClient.GetAsync(path);
-        }
-
-        private string GetCommandString(params string[] commands)
-        {
-            return string.Join(";", commands) + ";";
+            await ReaperService.SendCommands(id);
         }
     }
 }

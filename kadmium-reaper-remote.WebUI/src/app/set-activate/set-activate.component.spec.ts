@@ -11,6 +11,9 @@ import { Song } from '../song';
 import { StatusCode } from '../status-code.enum';
 import { SongTestHelper } from '../test/song-test-helper';
 import { SetActivateComponent } from './set-activate.component';
+import { SettingsService } from 'app/services/settings.service';
+import { SettingsData, TestingFileFrequency } from 'app/settings';
+import moment = require('moment');
 
 describe('SetActivateComponent', () =>
 {
@@ -19,9 +22,17 @@ describe('SetActivateComponent', () =>
 	let route;
 	let set: Set;
 	let songs: Song[];
+	let settings: SettingsData;
 
 	beforeEach(async(() =>
 	{
+		settings = {
+			httpPort: 80,
+			lightingVenueURI: "",
+			reaperURI: "",
+			testingFileCommand: "testingFileCommand",
+			testingFileFrequency: TestingFileFrequency.Always,
+		}
 		route = {
 			snapshot: {
 				params: {
@@ -49,6 +60,7 @@ describe('SetActivateComponent', () =>
 					})
 				},
 				{ provide: ActivatedRoute, useValue: route },
+				{ provide: SettingsService, useValue: jasmine.createSpyObj<SettingsService>({ get: Promise.resolve(settings) }) },
 				{ provide: NotificationsService, useValue: jasmine.createSpyObj<NotificationsService>({ add: null }) },
 				{ provide: Title, useValue: jasmine.createSpyObj<Title>({ setTitle: null }) }
 			]
@@ -102,6 +114,7 @@ describe('SetActivateComponent', () =>
 			{
 				let spy = spyOn(component, "activate");
 				fixture.detectChanges();
+				fixture.detectChanges();
 				tick();
 				expect(spy).toHaveBeenCalled();
 			}));
@@ -116,6 +129,7 @@ describe('SetActivateComponent', () =>
 
 			it('should close the tabs', (done) =>
 			{
+				component.settings = Promise.resolve(settings);
 				component.activate(set).then(() =>
 				{
 					let reaperServiceMock = TestBed.get(ReaperService) as jasmine.SpyObj<ReaperService>;
@@ -130,6 +144,7 @@ describe('SetActivateComponent', () =>
 				let error = new HttpErrorResponse({ error: "Error" });
 				let reaperServiceMock = TestBed.get(ReaperService) as jasmine.SpyObj<ReaperService>;
 				reaperServiceMock.runCommand.and.throwError(error.message);
+				component.settings = Promise.resolve(settings);
 				component.activate(set).then(() =>
 				{
 					expect(reaperServiceMock.runCommand).toHaveBeenCalledWith(ReaperCommands.CloseAllTabs);
@@ -141,6 +156,7 @@ describe('SetActivateComponent', () =>
 			it('should activate lighting', (done) =>
 			{
 				let setService = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
+				component.settings = Promise.resolve(settings);
 				component.activate(set).then(() =>
 				{
 					expect(setService.activateVenue).toHaveBeenCalledWith(set.venue);
@@ -154,6 +170,7 @@ describe('SetActivateComponent', () =>
 				let error = new Error("Error");
 				let setServiceMock = TestBed.get(SetService) as jasmine.SpyObj<SetService>;
 				setServiceMock.activateVenue.and.throwError(error.message);
+				component.settings = Promise.resolve(settings);
 				component.activate(set).then(() =>
 				{
 					expect(setServiceMock.activateVenue).toHaveBeenCalledWith(set.venue);
@@ -165,6 +182,7 @@ describe('SetActivateComponent', () =>
 			it('should activate each song in the set', (done) =>
 			{
 				let reaperService = TestBed.get(ReaperService) as jasmine.SpyObj<ReaperService>;
+				component.settings = Promise.resolve(settings);
 				component.activate(set).then(() =>
 				{
 					for (let entry of set.entries)
@@ -181,6 +199,7 @@ describe('SetActivateComponent', () =>
 				let error = new Error("Error");
 				let reaperService = TestBed.get(ReaperService) as jasmine.SpyObj<ReaperService>;
 				reaperService.runCommand.and.throwError(error.message);
+				component.settings = Promise.resolve(settings);
 				component.activate(set).then(() =>
 				{
 					for (let entry of set.entries)
@@ -192,5 +211,38 @@ describe('SetActivateComponent', () =>
 				});
 			});
 		});
+
+		describe('shouldLoadTestingFile', () =>
+		{
+			it('should return true if the frequency in the settings is set to always', () =>
+			{
+				settings.testingFileFrequency = TestingFileFrequency.Always;
+				const result = component.shouldLoadTestingFile(set, settings);
+				expect(result).toBeTruthy();
+			});
+
+			it('should return false if the frequency in the settings is set to never', () =>
+			{
+				settings.testingFileFrequency = TestingFileFrequency.Never;
+				const result = component.shouldLoadTestingFile(set, settings);
+				expect(result).toBeFalsy();
+			});
+
+			it('should return true if the frequency in the settings is set to on show day and the show day is today', () =>
+			{
+				settings.testingFileFrequency = TestingFileFrequency.OnShowDay;
+				set.date = moment().startOf('day');
+				const result = component.shouldLoadTestingFile(set, settings);
+				expect(result).toBeTruthy();
+			});
+
+			it('should return false if the frequency in the settings is set to on show day and the show day is not today', () =>
+			{
+				settings.testingFileFrequency = TestingFileFrequency.OnShowDay;
+				set.date = moment().add(1, 'years');
+				const result = component.shouldLoadTestingFile(set, settings);
+				expect(result).toBeFalsy();
+			});
+		})
 	});
 });

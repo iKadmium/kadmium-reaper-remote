@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { FileReaderService } from './file-reader.service';
-import { SettingsData } from '../settings';
+import { SettingsData, TestingFileFrequency } from '../settings';
 
 describe('FileReaderService', () =>
 {
@@ -36,7 +36,9 @@ describe('FileReaderService', () =>
 			let settings: SettingsData = {
 				httpPort: 80,
 				lightingVenueURI: "http://localhost",
-				reaperURI: "http://someotherhost"
+				reaperURI: "http://someotherhost",
+				testingFileCommand: "something",
+				testingFileFrequency: TestingFileFrequency.Always
 			};
 
 			let file = new File([JSON.stringify(settings)], "file.txt");

@@ -1,0 +1,3181 @@
+{
+  "kadmium-reaper-remote-dotnet.dll": {
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Services\\FileService.cs": {
+      "kadmium_reaper_remote.WebAPI.Services.FileService": {
+        "System.String kadmium_reaper_remote.WebAPI.Services.FileService::get_DataLocation()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote.WebAPI.Services.FileService::.cctor()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote.WebAPI.Services.FileService/<>c__DisplayClass3_0`1": {
+        "System.String kadmium_reaper_remote.WebAPI.Services.FileService/<>c__DisplayClass3_0`1::<GetJson>b__0()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote.WebAPI.Services.FileService/<GetJson>d__3`1": {
+        "System.Void kadmium_reaper_remote.WebAPI.Services.FileService/<GetJson>d__3`1::MoveNext()": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": [
+            {
+              "Line": 18,
+              "Offset": 8,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 93,
+              "EndOffset": 95,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 8,
+              "EndOffset": 134,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 93,
+              "EndOffset": 162,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote.WebAPI.Services.FileService/<>c__DisplayClass4_0`1": {
+        "System.Void kadmium_reaper_remote.WebAPI.Services.FileService/<>c__DisplayClass4_0`1::<SaveJson>b__0()": {
+          "Lines": {
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote.WebAPI.Services.FileService/<SaveJson>d__4`1": {
+        "System.Void kadmium_reaper_remote.WebAPI.Services.FileService/<SaveJson>d__4`1::MoveNext()": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "38": 0
+          },
+          "Branches": [
+            {
+              "Line": 26,
+              "Offset": 8,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 152,
+              "EndOffset": 154,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 26,
+              "Offset": 8,
+              "EndOffset": 190,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 152,
+              "EndOffset": 218,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Services\\ReaperService.cs": {
+      "kadmium_reaper_remote.WebAPI.Services.ReaperService": {
+        "kadmium_reaper_remote.WebAPI.Services.ISettingsService kadmium_reaper_remote.WebAPI.Services.ReaperService::get_Settings()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote.WebAPI.Services.ReaperService::GetCommandString(System.String[])": {
+          "Lines": {
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote.WebAPI.Services.ReaperService::.ctor(kadmium_reaper_remote.WebAPI.Services.ISettingsService)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote.WebAPI.Services.ReaperService/<SendCommands>d__5": {
+        "System.Void kadmium_reaper_remote.WebAPI.Services.ReaperService/<SendCommands>d__5::MoveNext()": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": [
+            {
+              "Line": 21,
+              "Offset": 14,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 78,
+              "EndOffset": 80,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 78,
+              "EndOffset": 147,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 26,
+              "Offset": 333,
+              "EndOffset": 335,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 14,
+              "EndOffset": 371,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 26,
+              "Offset": 333,
+              "EndOffset": 399,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Services\\SettingsService.cs": {
+      "kadmium_reaper_remote.WebAPI.Services.SettingsService": {
+        "System.String kadmium_reaper_remote.WebAPI.Services.SettingsService::get_Filename()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "kadmium_reaper_remote.WebAPI.Services.IFileService kadmium_reaper_remote.WebAPI.Services.SettingsService::get_FileService()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote.WebAPI.Services.SettingsService::.ctor(kadmium_reaper_remote.WebAPI.Services.IFileService)": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote.WebAPI.Services.SettingsService/<GetSettings>d__6": {
+        "System.Void kadmium_reaper_remote.WebAPI.Services.SettingsService/<GetSettings>d__6::MoveNext()": {
+          "Lines": {
+            "22": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "32": 0
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 17,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 58,
+              "EndOffset": 60,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 17,
+              "EndOffset": 96,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 58,
+              "EndOffset": 124,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote.WebAPI.Services.SettingsService/<SaveSettings>d__7": {
+        "System.Void kadmium_reaper_remote.WebAPI.Services.SettingsService/<SaveSettings>d__7::MoveNext()": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": [
+            {
+              "Line": 36,
+              "Offset": 55,
+              "EndOffset": 57,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 55,
+              "EndOffset": 121,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Migrations\\20170426034727_InitialMigration.cs": {
+      "kadmiumreaperremotedotnet.Migrations.InitialMigration": {
+        "System.Void kadmiumreaperremotedotnet.Migrations.InitialMigration::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0
+          },
+          "Branches": [
+            {
+              "Line": 10,
+              "Offset": 13,
+              "EndOffset": 15,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 13,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 45,
+              "EndOffset": 47,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 45,
+              "EndOffset": 70,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 88,
+              "EndOffset": 90,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 88,
+              "EndOffset": 113,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 120,
+              "EndOffset": 122,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 120,
+              "EndOffset": 145,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 163,
+              "EndOffset": 165,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 163,
+              "EndOffset": 188,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 195,
+              "EndOffset": 197,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 195,
+              "EndOffset": 220,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void kadmiumreaperremotedotnet.Migrations.InitialMigration::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "81": 0,
+            "82": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Migrations\\20170426034727_InitialMigration.Designer.cs": {
+      "kadmiumreaperremotedotnet.Migrations.InitialMigration": {
+        "System.Void kadmiumreaperremotedotnet.Migrations.InitialMigration::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 19,
+              "Offset": 30,
+              "EndOffset": 55,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 73,
+              "EndOffset": 98,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 116,
+              "EndOffset": 118,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 116,
+              "EndOffset": 141,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 69,
+              "Offset": 159,
+              "EndOffset": 161,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 69,
+              "Offset": 159,
+              "EndOffset": 184,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Migrations\\DatabaseContextModelSnapshot.cs": {
+      "kadmiumreaperremotedotnet.Migrations.DatabaseContextModelSnapshot": {
+        "System.Void kadmiumreaperremotedotnet.Migrations.DatabaseContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0
+          },
+          "Branches": [
+            {
+              "Line": 16,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 30,
+              "EndOffset": 55,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 73,
+              "EndOffset": 98,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 49,
+              "Offset": 116,
+              "EndOffset": 118,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 49,
+              "Offset": 116,
+              "EndOffset": 141,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 159,
+              "EndOffset": 161,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 159,
+              "EndOffset": 184,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Program.cs": {
+      "kadmium_reaper_remote_dotnet.Program": {
+        "System.Void kadmium_reaper_remote_dotnet.Program::Main(System.String[])": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "18": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Startup.cs": {
+      "kadmium_reaper_remote_dotnet.Startup": {
+        "Microsoft.Extensions.Configuration.IConfigurationRoot kadmium_reaper_remote_dotnet.Startup::get_Configuration()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Startup::ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "34": 0,
+            "36": 0,
+            "37": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 43,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Startup::Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 9,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 57,
+              "EndOffset": 59,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 57,
+              "EndOffset": 82,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 70,
+              "Offset": 95,
+              "EndOffset": 97,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 70,
+              "Offset": 95,
+              "EndOffset": 120,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Startup::.ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Util\\DatabaseContext.cs": {
+      "kadmium_reaper_remote_dotnet.Util.DatabaseContext": {
+        "System.String kadmium_reaper_remote_dotnet.Util.DatabaseContext::get_ProductionConnectionString()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Util.DatabaseContext::get_DebugConnectionString()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Util.DatabaseContext::get_TestingConnectionString()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Action`1<Microsoft.EntityFrameworkCore.DbContextOptionsBuilder`1<kadmium_reaper_remote_dotnet.Util.DatabaseContext>> kadmium_reaper_remote_dotnet.Util.DatabaseContext::get_SetConnection()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<kadmium_reaper_remote_dotnet.Models.Set> kadmium_reaper_remote_dotnet.Util.DatabaseContext::get_Sets()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<kadmium_reaper_remote_dotnet.Models.Song> kadmium_reaper_remote_dotnet.Util.DatabaseContext::get_Songs()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<kadmium_reaper_remote_dotnet.Util.SetSongRelationship> kadmium_reaper_remote_dotnet.Util.DatabaseContext::get_SetSongRelationships()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "kadmium_reaper_remote_dotnet.Util.DatabaseContext kadmium_reaper_remote_dotnet.Util.DatabaseContext::GetContext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseContext::SetConnectionEnvironment(System.String)": {
+          "Lines": {
+            "36": 0,
+            "37": 0,
+            "40": 0,
+            "41": 0,
+            "44": 0,
+            "45": 0,
+            "47": 0
+          },
+          "Branches": [
+            {
+              "Line": 37,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 14,
+              "EndOffset": 31,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 37,
+              "EndOffset": 62,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 27,
+              "EndOffset": 70,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 76,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 76,
+              "EndOffset": 101,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 27,
+              "EndOffset": 109,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseContext::SetTestingConnectionString(System.String)": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "61": 0,
+            "62": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<kadmium_reaper_remote_dotnet.Util.DatabaseContext>)": {
+          "Lines": {
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Util.DatabaseContext/<LoadSet>d__27": {
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseContext/<LoadSet>d__27::MoveNext()": {
+          "Lines": {
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0
+          },
+          "Branches": [
+            {
+              "Line": 75,
+              "Offset": 64,
+              "EndOffset": 66,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 64,
+              "EndOffset": 130,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Util.DatabaseContext/<LoadSong>d__28": {
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseContext/<LoadSong>d__28::MoveNext()": {
+          "Lines": {
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0
+          },
+          "Branches": [
+            {
+              "Line": 81,
+              "Offset": 64,
+              "EndOffset": 66,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 64,
+              "EndOffset": 130,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Util.DatabaseContext/<LoadSongsForSet>d__29": {
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseContext/<LoadSongsForSet>d__29::MoveNext()": {
+          "Lines": {
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0
+          },
+          "Branches": [
+            {
+              "Line": 88,
+              "Offset": 457,
+              "EndOffset": 258,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 323,
+              "EndOffset": 325,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 88,
+              "Offset": 247,
+              "EndOffset": 365,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 323,
+              "EndOffset": 393,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 88,
+              "Offset": 247,
+              "EndOffset": 446,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 88,
+              "Offset": 457,
+              "EndOffset": 462,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Util.SetSongRelationship": {
+        "System.Int32 kadmium_reaper_remote_dotnet.Util.SetSongRelationship::get_Order()": {
+          "Lines": {
+            "98": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 kadmium_reaper_remote_dotnet.Util.SetSongRelationship::get_SongId()": {
+          "Lines": {
+            "99": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 kadmium_reaper_remote_dotnet.Util.SetSongRelationship::get_SetId()": {
+          "Lines": {
+            "100": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Util.DatabaseLogger": {
+        "Microsoft.Extensions.Logging.ILogger kadmium_reaper_remote_dotnet.Util.DatabaseLogger::CreateLogger(System.String)": {
+          "Lines": {
+            "106": 0,
+            "107": 0,
+            "108": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseLogger::Dispose()": {
+          "Lines": {
+            "111": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Util.DatabaseLogger/MyLogger": {
+        "System.Boolean kadmium_reaper_remote_dotnet.Util.DatabaseLogger/MyLogger::IsEnabled(Microsoft.Extensions.Logging.LogLevel)": {
+          "Lines": {
+            "116": 0,
+            "117": 0,
+            "118": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Util.DatabaseLogger/MyLogger::Log(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,TState,System.Exception,System.Func`3<TState,System.Exception,System.String>)": {
+          "Lines": {
+            "121": 0,
+            "122": 0,
+            "123": 0
+          },
+          "Branches": []
+        },
+        "System.IDisposable kadmium_reaper_remote_dotnet.Util.DatabaseLogger/MyLogger::BeginScope(TState)": {
+          "Lines": {
+            "126": 0,
+            "127": 0,
+            "128": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Util\\DatabaseContextFactory.cs": {
+      "kadmium_reaper_remote_dotnet.Util.DatabaseContextFactory": {
+        "kadmium_reaper_remote_dotnet.Util.DatabaseContext kadmium_reaper_remote_dotnet.Util.DatabaseContextFactory::CreateDbContext(System.String[])": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Util\\FileAccess.cs": {
+      "kadmium_reaper_remote_dotnet.Util.FileAccess": {
+        "System.String kadmium_reaper_remote_dotnet.Util.FileAccess::get_DataLocation()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Util.FileAccess::get_DatabaseFilename()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Util.FileAccess::get_ProductionDatabasePath()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Util.FileAccess::get_DebugDatabasePath()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Util.FileAccess::get_TestingDatabasePath()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Util.FileAccess::.cctor()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Util\\Settings.cs": {
+      "kadmium_reaper_remote_dotnet.Util.Settings": {
+        "System.String kadmium_reaper_remote_dotnet.Util.Settings::get_ReaperURI()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 kadmium_reaper_remote_dotnet.Util.Settings::get_HttpPort()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Util.Settings::get_LightingVenueURI()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Util.Settings::get_TestingFileCommand()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "kadmium_reaper_remote_dotnet.Util.TestingFileFrequency kadmium_reaper_remote_dotnet.Util.Settings::get_TestingFileFrequency()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean kadmium_reaper_remote_dotnet.Util.Settings::Equals(kadmium_reaper_remote_dotnet.Util.Settings)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 32,
+              "EndOffset": 34,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 70,
+              "EndOffset": 72,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 18,
+              "EndOffset": 88,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 32,
+              "EndOffset": 88,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 51,
+              "EndOffset": 88,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 70,
+              "EndOffset": 88,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Util.Settings::.ctor()": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Models\\Set.cs": {
+      "kadmium_reaper_remote_dotnet.Models.Set": {
+        "System.Int32 kadmium_reaper_remote_dotnet.Models.Set::get_Id()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime kadmium_reaper_remote_dotnet.Models.Set::get_Date()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Models.Set::get_Venue()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Models.Set::.ctor()": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Models\\Song.cs": {
+      "kadmium_reaper_remote_dotnet.Models.Song": {
+        "System.Int32 kadmium_reaper_remote_dotnet.Models.Song::get_Id()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Models.Song::get_Name()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.TimeSpan kadmium_reaper_remote_dotnet.Models.Song::get_Duration()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Models.Song::get_Command()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Models.Song::.ctor()": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Controllers\\HomeController.cs": {
+      "kadmium_reaper_remote_dotnet.Controllers.HomeController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult kadmium_reaper_remote_dotnet.Controllers.HomeController::Index()": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult kadmium_reaper_remote_dotnet.Controllers.HomeController::Error()": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Controllers\\ReaperController.cs": {
+      "kadmium_reaper_remote_dotnet.Controllers.ReaperController": {
+        "kadmium_reaper_remote.WebAPI.Services.IReaperService kadmium_reaper_remote_dotnet.Controllers.ReaperController::get_ReaperService()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.ReaperController::.ctor(kadmium_reaper_remote.WebAPI.Services.IReaperService)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.ReaperController/<Post>d__4": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.ReaperController/<Post>d__4::MoveNext()": {
+          "Lines": {
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": [
+            {
+              "Line": 25,
+              "Offset": 59,
+              "EndOffset": 61,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 59,
+              "EndOffset": 125,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Controllers\\SetController.cs": {
+      "kadmium_reaper_remote_dotnet.Controllers.SetController": {
+        "kadmium_reaper_remote.WebAPI.Services.ISettingsService kadmium_reaper_remote_dotnet.Controllers.SetController::get_SettingsService()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SetController::.ctor(kadmium_reaper_remote_dotnet.Util.DatabaseContext,kadmium_reaper_remote.WebAPI.Services.ISettingsService)": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetController/<Get>d__5": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SetController/<Get>d__5::MoveNext()": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": [
+            {
+              "Line": 35,
+              "Offset": 410,
+              "EndOffset": 141,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 199,
+              "EndOffset": 201,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 130,
+              "EndOffset": 241,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 199,
+              "EndOffset": 269,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 130,
+              "EndOffset": 399,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 410,
+              "EndOffset": 415,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetController/<Get>d__6": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SetController/<Get>d__6::MoveNext()": {
+          "Lines": {
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 14,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 61,
+              "EndOffset": 63,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 61,
+              "EndOffset": 130,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 54,
+              "Offset": 273,
+              "EndOffset": 275,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 14,
+              "EndOffset": 315,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 54,
+              "Offset": 273,
+              "EndOffset": 344,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetController/<>c__DisplayClass7_1": {
+        "kadmium_reaper_remote_dotnet.Util.SetSongRelationship kadmium_reaper_remote_dotnet.Controllers.SetController/<>c__DisplayClass7_1::<Post>b__0(kadmium_reaper_remote_dotnet.Models.Song)": {
+          "Lines": {
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetController/<Post>d__7": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SetController/<Post>d__7::MoveNext()": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "89": 0
+          },
+          "Branches": [
+            {
+              "Line": 67,
+              "Offset": 16,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 99,
+              "EndOffset": 101,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 99,
+              "EndOffset": 169,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 16,
+              "EndOffset": 201,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 205,
+              "EndOffset": 248,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 404,
+              "EndOffset": 406,
+              "Path": 0,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 205,
+              "EndOffset": 447,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 404,
+              "EndOffset": 476,
+              "Path": 1,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 523,
+              "EndOffset": 525,
+              "Path": 0,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 205,
+              "EndOffset": 566,
+              "Path": 2,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 523,
+              "EndOffset": 595,
+              "Path": 1,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 84,
+              "Offset": 702,
+              "EndOffset": 704,
+              "Path": 0,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 205,
+              "EndOffset": 745,
+              "Path": 3,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 84,
+              "Offset": 702,
+              "EndOffset": 774,
+              "Path": 1,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 821,
+              "EndOffset": 823,
+              "Path": 0,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 205,
+              "EndOffset": 864,
+              "Path": 4,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 821,
+              "EndOffset": 893,
+              "Path": 1,
+              "Ordinal": 16,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetController/<>c__DisplayClass8_0": {
+        "kadmium_reaper_remote_dotnet.Util.SetSongRelationship kadmium_reaper_remote_dotnet.Controllers.SetController/<>c__DisplayClass8_0::<Put>b__1(kadmium_reaper_remote_dotnet.Models.Song)": {
+          "Lines": {
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetController/<Put>d__8": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SetController/<Put>d__8::MoveNext()": {
+          "Lines": {
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0
+          },
+          "Branches": [
+            {
+              "Line": 94,
+              "Offset": 16,
+              "EndOffset": 30,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 119,
+              "EndOffset": 121,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 119,
+              "EndOffset": 188,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 16,
+              "EndOffset": 220,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 224,
+              "EndOffset": 258,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 112,
+              "Offset": 573,
+              "EndOffset": 575,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 224,
+              "EndOffset": 615,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 112,
+              "Offset": 573,
+              "EndOffset": 644,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 730,
+              "EndOffset": 732,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 224,
+              "EndOffset": 772,
+              "Path": 2,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 114,
+              "Offset": 730,
+              "EndOffset": 801,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 848,
+              "EndOffset": 850,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 224,
+              "EndOffset": 890,
+              "Path": 3,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 848,
+              "EndOffset": 919,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetController/<Delete>d__9": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SetController/<Delete>d__9::MoveNext()": {
+          "Lines": {
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0
+          },
+          "Branches": [
+            {
+              "Line": 123,
+              "Offset": 14,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 94,
+              "EndOffset": 96,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 94,
+              "EndOffset": 163,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 416,
+              "EndOffset": 418,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 14,
+              "EndOffset": 455,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 416,
+              "EndOffset": 484,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetController/<Activate>d__10": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SetController/<Activate>d__10::MoveNext()": {
+          "Lines": {
+            "133": 0,
+            "134": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "145": 0
+          },
+          "Branches": [
+            {
+              "Line": 134,
+              "Offset": 29,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 134,
+              "Offset": 35,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 76,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 134,
+              "Offset": 29,
+              "EndOffset": 117,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 76,
+              "EndOffset": 145,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 138,
+              "Offset": 228,
+              "EndOffset": 230,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 134,
+              "Offset": 35,
+              "EndOffset": 269,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 138,
+              "Offset": 228,
+              "EndOffset": 297,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SetSkeleton": {
+        "System.Int32 kadmium_reaper_remote_dotnet.Controllers.SetSkeleton::get_Id()": {
+          "Lines": {
+            "150": 0
+          },
+          "Branches": []
+        },
+        "System.String kadmium_reaper_remote_dotnet.Controllers.SetSkeleton::get_Venue()": {
+          "Lines": {
+            "151": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime kadmium_reaper_remote_dotnet.Controllers.SetSkeleton::get_Date()": {
+          "Lines": {
+            "152": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Controllers\\SettingsController.cs": {
+      "kadmium_reaper_remote_dotnet.Controllers.SettingsController": {
+        "kadmium_reaper_remote.WebAPI.Services.ISettingsService kadmium_reaper_remote_dotnet.Controllers.SettingsController::get_SettingsService()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SettingsController::.ctor(kadmium_reaper_remote.WebAPI.Services.ISettingsService)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SettingsController/<Get>d__4": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SettingsController/<Get>d__4::MoveNext()": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 44,
+              "EndOffset": 110,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SettingsController/<Put>d__5": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SettingsController/<Put>d__5::MoveNext()": {
+          "Lines": {
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 50,
+              "EndOffset": 116,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Controllers\\SongController.cs": {
+      "kadmium_reaper_remote_dotnet.Controllers.SongController": {
+        "System.Collections.Generic.IEnumerable`1<kadmium_reaper_remote_dotnet.Models.Song> kadmium_reaper_remote_dotnet.Controllers.SongController::Get()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SongController::.ctor(kadmium_reaper_remote_dotnet.Util.DatabaseContext)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SongController/<Get>d__3": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SongController/<Get>d__3::MoveNext()": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 34,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 50,
+              "EndOffset": 116,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SongController/<Post>d__4": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SongController/<Post>d__4::MoveNext()": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 14,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 42,
+              "Offset": 75,
+              "EndOffset": 77,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 42,
+              "Offset": 75,
+              "EndOffset": 145,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 192,
+              "EndOffset": 194,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 14,
+              "EndOffset": 232,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 192,
+              "EndOffset": 261,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SongController/<Put>d__5": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SongController/<Put>d__5::MoveNext()": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 81,
+              "EndOffset": 83,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 81,
+              "EndOffset": 147,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote_dotnet.Controllers.SongController/<Delete>d__6": {
+        "System.Void kadmium_reaper_remote_dotnet.Controllers.SongController/<Delete>d__6::MoveNext()": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0
+          },
+          "Branches": [
+            {
+              "Line": 58,
+              "Offset": 14,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 94,
+              "EndOffset": 96,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 94,
+              "EndOffset": 163,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 416,
+              "EndOffset": 418,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 14,
+              "EndOffset": 455,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 416,
+              "EndOffset": 484,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "kadmium-reaper-remote-dotnet.Views.dll": {
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Views\\Home\\Index.cshtml": {
+      "AspNetCore.Views_Home_Index/<ExecuteAsync>d__10": {
+        "System.Void AspNetCore.Views_Home_Index/<ExecuteAsync>d__10::MoveNext()": {
+          "Lines": {
+            "2": 0,
+            "6": 0
+          },
+          "Branches": [
+            {
+              "Line": 2,
+              "Offset": 14,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 2,
+              "Offset": 153,
+              "EndOffset": 155,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 2,
+              "Offset": 153,
+              "EndOffset": 178,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 449,
+              "EndOffset": 451,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 449,
+              "EndOffset": 518,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 552,
+              "EndOffset": 554,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 585,
+              "EndOffset": 587,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 2,
+              "Offset": 14,
+              "EndOffset": 627,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 585,
+              "EndOffset": 656,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 552,
+              "EndOffset": 665,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "AspNetCore.Views_Home_Index/<<ExecuteAsync>b__10_1>d": {
+        "System.Void AspNetCore.Views_Home_Index/<<ExecuteAsync>b__10_1>d::MoveNext()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 8,
+              "EndOffset": 12,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 14,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 131,
+              "EndOffset": 133,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 131,
+              "EndOffset": 156,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 427,
+              "EndOffset": 429,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 8,
+              "EndOffset": 468,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 427,
+              "EndOffset": 496,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 530,
+              "EndOffset": 532,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 563,
+              "EndOffset": 565,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 14,
+              "EndOffset": 605,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 563,
+              "EndOffset": 634,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 530,
+              "EndOffset": 643,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Views\\Shared\\Error.cshtml": {
+      "AspNetCore.Views_Shared_Error/<ExecuteAsync>d__0": {
+        "System.Void AspNetCore.Views_Shared_Error/<ExecuteAsync>d__0::MoveNext()": {
+          "Lines": {
+            "2": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI\\Views\\Shared\\_Layout.cshtml": {
+      "AspNetCore.Views_Shared__Layout/<<ExecuteAsync>b__16_0>d": {
+        "System.Void AspNetCore.Views_Shared__Layout/<<ExecuteAsync>b__16_0>d::MoveNext()": {
+          "Lines": {
+            "6": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": [
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 87,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 305,
+              "EndOffset": 307,
+              "Path": 0,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 305,
+              "EndOffset": 330,
+              "Path": 1,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 623,
+              "EndOffset": 625,
+              "Path": 0,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 664,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 623,
+              "EndOffset": 692,
+              "Path": 1,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 726,
+              "EndOffset": 728,
+              "Path": 0,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 759,
+              "EndOffset": 761,
+              "Path": 0,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 801,
+              "Path": 2,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 759,
+              "EndOffset": 830,
+              "Path": 1,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 726,
+              "EndOffset": 839,
+              "Path": 1,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 1009,
+              "EndOffset": 1011,
+              "Path": 0,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 1009,
+              "EndOffset": 1034,
+              "Path": 1,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 1328,
+              "EndOffset": 1330,
+              "Path": 0,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 1370,
+              "Path": 3,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 1328,
+              "EndOffset": 1399,
+              "Path": 1,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 1435,
+              "EndOffset": 1437,
+              "Path": 0,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 1468,
+              "EndOffset": 1470,
+              "Path": 0,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 1510,
+              "Path": 4,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 1468,
+              "EndOffset": 1539,
+              "Path": 1,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 1435,
+              "EndOffset": 1548,
+              "Path": 1,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 1718,
+              "EndOffset": 1720,
+              "Path": 0,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 1718,
+              "EndOffset": 1743,
+              "Path": 1,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 2015,
+              "EndOffset": 2017,
+              "Path": 0,
+              "Ordinal": 27,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 2057,
+              "Path": 5,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 2015,
+              "EndOffset": 2086,
+              "Path": 1,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 2122,
+              "EndOffset": 2124,
+              "Path": 0,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 2155,
+              "EndOffset": 2157,
+              "Path": 0,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 2197,
+              "Path": 6,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 2155,
+              "EndOffset": 2226,
+              "Path": 1,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 2122,
+              "EndOffset": 2235,
+              "Path": 1,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 2405,
+              "EndOffset": 2407,
+              "Path": 0,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 10,
+              "Offset": 2405,
+              "EndOffset": 2430,
+              "Path": 1,
+              "Ordinal": 34,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 2702,
+              "EndOffset": 2704,
+              "Path": 0,
+              "Ordinal": 35,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 2744,
+              "Path": 7,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 2702,
+              "EndOffset": 2773,
+              "Path": 1,
+              "Ordinal": 36,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 2809,
+              "EndOffset": 2811,
+              "Path": 0,
+              "Ordinal": 37,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 2842,
+              "EndOffset": 2844,
+              "Path": 0,
+              "Ordinal": 39,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 8,
+              "EndOffset": 2884,
+              "Path": 8,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 2842,
+              "EndOffset": 2913,
+              "Path": 1,
+              "Ordinal": 40,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 2809,
+              "EndOffset": 2922,
+              "Path": 1,
+              "Ordinal": 38,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "AspNetCore.Views_Shared__Layout/<<ExecuteAsync>b__16_1>d": {
+        "System.Void AspNetCore.Views_Shared__Layout/<<ExecuteAsync>b__16_1>d::MoveNext()": {
+          "Lines": {
+            "14": 0,
+            "16": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "kadmium-reaper-remote.WebAPI.Test.dll": {
+    "C:\\Users\\kadmi\\.nuget\\packages\\microsoft.net.test.sdk\\16.0.1\\build\\netcoreapp1.0\\Microsoft.NET.Test.Sdk.Program.cs": {
+      "AutoGeneratedProgram": {
+        "System.Void AutoGeneratedProgram::Main(System.String[])": {
+          "Lines": {
+            "4": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Work\\Code\\kadmium-reaper-remote\\kadmium-reaper-remote.WebAPI.Test\\SettingsServiceTests.cs": {
+      "kadmium_reaper_remote.WebAPI.Test.SettingsServiceTests/<GetSettings_SettingsFileExists_SettingsAreReturned>d__0": {
+        "System.Void kadmium_reaper_remote.WebAPI.Test.SettingsServiceTests/<GetSettings_SettingsFileExists_SettingsAreReturned>d__0::MoveNext()": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 254,
+              "EndOffset": 256,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 19,
+              "Offset": 254,
+              "EndOffset": 323,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "kadmium_reaper_remote.WebAPI.Test.SettingsServiceTests/<GetSettings_SettingsFileDoesNotExist_NewSettingsAreReturned>d__1": {
+        "System.Void kadmium_reaper_remote.WebAPI.Test.SettingsServiceTests/<GetSettings_SettingsFileDoesNotExist_NewSettingsAreReturned>d__1::MoveNext()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0
+          },
+          "Branches": [
+            {
+              "Line": 32,
+              "Offset": 194,
+              "EndOffset": 196,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 32,
+              "Offset": 194,
+              "EndOffset": 260,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

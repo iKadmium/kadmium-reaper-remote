@@ -1,4 +1,5 @@
-﻿using kadmium_reaper_remote_dotnet.Models;
+﻿using kadmium_reaper_remote.WebAPI.Services;
+using kadmium_reaper_remote_dotnet.Models;
 using kadmium_reaper_remote_dotnet.Util;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,10 +14,12 @@ namespace kadmium_reaper_remote_dotnet.Controllers
     public class SetController : Controller
     {
         private DatabaseContext _context;
+        private ISettingsService SettingsService { get; }
 
-        public SetController(DatabaseContext context)
+        public SetController(DatabaseContext context, ISettingsService settingsService)
         {
             _context = context;
+            SettingsService = settingsService;
         }
 
         // GET: api/values
@@ -131,7 +134,8 @@ namespace kadmium_reaper_remote_dotnet.Controllers
             var client = new HttpClient();
             try
             {
-                var response = await client.GetAsync(Settings.Instance.LightingVenueURI + "/" + name);
+                var settings = await SettingsService.GetSettings();
+                var response = await client.GetAsync(settings.LightingVenueURI + "/" + name);
             }
             catch(HttpRequestException e)
             {

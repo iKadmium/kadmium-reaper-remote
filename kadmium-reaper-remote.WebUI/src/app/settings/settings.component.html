@@ -7,17 +7,32 @@
             <fieldset [disabled]="busy">
                 <div class="form-group">
                     <label class="control-label" for="httpPort">HTTP Port:</label>
-                    <input type="number" class="form-control" id="httpPort" min="0" max="65535" [(ngModel)]="settings.httpPort"
-                        name="httpPort">
+                    <input type="number" class="form-control" id="httpPort" min="0" max="65535"
+                        [(ngModel)]="settings.httpPort" name="httpPort">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="reaperWebUri">Reaper Web URI:</label>
-                    <input type="text" class="form-control" id="reaperWebUri" [(ngModel)]="settings.reaperURI" name="reaperWebUri">
+                    <input type="text" class="form-control" id="reaperWebUri" [(ngModel)]="settings.reaperURI"
+                        name="reaperWebUri">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="lightingVenueUri">Lighting Venue URI:</label>
-                    <input type="text" class="form-control" id="lightingVenueUri" [(ngModel)]="settings.lightingVenueURI"
-                        name="lightingVenueURI">
+                    <input type="text" class="form-control" id="lightingVenueUri"
+                        [(ngModel)]="settings.lightingVenueURI" name="lightingVenueURI">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="testingFileCommand">Testing File Command:</label>
+                    <input type="text" class="form-control" id="testingFileCommand"
+                        [(ngModel)]="settings.testingFileCommand" name="testingFileCommand">
+                </div>
+                <div class="form-group">
+                    <label for="testingFileFrequency">Example select</label>
+                    <select class="form-control" id="testingFileFrequency" name="testingFileFrequency"
+                        [(ngModel)]="settings.testingFileFrequency">
+                        <option [ngValue]="TestingFileFrequency.Always">Always</option>
+                        <option [ngValue]="TestingFileFrequency.OnShowDay">On Show Day</option>
+                        <option [ngValue]="TestingFileFrequency.Never">Never</option>
+                    </select>
                 </div>
 
                 <button class="btn btn-outline-success btn-lg" type="submit" [disabled]="busy">

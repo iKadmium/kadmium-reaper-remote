@@ -1,3 +1,4 @@
+using kadmium_reaper_remote.WebAPI.Services;
 using kadmium_reaper_remote_dotnet.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +36,10 @@ namespace kadmium_reaper_remote_dotnet
             services.AddMvc();
             services.AddCors();
 
+            services.AddTransient<IFileService, FileService>();
+            services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IReaperService, ReaperService>();
+
             services.AddDbContext<DatabaseContext>(builder =>
                 DatabaseContext.SetConnection(builder as DbContextOptionsBuilder<DatabaseContext>)
             );
@@ -43,9 +48,6 @@ namespace kadmium_reaper_remote_dotnet
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
